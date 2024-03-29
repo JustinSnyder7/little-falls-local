@@ -1,0 +1,154 @@
+{
+  "shops": [
+    {
+      "name": "Little Falls Antique Center",
+      "type": "Antique Shop",
+      "location": "25 W Mill St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.04369,
+        "longitude": -74.86973
+      },
+      "rating": 4.6
+    },
+    {
+      "name": "Mackenzie's Country Store",
+      "type": "Country Store",
+      "location": "315 Canal St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.04266,
+        "longitude": -74.86386
+      },
+      "rating": 4.5
+    },
+    {
+      "name": "Valley Tobacco Shop",
+      "type": "Tobacco Shop",
+      "location": "563 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.05066,
+        "longitude": -74.85484
+      },
+      "rating": 4.4
+    },
+    {
+      "name": "Country Treasures",
+      "type": "Gift Shop",
+      "location": "605 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.05121,
+        "longitude": -74.85362
+      },
+      "rating": 4.3
+    },
+    {
+      "name": "Peppy Petals",
+      "type": "Flower Shop",
+      "location": "545 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.05067,
+        "longitude": -74.85416
+      },
+      "rating": 4.2
+    },
+    {
+      "name": "Main Street Exchange",
+      "type": "Thrift Store",
+      "location": "555 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.05066,
+        "longitude": -74.85406
+      },
+      "rating": 4.1
+    },
+    {
+      "name": "Bee's Country Shoppe",
+      "type": "Country Store",
+      "location": "637 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.05232,
+        "longitude": -74.85336
+      },
+      "rating": 4.0
+    },
+    {
+      "name": "The Little Shop",
+      "type": "Gift Shop",
+      "location": "642 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.0526,
+        "longitude": -74.85327
+      },
+      "rating": 3.9
+    },
+    {
+      "name": "Country Connection",
+      "type": "Gift Shop",
+      "location": "659 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.0528,
+        "longitude": -74.85297
+      },
+      "rating": 3.8
+    },
+    {
+      "name": "Little Falls Needlework Shop",
+      "type": "Craft Store",
+      "location": "14 W Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.04529,
+        "longitude": -74.86425
+      },
+      "rating": 3.7
+    },
+    {
+      "name": "Canal Side Emporium",
+      "type": "Gift Shop",
+      "location": "22 W Mill St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.04343,
+        "longitude": -74.86984
+      },
+      "rating": 3.6
+    },
+    {
+      "name": "Main Street Tanning",
+      "type": "Tanning Salon",
+      "location": "18 W Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.0451,
+        "longitude": -74.86429
+      },
+      "rating": 3.5
+    },
+    {
+      "name": "Bev's Ceramics",
+      "type": "Craft Store",
+      "location": "614 E Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.0517,
+        "longitude": -74.85394
+      },
+      "rating": 3.4
+    },
+    {
+      "name": "Main Street Spirits",
+      "type": "Liquor Store",
+      "location": "18 W Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.04511,
+        "longitude": -74.86414
+      },
+      "rating": 3.3
+    },
+    {
+      "name": "Red Door Antiques",
+      "type": "Antique Shop",
+      "location": "98 W Main St, Little Falls, NY 13365",
+      "gps": {
+        "latitude": 43.04505,
+        "longitude": -74.86617
+      },
+      "rating": 3.2
+    }
+  ]
+}

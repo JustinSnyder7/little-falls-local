@@ -1,0 +1,510 @@
+ /* Table of Contents ------------------------------------------------------------------- */
+ /* 1. Mobile Experience ---------------------------------------------------------------- */
+ /* 1b. Item elements within 4 main lists. ---------------------------------------------- */
+ /* 2. Desktop Experience --------------------------------------------------------------- */
+ /* 2a. Body, header and footer elements ------------------------------------------------ */
+ /* 2b. Item elements within 4 main lists. ---------------------------------------------- */
+ /* 3. Tablet Experience ---------------------------------------------------------------- */
+ /* ------------------------------------------------------------------------------------- */
+
+ /* 1. Mobile Experience ----------------------------------------------------------------- */
+
+ @media (max-width: 768px) {
+
+  #bmc-wbtn { /* buy me a coffee */
+    background-color: #ad4319!important;
+    position: fixed!important;
+    bottom: 9px!important;
+    right: 9px!important;
+  }
+
+  #bmc-wbtn div { /* buy me a coffee */
+    background-color: #ad4319!important;
+    position: fixed!important;
+    bottom: 9px!important;
+    right: 100px!important;
+  }
+
+  body {
+    font-family: "Merriweather", serif;
+    /* display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto max-content auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;  */
+  
+    /* margin: 0; */
+    margin:0 auto;
+    padding: 0;
+  
+    max-width: 1500px;
+    min-height: 100vh;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto max-content auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-template-areas: "header" "contentContainer" "footer";
+  }
+
+  header {
+    /* more header styles under header component css */
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .navbar {
+    background-color: #1995AD;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+  }
+  
+  .navbar a:hover {
+    background-color: rgba(0,0,0,0.1);
+  }
+  
+  footer {
+    grid-area: footer;
+    bottom: 0;
+    z-index: 100;
+
+    background-color: #1995AD;
+    color: #fff;
+    /* text-align: center; */
+    padding: 10px 0px;
+    margin: 0;
+    position: fixed;
+
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .footerbox {
+    display: block;
+    float: left;
+    flex-direction: column;
+
+    text-align: center;
+    width: 83%;
+    min-height: 60px;
+  }
+
+  .copyright {
+    color: #C7E6EB;
+  }
+
+ /* 1b. Item elements within 4 main lists. ---------------------------------------------- */
+
+  .item-container {
+    grid-area: contentContainer;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; /* Stack vertically on mobile */
+    grid-gap: 5px;
+    margin: 5px;
+    overflow-y: auto; /* Allow content to scroll if it exceeds the viewport height */
+    align-content: center;
+  }
+
+  .item-iter {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.85);
+    background-color: #42EB5E;
+    opacity: 1;
+    padding: 5px;
+    width: 95%;
+    border: 2px solid rgba(156, 156, 156, 0.50);
+    /* height: 80px; */
+    overflow: hidden;
+    white-space: wrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    height: 80px;
+    min-height: 80px;
+  }
+
+  .navbar a {
+    padding: 10px 16px;
+  }
+
+  .navbar a:hover {
+  background-color: rgba(0,0,0,0.1);
+  }
+
+  .fullscreen-welcome {
+    display: none;
+  }
+
+.item-wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 22px;
+}
+
+.item-wrapper-expanded {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: left;
+  font-size: 22px;
+  /* height: 100vh automatically; */
+  /* background-color: #FFFFFF; */
+}
+
+.item-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.item-name-expanded {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.item-description {
+  font-size: 18px;
+}
+
+.item-phoneNumber {
+  font-size: 18px;
+}
+
+.item-description-expanded {
+  font-size: 16px;
+  
+}
+
+.item-type {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.item-type-expanded {
+  font-size: 18px;
+  font-weight: normal;
+}
+  
+.item-rating {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.item-rating-expanded {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.item-date {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.item-date-expanded {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.item-time {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.item-time-expanded {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.item-image {
+  position: absolute; /* Position the item absolutely */
+  top: 0; /* Align the item to the top */
+  right: 0; /* Align the item to the right */
+  height: 80px;
+  /* align-self: flex-end;
+  margin-top: 5px; */
+}
+
+.item-image-expanded {
+  align-self: center;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.item-location {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.item-location-expanded {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+}
+
+/* ------------------- end item elements section ------------------- */
+
+
+
+
+ /* ------------------------------------------------------------------------------------- */
+ /* 2. Desktop Experience --------------------------------------------------------------- */ 
+ /* 2a. Body, header and footer elements ------------------------------------------------ */
+
+ @media (min-width: 769px) {
+
+body {
+  font-family: "Merriweather", serif;
+  /* display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto max-content auto;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;  */
+
+  /* margin: 0; */
+  margin:0 auto;
+  padding: 0;
+
+  max-width: 1500px;
+  min-height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto max-content auto;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas: "header" "contentContainer" "footer";
+}
+
+header {
+  /* more header styles under header component css */
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  background-color: #1995AD;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.navbar a:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+footer {
+  grid-area: footer;
+  bottom: 0;
+  z-index: 100;
+
+  background-color: #1995AD;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0px;
+  margin: 0;
+  position: fixed;
+
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,0.1);
+
+  max-width: 1500px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 2b. Item elements within 4 main lists. ---------------------------------------------- */
+
+/* .contentContainer {
+  grid-area: contentContainer;
+  min-height: 100%;
+  min-width: 100%;
+  margin: 0px;
+  padding: 5px 0;
+  background-color: #F1F1F2;
+  width: 100%;
+  height: 100%;
+  grid-row: 2;
+  overflow-y: auto; 
+  align-content: center;
+} */
+
+  .item-container {
+  /* has mobile */
+    display: grid;
+    grid-area: contentContainer;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    margin: 5px;    
+  }
+  
+  .item-iter {
+    /* **** expand and hover is on events.component.css ----- */
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.85);
+    background-color: #42EB5E;
+    opacity: 1;
+    padding: 5px;
+    width: 95%;
+    border: 2px solid rgba(156, 156, 156, 0.50);
+    /* height: 250px; */
+    height: 250px;
+    min-height: 250px;
+    overflow: hidden;
+    white-space: wrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+  }
+
+  .item-wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 22px;
+  }
+
+  .item-wrapper-expanded {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+    /* height: 100vh automatically; */
+    /* background-color: #FFFFFF; */
+  }
+  
+  .item-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+
+  .item-name-expanded {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+
+  /* .item-description {
+    font-size: 18px;
+    
+  }
+
+  .item-description-expanded {
+    font-size: 18px;
+    
+  } */
+
+  .item-type {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .item-type-expanded {
+    font-size: 18px;
+    font-weight: normal;
+  }
+    
+  .item-rating {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .item-rating-expanded {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .item-date {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .item-date-expanded {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .item-time {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .item-time-expanded {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  .item-image {
+    position: absolute; /* Position the item absolutely */
+    top: 0; /* Align the item to the top */
+    right: 0; /* Align the item to the right */
+    height: 80px;
+    /* align-self: flex-end;
+    margin-top: 5px; */
+  }
+
+  .item-image-expanded {
+    align-self: center;
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .item-location {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .item-location-expanded {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  /* ------------------- end item elements section ------------------- */
+
+
+
+.fullscreen-welcome {
+  background-color: #fff;
+}
+}
+
+ /* 3. Tablet Experience ---------------------------------------------------------------- */

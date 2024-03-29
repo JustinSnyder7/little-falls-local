@@ -1,0 +1,124 @@
+{
+  "foodPlaces": [
+    {
+      "name": "El Tren De Villa",
+      "type": "Mexican Restaurant",
+      "location": "95 E Main St, Mohawk, NY",
+      "cost": "Inexpensive to Moderate",
+      "description": "",
+      "phoneNumber": "315-210-4040",
+      "image": "el-tren-de-villa",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.5
+    },
+    {
+      "name": "Crazy Otto's Empire Diner",
+      "type": "American Diner",
+      "location": "100 W Albany St, Herkimer, NY",
+      "cost": "Moderate",
+      "description": "",
+      "phoneNumber": "315-866-8801",
+      "image": "",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.6
+    },
+    {
+      "name": "Canal Side Inn",
+      "type": "Fine Dining",
+      "location": "395 Canal Pl, Little Falls, NY",
+      "cost": "Moderate to Expensive",
+      "description": "",
+      "phoneNumber": "315-823-1170",
+      "image": "",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.5
+    },
+    {
+      "name": "Ed's Pizza Place",
+      "type": "Pizza Restaurant",
+      "location": "532 E Main St, Little Falls, NY",
+      "cost": "Inexpensive to Moderate",
+      "description": "Delivery, Takeout or Dine-In. One of the best pizza places in the area!",
+      "phoneNumber": "315-823-0476",
+      "image": "eds-pizza-menu",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.5
+    },
+    {
+      "name": "Fat Cats",
+      "type": "Seafood",
+      "location": "200 King St, Herkimer, NY",
+      "cost": "Inexpensive to Moderate",
+      "description": "",
+      "phoneNumber": "315-866-5716",
+      "image": "fat-cats",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.6
+    },
+    {
+      "name": "Copper Moose Ale House",
+      "type": "American Pub",
+      "location": "517 E Main St, Little Falls, NY",
+      "cost": "Moderate",
+      "description": "",
+      "phoneNumber": "315-508-5150",
+      "image": "",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.4
+    },
+    {
+      "name": "Ruggiero's Trattoria",
+      "type": "Italian",
+      "location": "122 W Main St, Little Falls, NY",
+      "cost": "Moderate",
+      "description": "",
+      "phoneNumber": "315-823-1414",
+      "image": "",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.3
+    },
+    {
+      "name": "Yetty's Pizza",
+      "type": "Italian",
+      "location": "109 Mohawk St, Herkimer, NY",
+      "cost": "Inexpensive to Moderate",
+      "description": "",
+      "phoneNumber": "315-866-4201",
+      "image": "yettys-pizza",
+      "website": "https://www.yettys.com",
+      "highlighted": false,
+      "rating": 4.2
+    },
+    {
+      "name": "Sorrento Pizzeria & Restaurant",
+      "type": "Italian",
+      "location": "86 Central Plaza, Ilion, NY",
+      "cost": "Moderate",
+      "description": "",
+      "phoneNumber": "315-894-9991",
+      "image": "",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.2
+    },
+    {
+      "name": "Tokyo Sushi",
+      "type": "Japanese",
+      "location": "100 N Caroline St, Herkimer, NY",
+      "cost": "Moderate",
+      "description": "",
+      "phoneNumber": "315-866-8899",
+      "image": "",
+      "website": "",
+      "highlighted": false,
+      "rating": 4.5
+    }
+  ]
+}

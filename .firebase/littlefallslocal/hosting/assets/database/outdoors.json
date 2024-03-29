@@ -1,0 +1,100 @@
+{
+    "activities": [
+      {
+        "name": "Burke Park (Western)",
+        "location": "E Lansing St, Little Falls, NY",
+        "rating": 4.7,
+        "hours": "Open 24 hours",
+        "description": "Nice little park, great for relaxation or a picnic. Occasional events.",
+        "icon": "three-stars",
+        "image": "burke-park",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      },
+      {
+        "name": "Veterans Memorial Park",
+        "location": "247 Burwell St, Little Falls, NY",
+        "rating": 4.8,
+        "hours": "Open 24 hours",
+        "description": "",
+        "icon": "three-stars",
+        "image": "",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      },
+      {
+        "name": "Moreland Park",
+        "location": "Manheim St and Ritter Rd, Little Falls, NY",
+        "rating": 4.7,
+        "hours": "TBD",
+        "description": "Very nice park in a quiet spot, has grills and a big playground for the kids. You can take a walk or jog on the trails through the woods. It's kept clean and tidy, definitely a gem for the community.",
+        "icon": "three-stars",
+        "image": "",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      },
+      {
+        "name": "Municipal Playground",
+        "location": "Eastern Park, Little Falls, NY",
+        "rating": 4.6,
+        "hours": "Open 24 hours",
+        "description": "",
+        "icon": "three-stars",
+        "image": "",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      },
+      {
+        "name": "Buttermilk Falls",
+        "location": "Little Falls, NY",
+        "rating": 5.0,
+        "hours": "Open 24 hours",
+        "description": "Hike from Municipal Parking Area off of Burch Street",
+        "icon": "three-stars",
+        "image": "",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      },
+      {
+        "name": "Erie Corner Park",
+        "location": "Little Falls, NY",
+        "rating": 4.7,
+        "hours": "Open 24 hours",
+        "description": "",
+        "icon": "three-stars",
+        "image": "",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      },
+      {
+        "name": "Little Falls Marina \n Rotary Park",
+        "location": "74 Southern Ave, Little Falls, NY",
+        "rating": 4.8,
+        "hours": "Open 24 hours",
+        "description": "",
+        "icon": "three-stars",
+        "image": "",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      },
+      {
+        "name": "Rock Climbing @ Moss Island",
+        "location": "Moss Island Parking Area, Little Falls, NY",
+        "rating": 4.5,
+        "hours": "Open 24 hours",
+        "description": "",
+        "icon": "three-stars",
+        "image": "",
+        "url":"",
+        "highlighted": false,
+        "isExpanded": false
+      }
+    ]
+}

@@ -1,0 +1,40 @@
+
+<div class="item-container">
+  <div *ngFor="let activity of outdoorActivities" class="item-iter" [class.expanded]="activity.isExpanded" (click)="expandItem(activity)">
+    <div class="item-wrapper">
+      <!-- Collapsed item view -->
+      <div *ngIf="!activity.isExpanded">
+        <span class="item-image" *ngIf="activity.image; else showIcon">
+          <img [src]="getImagePath(activity.image)" class="item-image" alt="Image">
+        </span>
+        <ng-template #showIcon>
+          <img [src]="getIconPath(activity.icon)" class="item-image" alt="Icon" height="32" width="32">
+        </ng-template>
+      <span class="item-name">{{ activity.name | truncate: 20 }}</span><br>
+      <span class="item-rating">{{ activity.rating }} stars <app-rating [rating]="activity.rating"></app-rating></span><br>
+      <span class="item-location">{{ activity.location }}</span>
+      </div>
+    </div>
+  
+<!-- Expanded item view -->
+  <div class="item-wrapper-expanded" *ngIf="activity.isExpanded">
+    <div *ngIf="activity.isExpanded">
+      <div class="item-name-expanded">{{ activity.name }}</div><br>
+      <span class="item-rating">{{ activity.rating }} stars <app-rating [rating]="activity.rating"></app-rating></span><br>
+      <span class="item-location">
+        <span *ngIf="activity.location"><a href="#">{{ activity.location }}</a></span>
+      </span>
+      
+      <span *ngIf="activity.image; else showIcon">
+        <img [src]="getImagePath(activity.image)" class="item-image-expanded" alt="Image" width="95%">
+      </span>
+      <ng-template #showIcon>
+        <img [src]="getIconPath(activity.icon)" class="item-image" alt="Icon" height="32" width="32">
+      </ng-template>
+
+      <div class="item-description">{{ activity.description }}</div>
+    </div>
+  </div>
+  </div>
+  <p>&nbsp;</p><p>&nbsp;</p>
+</div>

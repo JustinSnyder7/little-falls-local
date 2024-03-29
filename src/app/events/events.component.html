@@ -1,0 +1,40 @@
+
+<div class="item-container">
+    <div *ngFor="let events of EventsVar" class="item-iter" [class.expanded]="events.isExpanded" (click)="expandItem(events)">
+      <div class="item-wrapper">
+        <!-- Collapsed item view -->
+        <div *ngIf="!events.isExpanded">
+          <span class="item-image" *ngIf="events.image; else showIcon">
+            <img [src]="getImagePath(events.image)" class="item-image" alt="Image">
+          </span>
+          <ng-template #showIcon>
+            <img [src]="getIconPath(events.icon)" class="item-image" alt="Icon" height="32" width="32">
+          </ng-template>
+          <span class="item-name">{{ events.name | truncate: 20 }}</span><br>
+          <span class="item-date">{{ events.date }}&nbsp;{{ events.time }}</span><br>
+          <span class="item-location">{{ events.location }}</span><br>
+        </div>
+  
+        <!-- Expanded item view -->
+        <div class="item-wrapper-expanded" *ngIf="events.isExpanded">
+            
+          <div class="item-name-expanded">{{ events.name }}</div><br>
+          <span class="item-date-expanded">{{ events.date }}&nbsp;{{ events.time }}</span>
+          <span class="item-location">
+            <span *ngIf="events.locationName">at {{ events.locationName }}, </span>
+            <span *ngIf="events.location"><a href="#">{{ events.location }}</a></span></span>
+          
+          <span *ngIf="events.image; else showIcon">
+            <img [src]="getImagePath(events.image)" class="item-image-expanded" alt="Image">
+          </span>
+          <ng-template #showIcon>
+            <img [src]="getIconPath(events.icon)" class="item-image" alt="Icon" height="32" width="32">
+          </ng-template>
+
+          <div class="item-description">{{ events.description }}</div>
+        </div>
+      </div>
+    </div>
+    <p>&nbsp;</p><p>&nbsp;</p>
+  </div>
+  

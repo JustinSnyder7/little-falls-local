@@ -1,0 +1,22 @@
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title/>
+ <desc/>
+
+ <g>
+  <title>Layer 1</title>
+  <g id="Page-1" fill-rule="evenodd" fill="none">
+   <g id="Core" fill="#000000">
+    <g id="star-outline">
+     <path id="Shape" d="m20,7.744l-7.191,-0.617l-2.809,-6.627l-2.809,6.627l-7.191,0.617l5.455,4.727l-1.635,7.029l6.18,-3.728l6.18,3.728l-1.635,-7.029l5.455,-4.727l0,0zm-10,6.152l-3.763,2.27l0.996,-4.281l-3.323,-2.878l4.38,-0.376l1.71,-4.036l1.71,4.036l4.38,0.376l-3.322,2.878l0.996,4.281l-3.764,-2.27l0,0z"/>
+    </g>
+   </g>
+  </g>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="7.93752" x2="3.75005" y1="8.62502" x1="4.25004" stroke="#000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="16.62496" x2="6.93752" y1="8.06252" x1="7.00002" stroke="#000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="16.49996" x2="6.31253" y1="14.49997" x1="6.12503" stroke="#000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="11.1875" x2="6.18753" y1="8.75001" x1="6.25003" stroke="#000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="10.25" x2="4.37504" y1="8.62502" x1="4.37504" stroke="#000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="10.875" x2="5.31254" y1="8.50002" x1="5.31254" stroke="#000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="12.87498" x2="6.56253" y1="10.125" x1="6.50003" stroke="#000" fill="none"/>
+ </g>
+</svg>

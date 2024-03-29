@@ -1,0 +1,12 @@
+ p {
+    margin: 7px;
+ }
+ 
+ a {
+    color: #fff;
+    text-decoration:dashed;
+  }
+
+  a:hover {
+    color: #65d277;
+  }

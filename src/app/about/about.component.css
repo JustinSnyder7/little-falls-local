@@ -1,0 +1,15 @@
+.about-container {
+    margin: 10px;
+    padding: 10px;
+    text-align: left;
+    color: #fff;
+    background-color: #507e87; 
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  gmp-map {
+    height: 100%;
+  }

@@ -1,0 +1,42 @@
+
+<div class="item-container">
+  <div *ngFor="let foodPlaces of foodPlacesVar" class="item-iter" [class.expanded]="foodPlaces.isExpanded" (click)="expandItem(foodPlaces)">
+    <div class="item-wrapper">
+      <!-- Collapsed item view -->
+      <div *ngIf="!foodPlaces.isExpanded">
+
+        <!-- <span class="item-image" *ngIf="foodPlaces.image"></span> -->
+        <img *ngIf="foodPlaces.image" [src]="getImagePath(foodPlaces.image)" class="item-image" alt="Image">
+
+        <span class="item-name">{{ foodPlaces.name }}</span><br>
+        <span class="item-type">{{ foodPlaces.type }}</span><br>
+        <span class="item-rating"> {{ foodPlaces.rating }} stars <app-rating [rating]="foodPlaces.rating"></app-rating></span><br>
+      </div>
+    </div>
+  
+<!-- Expanded item view -->
+  <div class="item-wrapper-expanded" *ngIf="foodPlaces.isExpanded">
+    <div *ngIf="foodPlaces.isExpanded">
+      <div class="item-name-expanded">{{ foodPlaces.name }}</div>
+
+      <span class="item-type">{{ foodPlaces.type }}</span><br>
+      <span class="item-rating">{{ foodPlaces.rating }} stars <app-rating [rating]="foodPlaces.rating"></app-rating></span><br>
+
+      <span *ngIf="foodPlaces.phoneNumber" class="item-phoneNumber"><a [href]="'tel:' + foodPlaces.phoneNumber">{{ foodPlaces.phoneNumber }}</a></span><br>
+
+      <span class="item-location">
+        <span *ngIf="foodPlaces.location">
+        <a [href]="'https://www.google.com/maps/search/?api=1&query=' + formatRestaurantName(foodPlaces.name)" target="_blank">{{ foodPlaces.location }}</a></span>
+      </span><br>
+
+      <img *ngIf="foodPlaces.image; else noImageBlock" [src]="getImagePath(foodPlaces.image)" class="item-image-expanded" alt="Image" width="95%">
+        <ng-template #noImageBlock>
+          <!-- <img src="../../assets/mesh.png" width="33%"> -->
+        </ng-template>
+
+      <div *ngIf="foodPlaces.description" class="item-description">{{ foodPlaces.description }}</div> <!-- why does this not show up on the expanded listing?-->
+    </div>
+  </div>
+  </div>
+  <p>&nbsp;</p><p>&nbsp;</p>
+</div>

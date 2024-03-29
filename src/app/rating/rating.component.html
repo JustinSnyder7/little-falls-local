@@ -1,0 +1,20 @@
+
+ <div class="rating-container">
+  <span *ngFor="let iterVar of stars">
+    <img *ngIf="iterVar <= rating" src="../../assets/stars-rating/full_star_icon.svg" alt="Full Star" class="star-full">
+    <span *appIsWholeNumber="rating">
+      <img *ngIf="iterVar > rating" src="../../assets/stars-rating/empty_star_icon.svg" alt="Empty Star" class="star-empty">
+    </span>
+  </span>
+
+  <span *appNotWholeNumber="rating"> <!-- uses roundModulus function defined in rating.component.ts -->
+    <img *ngIf="roundedModulus % 1 >= 0.1 && roundedModulus % 1 <= 0.3" src="../../assets/stars-rating/1q_star_icon.svg" alt="Quarter Star" class="star-1q">
+    <img *ngIf="roundedModulus % 1 >= 0.4 && roundedModulus % 1 <= 0.6" src="../../assets/stars-rating/half_star_icon.svg" alt="Half Star" class="star-half">
+    <img *ngIf="roundedModulus % 1 >= 0.7 && roundedModulus % 1 <= 0.9" src="../../assets/stars-rating/3q_star_icon.svg" alt="Three Quarter Star" class="star-3q">
+  </span>
+  <span *appNotWholeNumber="rating">
+    <img *ngIf="rating < 4" src="../../assets/stars-rating/empty_star_icon.svg" alt="Empty Star" class="star-empty">
+    <img *ngIf="rating < 3" src="../../assets/stars-rating/empty_star_icon.svg" alt="Empty Star" class="star-empty">
+    <img *ngIf="rating < 2" src="../../assets/stars-rating/empty_star_icon.svg" alt="Empty Star" class="star-empty">
+  </span>
+</div>
