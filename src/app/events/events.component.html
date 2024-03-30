@@ -8,16 +8,16 @@
           
       <span class="item-image" *ngIf="events.image; else showIcon"><img [src]="getImagePath(events.image)" class="item-image" alt="Image"></span>
         <ng-template #showIcon><img [src]="getIconPath(events.icon)" class="item-image" alt="Icon" height="32" width="32"></ng-template>
-          
-      <span class="item-name">{{ events.name | truncate: 20 }}</span><br>
 
       <span *ngIf="!events.isDateRange; else dateRange" class="item-date">{{ formatDate(events.startDate) }}
         <span *ngIf="events.startTime"> at {{ events.startTime }}</span><br></span>
-        
+          
         <ng-template #dateRange>
           <span class="item-date">{{ formatDateRange(events.startDate) }}-{{ formatDateRange(events.endDate) }}
           <span *ngIf="events.startTime"> at {{ events.startTime }}</span></span><br>
-        </ng-template>
+        </ng-template>  
+
+      <span class="item-name">{{ events.name | truncate: 20 }}</span><br>
 
       <span class="item-location">{{ events.location }}</span><br>
     </div>
@@ -25,9 +25,17 @@
     <!-- Expanded item view -->
     <div class="item-wrapper-expanded" *ngIf="events.isExpanded">
             
+      <!-- <span class="item-date-expanded">{{ formatDate(events.startDate) }}&nbsp;{{ events.startTime }}</span> -->
+
+      <span *ngIf="!events.isDateRange; else dateRange" class="item-date-expanded">{{ formatDate(events.startDate) }}
+        <span *ngIf="events.startTime"> &#64; {{ events.startTime }}</span><br></span>
+          
+        <ng-template #dateRange>
+          <span class="item-date-expanded">{{ formatDateRange(events.startDate) }}-{{ formatDateRange(events.endDate) }}
+          <span *ngIf="events.startTime"> at {{ events.startTime }}</span></span><br>
+        </ng-template>  
+
       <div class="item-name-expanded">{{ events.name }}</div><br>
-      
-      <span class="item-date-expanded">{{ formatDate(events.startDate) }}&nbsp;{{ events.startTime }}</span>
       
       <span class="item-location">
         <span *ngIf="events.locationName">at {{ events.locationName }}, </span>
@@ -42,7 +50,5 @@
   
     </div>
   </div>
-    <!-- <img src="../../assets/mesh.png" height="78px"> -->
-    <!-- <p>&nbsp;</p><p>&nbsp;</p> -->
 </div>
   

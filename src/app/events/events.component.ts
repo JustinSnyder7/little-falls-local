@@ -78,8 +78,26 @@ export class EventsComponent implements OnInit {
   formatDate(dateString: string): string {
     // Parse the string date into a JavaScript Date object
     const date = new Date(dateString);
-    // Apply the DatePipe to format the date
-    return this.datePipe.transform(date, 'EEEE, MMMM dd') || '';
+
+    // Extract the day part of the date
+    const day = date.getDate();
+
+    // Add the appropriate suffix based on the day
+    let suffix = '';
+    if (day === 1 || day === 21 || day === 31) {
+        suffix = 'st';
+    } else if (day === 2 || day === 22) {
+        suffix = 'nd';
+    } else if (day === 3 || day === 23) {
+        suffix = 'rd';
+    } else {
+        suffix = 'th';
+    }
+
+    // Apply the DatePipe to format the date and then make it uppercase.
+    const formattedDate=(this.datePipe.transform(date, 'EEE, MMM d') || '') + suffix;
+
+    return formattedDate.toUpperCase();
   }
 
   // format the date for multi day events
@@ -87,8 +105,24 @@ export class EventsComponent implements OnInit {
     // Parse the string date into a JavaScript Date object
     const dateRange = new Date(dateRangeString);
 
-    // Apply the DatePipe to format the date
-    return this.datePipe.transform(dateRange, 'EEE, MMM dd') || '';
-  }
+    // Extract the day part of the date
+    const day = dateRange.getDate();
 
+    // Add the appropriate suffix based on the day
+    let suffix = '';
+    if (day === 1 || day === 21 || day === 31) {
+        suffix = 'st';
+    } else if (day === 2 || day === 22) {
+        suffix = 'nd';
+    } else if (day === 3 || day === 23) {
+        suffix = 'rd';
+    } else {
+        suffix = 'th';
+    }
+
+    // Apply the DatePipe to format the date and then make it uppercase.
+    const formattedDateRange=(this.datePipe.transform(dateRange, 'MMM d') || '') + suffix;
+
+    return formattedDateRange.toUpperCase();
+  }
 }

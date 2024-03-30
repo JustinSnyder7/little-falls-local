@@ -219,13 +219,13 @@
 }
 
 .item-date {
-  font-size: 18px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .item-date-expanded {
-  font-size: 18px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .item-time {
