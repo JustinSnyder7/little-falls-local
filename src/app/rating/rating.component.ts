@@ -17,9 +17,8 @@ export class RatingComponent {
     this.stars = [1, 2, 3, 4, 5]; // Total number of stars
   }
 
+  // used to calculate the remained to determine the partial star
   ngOnInit(): void {
-    console.log('Rating Value:', this.rating); // Log rating value
-
     this.roundedModulus = +(this.rating % 1).toFixed(1); // Calculate and round the modulus
   }
 }

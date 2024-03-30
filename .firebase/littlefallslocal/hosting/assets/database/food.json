@@ -9,6 +9,7 @@
       "phoneNumber": "315-210-4040",
       "image": "el-tren-de-villa",
       "website": "",
+      "highlighted": false,
       "rating": 4.5
     },
     {
@@ -20,6 +21,7 @@
       "phoneNumber": "315-866-8801",
       "image": "",
       "website": "",
+      "highlighted": false,
       "rating": 4.6
     },
     {
@@ -31,6 +33,7 @@
       "phoneNumber": "315-823-1170",
       "image": "",
       "website": "",
+      "highlighted": false,
       "rating": 4.5
     },
     {
@@ -42,6 +45,7 @@
       "phoneNumber": "315-823-0476",
       "image": "eds-pizza-menu",
       "website": "",
+      "highlighted": false,
       "rating": 4.5
     },
     {
@@ -53,6 +57,7 @@
       "phoneNumber": "315-866-5716",
       "image": "fat-cats",
       "website": "",
+      "highlighted": false,
       "rating": 4.6
     },
     {
@@ -64,6 +69,7 @@
       "phoneNumber": "315-508-5150",
       "image": "",
       "website": "",
+      "highlighted": false,
       "rating": 4.4
     },
     {
@@ -75,6 +81,7 @@
       "phoneNumber": "315-823-1414",
       "image": "",
       "website": "",
+      "highlighted": false,
       "rating": 4.3
     },
     {
@@ -86,6 +93,7 @@
       "phoneNumber": "315-866-4201",
       "image": "yettys-pizza",
       "website": "https://www.yettys.com",
+      "highlighted": false,
       "rating": 4.2
     },
     {
@@ -94,9 +102,10 @@
       "location": "86 Central Plaza, Ilion, NY",
       "cost": "Moderate",
       "description": "",
-      "phoneNumber": "",
+      "phoneNumber": "315-894-9991",
       "image": "",
-      "website": "315-894-9991",
+      "website": "",
+      "highlighted": false,
       "rating": 4.2
     },
     {
@@ -108,6 +117,7 @@
       "phoneNumber": "315-866-8899",
       "image": "",
       "website": "",
+      "highlighted": false,
       "rating": 4.5
     }
   ]

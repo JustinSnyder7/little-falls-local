@@ -121,6 +121,7 @@
     grid-template-rows: auto; /* Stack vertically on mobile */
     grid-gap: 5px;
     margin: 5px;
+    padding-bottom: 83px;
     overflow-y: auto; /* Allow content to scroll if it exceeds the viewport height */
     align-content: center;
   }

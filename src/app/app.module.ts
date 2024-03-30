@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,7 +49,7 @@ import { SubmitEventComponent } from './submit-event/submit-event.component';
     AppRoutingModule,
     NgxGoogleAnalyticsModule.forRoot('G-RHV2TGLWNT')
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
