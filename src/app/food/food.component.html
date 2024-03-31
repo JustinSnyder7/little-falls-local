@@ -26,12 +26,12 @@
 
       <span class="item-location">
         <span *ngIf="foodPlaces.location">
-        <a [href]="'https://www.google.com/maps/search/?api=1&query=' + formatRestaurantName(foodPlaces.name)" target="_blank">{{ foodPlaces.location }}</a></span>
-      </span><br>
+        <a [href]="formatRestaurantName(foodPlaces.name)" target="_blank">{{ foodPlaces.location }}</a></span>
+      </span><br><br>
 
       <img *ngIf="foodPlaces.image; else noImageBlock" [src]="getImagePath(foodPlaces.image)" class="item-image-expanded" alt="Image" width="95%">
         <ng-template #noImageBlock>
-          <!-- <img src="../../assets/mesh.png" width="33%"> -->
+          <img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon">
         </ng-template>
 
       <div *ngIf="foodPlaces.description" class="item-description">{{ foodPlaces.description }}</div> <!-- why does this not show up on the expanded listing?-->

@@ -13,7 +13,7 @@ interface FoodItem {
   icon: string;
   image: string;
   url: string;
-  highlighted: boolean;
+  highlight: boolean;
   isExpanded: boolean;
 }
 
@@ -59,7 +59,7 @@ export class FoodComponent implements OnInit {
     const sanitizedName = foodPlacesName.replace(/[^\w\s]/g, '');
     
     // Replace spaces with '+' signs and convert to lowercase
-    const formattedName = sanitizedName.replace(/\s+/g, '+').toLowerCase();
+    const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';
   
     return formattedName;
   }

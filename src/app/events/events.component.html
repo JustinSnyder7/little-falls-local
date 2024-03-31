@@ -7,13 +7,13 @@
     <div *ngIf="!events.isExpanded">
           
       <span class="item-image" *ngIf="events.image; else showIcon"><img [src]="getImagePath(events.image)" class="item-image" alt="Image"></span>
-        <ng-template #showIcon><img [src]="getIconPath(events.icon)" class="item-image" alt="Icon" height="32" width="32"></ng-template>
+        <ng-template #showIcon><img [src]="getIconPath(events.icon)" class="item-icon" alt="Icon" height="32" width="32"></ng-template>
 
-      <span *ngIf="!events.isDateRange; else dateRange" class="item-date">{{ formatDate(events.startDate) }}
+      <span *ngIf="!events.endDate; else dateRange" class="item-date">{{ formatDate(events.startDate) }}
         <span *ngIf="events.startTime"> at {{ events.startTime }}</span><br></span>
           
         <ng-template #dateRange>
-          <span class="item-date">{{ formatDateRange(events.startDate) }}-{{ formatDateRange(events.endDate) }}
+          <span class="item-date">{{ formatDate(events.startDate) }}-{{ formatDateRange(events.endDate) }}
           <span *ngIf="events.startTime"> at {{ events.startTime }}</span></span><br>
         </ng-template>  
 
@@ -25,21 +25,19 @@
     <!-- Expanded item view -->
     <div class="item-wrapper-expanded" *ngIf="events.isExpanded">
             
-      <!-- <span class="item-date-expanded">{{ formatDate(events.startDate) }}&nbsp;{{ events.startTime }}</span> -->
-
-      <span *ngIf="!events.isDateRange; else dateRange" class="item-date-expanded">{{ formatDate(events.startDate) }}
-        <span *ngIf="events.startTime"> &#64; {{ events.startTime }}</span><br></span>
+      <span *ngIf="!events.endDate; else dateRange" class="item-date-expanded">{{ formatDate(events.startDate) }}
+        <span *ngIf="events.startTime"> at {{ events.startTime }}</span><br></span>
           
         <ng-template #dateRange>
           <span class="item-date-expanded">{{ formatDateRange(events.startDate) }}-{{ formatDateRange(events.endDate) }}
           <span *ngIf="events.startTime"> at {{ events.startTime }}</span></span><br>
-        </ng-template>  
+        </ng-template>
 
       <div class="item-name-expanded">{{ events.name }}</div><br>
       
       <span class="item-location">
-        <span *ngIf="events.locationName">at {{ events.locationName }}, </span>
-        <span *ngIf="events.location"><a href="#">{{ events.location }}</a></span>
+        <span *ngIf="events.locationName">at {{ events.locationName }}</span><br>
+        <span *ngIf="events.location"><a [href]="formatEventLocationName(events.location)" target="_blank">{{ events.location }}</a></span>
       </span>
           
       <span *ngIf="events.image; else showIcon"><img [src]="getImagePath(events.image)" class="item-image-expanded" alt="Image"></span>

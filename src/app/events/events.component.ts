@@ -7,18 +7,16 @@ import { Meta } from '@angular/platform-browser';
 interface EventItem {
   id: number;
   name: string;
-  isDateRange: boolean;
-  pastDate: Date;
   startDate: string;
   endDate: string;
   startTime: string;
   endTime: string;
-  timeSpan: string;
   location: string;
   locationName: string;
   icon: string;
-  description: string;
   image: string;
+  description: string;
+  highlight: boolean;
   isExpanded: boolean;
 }
 
@@ -67,7 +65,7 @@ export class EventsComponent implements OnInit {
   }
 
   getImagePath(icon: string): string {
-    return `/assets/images/${icon}.jpg`;
+    return `/assets/images/events/${icon}.jpg`;
   }
 
   expandItem(events: EventItem): void {
@@ -124,5 +122,15 @@ export class EventsComponent implements OnInit {
     const formattedDateRange=(this.datePipe.transform(dateRange, 'MMM d') || '') + suffix;
 
     return formattedDateRange.toUpperCase();
+  }
+
+  formatEventLocationName(eventLocationName: string): string {
+    // Remove punctuation using a regular expression
+    const sanitizedName = eventLocationName.replace(/[^\w\s]/g, '');
+    
+    // Replace spaces with '+' signs and convert to lowercase
+    const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';
+  
+    return formattedName;
   }
 }

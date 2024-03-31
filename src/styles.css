@@ -27,16 +27,8 @@
 
   body {
     font-family: "Merriweather", serif;
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto max-content auto;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;  */
-  
-    /* margin: 0; */
     margin:0 auto;
     padding: 0;
-  
     max-width: 1500px;
     min-height: 100vh;
   }
@@ -135,7 +127,6 @@
     padding: 5px;
     width: 95%;
     border: 2px solid rgba(156, 156, 156, 0.50);
-    /* height: 80px; */
     overflow: hidden;
     white-space: wrap; /* Prevent text from wrapping */
     text-overflow: ellipsis; /* Add ellipsis for truncated text */
@@ -161,6 +152,8 @@
   flex-direction: column;
   justify-content: flex-start;
   font-size: 22px;
+  padding-left: 5px;
+  padding-right: 8px;
 }
 
 .item-wrapper-expanded {
@@ -169,8 +162,7 @@
   flex-direction: column;
   align-items: left;
   font-size: 22px;
-  /* height: 100vh automatically; */
-  /* background-color: #FFFFFF; */
+  padding-left: 5px;
 }
 
 .item-name {
@@ -209,6 +201,7 @@
 }
   
 .item-rating {
+  font-family: Arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
 }
@@ -253,8 +246,23 @@
   margin-top: 5px;
 }
 
+.item-icon {
+  position: absolute; /* Position the item absolutely */
+  top: 0; /* Align the item to the top */
+  right: 5px; /* Align the item to the right */
+  height: 80px;
+  /* align-self: flex-end;
+  margin-top: 5px; */
+}
+
+.item-icon-expanded {
+  align-self: center;
+  width: 100%;
+  margin-top: 5px;
+}
+
 .item-location {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: normal;
 }
 

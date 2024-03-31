@@ -1,28 +1,15 @@
+
 .rating-container {
   display: inline-block;
-  }
-  
-  .star-empty {
-    width: 20px;
-    height: 20px;
-  }
+  vertical-align: bottom;
+  --starSize: 17px;
+}
 
-  .star-1q {
-    width: 20px;
-    height: 20px;
-  }
-
-  .star-half {
-    width: 20px;
-    height: 20px;
-  }
-
-  .star-3q {
-    width: 20px;
-    height: 20px;
-  }
-
-  .star-full {
-    width: 20px;
-    height: 20px;
-  }
+.star-empty,
+.star-1q,
+.star-half,
+.star-3q,
+.star-full {
+  width: var(--starSize);
+  height: var(--starSize);
+}
