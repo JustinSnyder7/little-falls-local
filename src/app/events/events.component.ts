@@ -36,7 +36,7 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchEventsVar();
 
-    this.meta.updateTag({ name: 'description', content: 'Explore some of the best restaurants in Little Falls and nearby! There are plent of excellent choices close to our small city.' });
+    this.meta.updateTag({ name: 'description', content: 'Discover the heartbeat of our community with local concerts, farmers markets, and more on our events page. Stay updated on the latest happenings in Little Falls and surrounding areas, and immerse yourself in the vibrant culture and spirit of our town.' });
   }
 
   fetchEventsVar(): void {
