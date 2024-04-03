@@ -5,17 +5,18 @@ import { Meta } from '@angular/platform-browser';
 
 // Define an interface for the type of event object
 interface EventItem {
-  id: number;
   name: string;
   startDate: string;
   endDate: string;
   startTime: string;
   endTime: string;
-  location: string;
-  locationName: string;
+  cost: string;
   icon: string;
   image: string;
+  location: string;
+  locationName: string;
   description: string;
+  url: string;
   highlight: boolean;
   isExpanded: boolean;
 }

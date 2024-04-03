@@ -173,7 +173,7 @@
 }
 
 .item-name-expanded {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: rgb(0, 0, 0);
 }
@@ -189,6 +189,11 @@
 .item-description-expanded {
   font-size: 16px;
   
+}
+
+.item-cost {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .item-type {
@@ -223,20 +228,33 @@
 }
 
 .item-time {
-  font-size: 18px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .item-time-expanded {
-  font-size: 18px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.item-image-wrapper {
+  display: flex;
+  justify-content: center; /* horizontally centers the image */
+  align-items: center; /* vertically centers the image */
+  background-color: rgb(255, 255, 255);
+  height: 80px;
+  width: 100px;
+  position: absolute;
+  border: 1px solid #000000;
+  top: 0; /* Align the item to the top */
+  right: 0; /* Align the item to the right */
 }
 
 .item-image {
-  position: absolute; /* Position the item absolutely */
-  top: 0; /* Align the item to the top */
-  right: 0; /* Align the item to the right */
+
   height: 80px;
+  max-width: 100px;
+
   /* align-self: flex-end;
   margin-top: 5px; */
 }
