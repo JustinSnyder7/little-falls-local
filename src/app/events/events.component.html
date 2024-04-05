@@ -6,14 +6,15 @@
     <!-- Collapsed item view -->
     <div *ngIf="!events.isExpanded">
           
-      <div class="item-image-wrapper" *ngIf="events.image; else showIcon"><img [src]="getImagePath(events.image)" class="item-image" alt="Image"></div>
-        <ng-template #showIcon><img [src]="getIconPath(events.icon)" class="item-icon" alt="Icon" height="32" width="32"></ng-template>
+      <div class="item-image-wrapper" *ngIf="events.image"><img [src]="getImagePath(events.image)" class="item-image" alt="Image"></div>
+      <div *ngIf="!events.image"><img [src]="getIconPath(events.icon)" class="item-icon" alt="Icon" height="32" width="32"></div>
+      
 
-      <span *ngIf="!events.endDate; else dateRange" class="item-date">{{ formatDate(events.startDate) }}</span>
-        <ng-template #dateRange><span class="item-date">{{ formatDate(events.startDate) }}-{{ formatDateRange(events.endDate) }}</span></ng-template>
+      <span *ngIf="!events.endDate" class="item-date">{{ formatDate(events.startDate) }}</span>
+      <span *ngIf="events.endDate" class="item-date">{{ formatDate(events.startDate) }}-{{ formatDateRange(events.endDate) }}</span>
 
-      <span *ngIf="!events.endTime else timeRange"class="item-time"><span *ngIf="events.startTime" class="item-time"> at {{ events.startTime }}</span></span>
-        <ng-template #timeRange><span class="item-time">, {{ events.startTime }}-{{ events.endTime }}</span></ng-template><br>
+      <span *ngIf="!events.endTime && events.startTime" class="item-time"> at {{ events.startTime }}</span>
+      <span *ngIf="events.endTime && events.startTime" class="item-time">, {{ events.startTime }}-{{ events.endTime }}</span><br>
 
       <span class="item-name">{{ events.name | truncate: 20 }}</span><br>
 
@@ -24,13 +25,15 @@
     <!-- Expanded item view -->
     <div class="item-wrapper-expanded" *ngIf="events.isExpanded">
       
-      <!-- Expanded event date handler -->
-      <span *ngIf="!events.endDate; else dateRange" class="item-date">{{ formatDate(events.startDate) }}</span>  
-        <ng-template #dateRange><span class="item-date">{{ formatDateRange(events.startDate) }}-{{ formatDateRange(events.endDate) }}</span></ng-template>
+      <div>
+        <!-- Expanded event date handler -->
+        <span *ngIf="!events.endDate  && events.startDate" class="item-date-expanded">{{ formatDate(events.startDate) }}</span>
+        <span *ngIf="events.endDate" class="item-date-expanded">{{ formatDateRange(events.startDate) }}-{{ formatDateRange(events.endDate) }}</span>
         
-      <!-- Expanded event time handler -->
-      <span *ngIf="!events.endTime else timeRange" class="item-time"><span *ngIf="events.startTime" class="item-time"> at {{ events.startTime }}</span></span>
-        <ng-template #timeRange><span class="item-time">, {{ events.startTime }}-{{ events.endTime }}</span></ng-template><br>
+        <!-- Expanded event time handler -->
+        <span *ngIf="!events.endTime && events.startTime" class="item-time-expanded"> at {{ events.startTime }}</span>
+        <span *ngIf="events.endTime && events.startTime" class="item-time-expanded">, {{ events.startTime }}-{{ events.endTime }}</span>
+      </div>
 
       <div class="item-name-expanded">{{ events.name }}</div><br>
       

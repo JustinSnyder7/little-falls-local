@@ -2,7 +2,6 @@
 
   .expanded {
     background-color: #42EB5E;
-    /* min-height: 100%; */
     height: 96%;
   }
 
@@ -14,8 +13,6 @@
 @media (max-width: 768px) {
   .expanded {
     background-color: #42EB5E;
-    /* min-height: 100%; */
-    /* height: 96%; */
     height: 100vh automatically;
   }
 }

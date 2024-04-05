@@ -4,12 +4,9 @@
     <div class="item-wrapper">
       <!-- Collapsed item view -->
       <div *ngIf="!activity.isExpanded">
-        <span class="item-image" *ngIf="activity.image; else showIcon">
-          <img [src]="getImagePath(activity.image)" class="item-image" alt="Image">
-        </span>
-        <ng-template #showIcon>
-          <img [src]="getIconPath(activity.icon)" class="item-image" alt="Icon" height="32" width="32">
-        </ng-template>
+
+      <div class="item-image-wrapper" *ngIf="activity.image"><img [src]="getImagePath(activity.image)" class="item-image" alt="Image"></div>
+
       <span class="item-name">{{ activity.name | truncate: 20 }}</span><br>
       <span class="item-rating">{{ activity.rating }} stars <app-rating [rating]="activity.rating"></app-rating></span><br>
       <span class="item-location">{{ activity.location }}</span>

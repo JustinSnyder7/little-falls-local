@@ -6,7 +6,9 @@
       <div *ngIf="!foodPlaces.isExpanded">
 
         <!-- <span class="item-image" *ngIf="foodPlaces.image"></span> -->
-        <img *ngIf="foodPlaces.image" [src]="getImagePath(foodPlaces.image)" class="item-image" alt="Image">
+        <!-- <img *ngIf="foodPlaces.image" [src]="getImagePath(foodPlaces.image)" class="item-image" alt="Image"> -->
+
+        <div class="item-image-wrapper" *ngIf="foodPlaces.image"><img [src]="getImagePath(foodPlaces.image)" class="item-image" alt="Image"></div>
 
         <span class="item-name">{{ foodPlaces.name }}</span><br>
         <span class="item-type">{{ foodPlaces.type }}</span><br>
