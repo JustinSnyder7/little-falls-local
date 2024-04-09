@@ -46,8 +46,8 @@
         <span *ngIf="events.location"><a [href]="formatEventLocationName(events.location)" target="_blank">{{ events.location }}</a></span><br>
       </span>
           
-      <span *ngIf="events.image; else showIcon"><img [src]="getImagePath(events.image)" class="item-image-expanded" alt="Image"></span>
-        <ng-template #showIcon><img [src]="getIconPath(events.icon)" class="item-image" alt="Icon" height="32" width="32"></ng-template>
+      <span *ngIf="events.image; else noImageBlock"><img [src]="getImagePath(events.image)" class="item-image-expanded" alt="Image"></span>
+        <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
       <div class="item-description">{{ events.description }}</div>
     </div>

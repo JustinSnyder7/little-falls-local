@@ -22,12 +22,10 @@
         <span *ngIf="activity.location"><a href="#">{{ activity.location }}</a></span>
       </span>
       
-      <span *ngIf="activity.image; else showIcon">
+      <span *ngIf="activity.image; else noImageBlock">
         <img [src]="getImagePath(activity.image)" class="item-image-expanded" alt="Image" width="95%">
       </span>
-      <ng-template #showIcon>
-        <img [src]="getIconPath(activity.icon)" class="item-image" alt="Icon" height="32" width="32">
-      </ng-template>
+      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
       <div class="item-description">{{ activity.description }}</div>
     </div>
