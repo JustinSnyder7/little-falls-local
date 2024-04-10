@@ -41,13 +41,14 @@
 
       <!-- TODO: need to implement functionality for location name versus location -->
 
+         
+      <span *ngIf="events.image; else noImageBlock"><img [src]="getImagePath(events.image)" class="item-image-expanded" alt="Image"></span>
+        <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
+
       <span class="item-location">
         <span *ngIf="events.locationName">at {{ events.locationName }}</span><br>
         <span *ngIf="events.location"><a [href]="formatEventLocationName(events.location)" target="_blank">{{ events.location }}</a></span><br>
       </span>
-          
-      <span *ngIf="events.image; else noImageBlock"><img [src]="getImagePath(events.image)" class="item-image-expanded" alt="Image"></span>
-        <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
       <div class="item-description">{{ events.description }}</div>
     </div>

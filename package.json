@@ -18,13 +18,14 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "font-awesome": "^4.7.0",
     "ngx-google-analytics": "^14.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.2.0",
+    "@angular-devkit/build-angular": "^17.0.10",
     "@angular/cli": "^17.2.0",
     "@angular/compiler-cli": "^17.2.0",
     "@types/jasmine": "~5.1.0",

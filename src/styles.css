@@ -52,7 +52,11 @@
   
   .navbar {
     background-color: #1995AD;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.25);
+    /* font-weight: bold; */
     padding: 10px 0;
+    margin: 0 auto;
     text-align: center;
     width: 100%;
     border-top: 1px solid rgba(0,0,0,0.1);
@@ -62,13 +66,13 @@
   .navbar a {
     color: #fff;
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 8px 3px;
   }
   
   .navbar a:hover {
     background-color: rgba(0,0,0,0.1);
   }
-  
+
   footer {
     grid-area: footer;
     bottom: 0;
@@ -134,13 +138,6 @@
     min-height: 80px;
   }
 
-  .navbar a {
-    padding: 10px 16px;
-  }
-
-  .navbar a:hover {
-  background-color: rgba(0,0,0,0.1);
-  }
 
   .fullscreen-welcome {
     display: none;
