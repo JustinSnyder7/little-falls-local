@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,8 @@ import { IsWholeNumberDirective } from './is-whole-number.directive';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TruncatePipe } from './truncate.pipe';
 import { SubmitEventComponent } from './submit-event/submit-event.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ImageCarouselComponent } from './image-carousel/image-carousel.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +44,15 @@ import { SubmitEventComponent } from './submit-event/submit-event.component';
     HomePageComponent,
     TruncatePipe,
     SubmitEventComponent,
+    ImageCarouselComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule, // Add HttpClientModule here
     AppRoutingModule,
-    NgxGoogleAnalyticsModule.forRoot('G-RHV2TGLWNT')
+    NgxGoogleAnalyticsModule.forRoot('G-RHV2TGLWNT'),
+    FontAwesomeModule,
+    NgOptimizedImage
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

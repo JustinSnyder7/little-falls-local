@@ -8,7 +8,7 @@
         <!-- <span class="item-image" *ngIf="foodPlaces.image"></span> -->
         <!-- <img *ngIf="foodPlaces.image" [src]="getImagePath(foodPlaces.image)" class="item-image" alt="Image"> -->
 
-        <div class="item-image-wrapper" *ngIf="foodPlaces.image"><img [src]="getImagePath(foodPlaces.image)" class="item-image" alt="Image"></div>
+        <div class="item-image-wrapper" *ngIf="foodPlaces.image.primary"><img [src]="getImagePath(foodPlaces.image.primary)" class="item-image" alt="Image"></div>
 
         <span class="item-name">{{ foodPlaces.name }}</span><br>
         <span class="item-type">{{ foodPlaces.type }}</span><br>
@@ -31,10 +31,14 @@
         <a [href]="formatRestaurantName(foodPlaces.name)" target="_blank">{{ foodPlaces.location }}</a></span>
       </span><br><br>
 
-      <img *ngIf="foodPlaces.image; else noImageBlock" [src]="getImagePath(foodPlaces.image)" class="item-image-expanded" alt="Image" width="95%">
+      <!-- <img *ngIf="foodPlaces.image.primary; else noImageBlock" [src]="getImagePath(foodPlaces.image.primary)" class="item-image-expanded" alt="Image" width="95%">
         <ng-template #noImageBlock>
           <img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon">
-        </ng-template>
+        </ng-template> -->
+
+      <!-- test example -->
+      <app-image-carousel [images]="foodPlaces.image"></app-image-carousel>
+
 
       <div *ngIf="foodPlaces.description" class="item-description">{{ foodPlaces.description }}</div> <!-- why does this not show up on the expanded listing?-->
     </div>

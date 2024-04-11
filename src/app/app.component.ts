@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faTimes);
 
 @Component({
   selector: 'app-root',
@@ -6,6 +10,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'little-falls-local';
+  title = 'LittleFallsLocal.com';
 
 }

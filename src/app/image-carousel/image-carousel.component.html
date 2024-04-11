@@ -1,0 +1,17 @@
+<div class="image-carousel">
+
+    <img [src]="'/assets/images/food/' + currentImage + '.jpg'" alt="Main Image" width="99%"><br><br>
+
+    <!-- TODO: need to figure out how to pass ALT argument foodPlaces.name -->
+
+    <!-- TODO: need to solve issue of clicking always collapsing window, not allowing image carousel to work -->
+
+    <div class="thumbnail-container">
+      <img *ngFor="let image of thumbnailImages" 
+           [src]="'/assets/images/food/' + image + '.jpg'" 
+           (click)="setCurrentImage(image)" 
+           [class.selected]="image === currentImage">
+    </div>
+
+  </div>
+  

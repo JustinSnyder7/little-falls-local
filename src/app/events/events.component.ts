@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { Pipe, PipeTransform, Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 // Define an interface for the type of event object
 interface EventItem {
@@ -21,6 +21,23 @@ interface EventItem {
   isExpanded: boolean;
 }
 
+@Pipe({
+  name: 'truncate'
+})
+
+export class TruncatePipe implements PipeTransform {
+  transform(value: string, length: number): string {
+    if (!value) return '';
+
+    if (value.length <= length) {
+      return value;
+    } else {
+      return value.substring(0, length) + '...';
+    }
+  }
+}
+
+
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -37,7 +54,7 @@ export class EventsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchEventsVar();
 
-    this.meta.updateTag({ name: 'description', content: 'Discover the heartbeat of our community with local concerts, farmers markets, and more on our events page. Stay updated on the latest happenings in Little Falls and surrounding areas, and immerse yourself in the vibrant culture and spirit of our town.' });
+    this.meta.updateTag({ name: 'description', content: 'Explore our community&#39;s heartbeat with concerts, farmers markets, and more on our events page. Stay in the loop with what&#39;s happening in Little Falls and nearby, and experience the lively culture and spirit of our town.' });
   }
 
   fetchEventsVar(): void {
@@ -100,30 +117,40 @@ export class EventsComponent implements OnInit {
   }
 
   // format the date for multi day events
-  formatDateRange(dateRangeString: string): string {
-    // Parse the string date into a JavaScript Date object
-    const dateRange = new Date(dateRangeString);
+  formatDateRange(startDate: string, endDate: string): string {
+    // Parse the string dates into JavaScript Date objects
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(endDate);
 
-    // Extract the day part of the date
-    const day = dateRange.getDate();
+    // Extract the day parts of the dates
+    const startDay = startDateObj.getDate();
+    const endDay = endDateObj.getDate();
 
-    // Add the appropriate suffix based on the day
-    let suffix = '';
-    if (day === 1 || day === 21 || day === 31) {
-        suffix = 'st';
-    } else if (day === 2 || day === 22) {
-        suffix = 'nd';
-    } else if (day === 3 || day === 23) {
-        suffix = 'rd';
-    } else {
-        suffix = 'th';
-    }
+    // Function to determine the suffix based on the day
+    const getDaySuffix = (day: number): string => {
+        if (day === 1 || day === 21 || day === 31) {
+            return 'st';
+        } else if (day === 2 || day === 22) {
+            return 'nd';
+        } else if (day === 3 || day === 23) {
+            return 'rd';
+        } else {
+            return 'th';
+        }
+    };
 
-    // Apply the DatePipe to format the date and then make it uppercase.
-    const formattedDateRange=(this.datePipe.transform(dateRange, 'MMM d') || '') + suffix;
+    // Format start date with suffix
+    const formattedStartDate = `${this.datePipe.transform(startDateObj, 'MMM d')}${getDaySuffix(startDay)}`;
 
+    // Format end date with suffix
+    const formattedEndDate = `${this.datePipe.transform(endDateObj, 'd')}${getDaySuffix(endDay)}`;
+
+    // Combine formatted dates with a hyphen
+    const formattedDateRange = `${formattedStartDate} - ${formattedEndDate}`;
+
+    // Convert to uppercase and return
     return formattedDateRange.toUpperCase();
-  }
+}
 
   formatEventLocationName(eventLocationName: string): string {
     // Remove punctuation using a regular expression

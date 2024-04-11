@@ -8,15 +8,16 @@
           
       <div class="item-image-wrapper" *ngIf="events.image"><img [src]="getImagePath(events.image)" class="item-image" alt="Image"></div>
       <div *ngIf="!events.image"><img [src]="getIconPath(events.icon)" class="item-icon" alt="Icon" height="32" width="32"></div>
-      
+
 
       <span *ngIf="!events.endDate" class="item-date">{{ formatDate(events.startDate) }}</span>
-      <span *ngIf="events.endDate" class="item-date">{{ formatDate(events.startDate) }}-{{ formatDateRange(events.endDate) }}</span>
+      <span *ngIf="events.endDate" class="item-date">{{ formatDateRange(events.startDate, events.endDate) }}</span>
 
       <span *ngIf="!events.endTime && events.startTime" class="item-time"> at {{ events.startTime }}</span>
       <span *ngIf="events.endTime && events.startTime" class="item-time">, {{ events.startTime }}-{{ events.endTime }}</span><br>
 
-      <span class="item-name">{{ events.name | truncate: 20 }}</span><br>
+      <span *ngIf="events.image" class="item-name">{{ events.name | truncate: 19 }}</span>
+      <span *ngIf="!events.image" class="item-name">{{ events.name | truncate: 24 }}</span><br>
 
       <span class="item-location">{{ events.location }}</span><br>
     </div>
@@ -28,7 +29,7 @@
       <div>
         <!-- Expanded event date handler -->
         <span *ngIf="!events.endDate  && events.startDate" class="item-date-expanded">{{ formatDate(events.startDate) }}</span>
-        <span *ngIf="events.endDate" class="item-date-expanded">{{ formatDateRange(events.startDate) }}-{{ formatDateRange(events.endDate) }}</span>
+        <span *ngIf="events.endDate" class="item-date-expanded">{{ formatDateRange(events.startDate, events.endDate) }}</span>
         
         <!-- Expanded event time handler -->
         <span *ngIf="!events.endTime && events.startTime" class="item-time-expanded"> at {{ events.startTime }}</span>
