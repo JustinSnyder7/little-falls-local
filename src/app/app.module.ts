@@ -6,24 +6,24 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { EventsComponent } from './events/events.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { AboutComponent } from './about/about.component';
-import { ShopsComponent } from './shops/shops.component';
-import { OutdoorsComponent } from './outdoors/outdoors.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { FoodComponent } from './food/food.component';
-import { RatingComponent } from './rating/rating.component';
-import { NotWholeNumberDirective } from './not-whole-number.directive';
-import { IsWholeNumberDirective } from './is-whole-number.directive';
-import { HomePageComponent } from './home-page/home-page.component';
-import { TruncatePipe } from './truncate.pipe';
-import { SubmitEventComponent } from './submit-event/submit-event.component';
+import { NavbarComponent } from './components/!primary/navbar/navbar.component';
+import { EventsComponent } from './components/!dynamic/events/events.component';
+import { HeaderComponent } from './components/!primary/header/header.component';
+import { FooterComponent } from './components/!primary/footer/footer.component';
+import { AboutComponent } from './components/!static/about/about.component';
+import { ShopsComponent } from './components/!dynamic/shops/shops.component';
+import { OutdoorsComponent } from './components/!dynamic/outdoors/outdoors.component';
+import { WelcomeComponent } from './components/!static/welcome/welcome.component';
+import { ContactUsComponent } from './components/!static/contact-us/contact-us.component';
+import { FoodComponent } from './components/!dynamic/food/food.component';
+import { RatingComponent } from './components/!sub-components/rating/rating.component';
+import { NotWholeNumberDirective } from './directives/not-whole-number.directive';
+import { IsWholeNumberDirective } from './directives/is-whole-number.directive';
+import { HomePageComponent } from './components/!static/home-page/home-page.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { SubmitEventComponent } from './components/!static/submit-event/submit-event.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ImageCarouselComponent } from './image-carousel/image-carousel.component';
+import { ImageCarouselComponent } from './components/!sub-components/image-carousel/image-carousel.component';
 
 @NgModule({
   declarations: [

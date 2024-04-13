@@ -32,6 +32,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/assets/favicon.png",
+              "src/assets/lflocal.png",
               "src/assets"
             ],
             "styles": [

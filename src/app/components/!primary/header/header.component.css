@@ -51,7 +51,7 @@ h1 {
     grid-row-end: 1;
     /* background-color: #81c784; */
     background-color: #BFCCDD;
-    background-image: url("../../assets/lf-main.jpg");
+    background-image: url("../../../../assets/lf-main.jpg");
     background-size: cover;
     top: 0;
     position: sticky;
@@ -64,7 +64,7 @@ h1 {
 /* Responsive Styles */
 @media (max-width: 768px) {
     .title-container {
-        background-image: url("../../assets/lf-main-746.jpg");
+        background-image: url("../../../../assets/lf-main-746.jpg");
     }
   
 }

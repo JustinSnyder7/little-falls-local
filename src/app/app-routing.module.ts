@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { EventsComponent } from './events/events.component';
-import { ShopsComponent } from './shops/shops.component';
-import { OutdoorsComponent } from './outdoors/outdoors.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { AboutComponent } from './about/about.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { FoodComponent } from './food/food.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { SubmitEventComponent } from './submit-event/submit-event.component';
+import { EventsComponent } from './components/!dynamic/events/events.component';
+import { ShopsComponent } from './components/!dynamic/shops/shops.component';
+import { OutdoorsComponent } from './components/!dynamic/outdoors/outdoors.component';
+import { WelcomeComponent } from './components/!static/welcome/welcome.component';
+import { AboutComponent } from './components/!static/about/about.component';
+import { ContactUsComponent } from './components/!static/contact-us/contact-us.component';
+import { FoodComponent } from './components/!dynamic/food/food.component';
+import { HomePageComponent } from './components/!static/home-page/home-page.component';
+import { SubmitEventComponent } from './components/!static/submit-event/submit-event.component';
 
 const routes: Routes = [
   { path: 'events', component: EventsComponent },

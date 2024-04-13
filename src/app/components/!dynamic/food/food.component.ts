@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Pipe, PipeTransform,Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 
@@ -15,6 +15,22 @@ interface FoodItem {
   url: string;
   highlight: boolean;
   isExpanded: boolean;
+}
+
+@Pipe({
+  name: 'truncate'
+})
+
+export class TruncatePipe implements PipeTransform {
+  transform(value: string, length: number): string {
+    if (!value) return '';
+
+    if (value.length <= length) {
+      return value;
+    } else {
+      return value.substring(0, length) + '...';
+    }
+  }
 }
 
 @Component({

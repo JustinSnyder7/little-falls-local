@@ -7,7 +7,9 @@
 
       <div class="item-image-wrapper" *ngIf="activity.image"><img [src]="getImagePath(activity.image)" class="item-image" alt="Image"></div>
 
-      <span class="item-name">{{ activity.name | truncate: 20 }}</span><br>
+      <span *ngIf="activity.image" class="item-name">{{ activity.name | truncate: 19 }}</span>
+      <span *ngIf="!activity.image" class="item-name">{{ activity.name | truncate: 24 }}</span><br>
+
       <span class="item-rating">{{ activity.rating }} stars <app-rating [rating]="activity.rating"></app-rating></span><br>
       <span class="item-location">{{ activity.location }}</span>
       </div>

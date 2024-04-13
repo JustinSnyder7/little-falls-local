@@ -16,6 +16,8 @@
     position: fixed!important;
     bottom: 9px!important;
     right: 9px!important;
+    width: 40px!important;
+    border-radius:15px 0px 15px 0px!important;
   }
 
   #bmc-wbtn div { /* buy me a coffee */
@@ -101,7 +103,7 @@
     flex-direction: column;
 
     text-align: center;
-    width: 83%;
+    width: 100%;
     min-height: 60px;
   }
 

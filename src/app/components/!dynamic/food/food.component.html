@@ -10,7 +10,9 @@
 
         <div class="item-image-wrapper" *ngIf="foodPlaces.image.primary"><img [src]="getImagePath(foodPlaces.image.primary)" class="item-image" alt="Image"></div>
 
-        <span class="item-name">{{ foodPlaces.name }}</span><br>
+        <span *ngIf="foodPlaces.image" class="item-name">{{ foodPlaces.name | truncate: 19 }}</span>
+      <span *ngIf="!foodPlaces.image" class="item-name">{{ foodPlaces.name | truncate: 30 }}</span><br>
+
         <span class="item-type">{{ foodPlaces.type }}</span><br>
         <span class="item-rating"> {{ foodPlaces.rating }} stars <app-rating [rating]="foodPlaces.rating"></app-rating></span><br>
       </div>
