@@ -8,14 +8,15 @@
       "description": "",
       "phoneNumber": "315-210-4040",
       "image": {
-        "primary": "el-tren-de-villa",
+        "first": "el-tren-de-villa",
         "second": "el-tren-de-villa-2",
         "third": "el-tren-de-villa-3",
         "fourth": "el-tren-de-villa-4",
         "fifth": ""}, 
       "website": "",
-      "highlighted": false,
-      "rating": 4.5
+      "highlight": false,
+      "rating": 4.5,
+      "isExpanded": false
     },
     {
       "name": "Crazy Otto's Empire Diner",
@@ -24,10 +25,16 @@
       "cost": "Moderate",
       "description": "",
       "phoneNumber": "315-866-8801",
-      "image": "",
+      "image": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.6
+      "highlight": false,
+      "rating": 4.6,
+      "isExpanded": false
     },
     {
       "name": "Ann Street Restaurant & Deli",
@@ -37,14 +44,15 @@
       "description": "",
       "phoneNumber": "315-823-3290",
       "image": {
-        "primary": "ann-st-restaurant",
+        "first": "ann-st-restaurant",
         "second": "ann-st-restaurant-menu1",
         "third": "ann-st-restaurant-menu2",
         "fourth": "",
         "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.6
+      "highlight": false,
+      "rating": 4.6,
+      "isExpanded": false
     },
     {
       "name": "Canal Side Inn",
@@ -53,10 +61,16 @@
       "cost": "Moderate to Expensive",
       "description": "",
       "phoneNumber": "315-823-1170",
-      "image": "",
+      "image": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.5
+      "highlight": false,
+      "rating": 4.5,
+      "isExpanded": false
     },
     {
       "name": "Ed's Pizza Place",
@@ -65,10 +79,16 @@
       "cost": "Inexpensive to Moderate",
       "description": "Delivery, Takeout or Dine-In. One of the best pizza places in the area!",
       "phoneNumber": "315-823-0476",
-      "image": "eds-pizza-menu",
+      "image": {
+        "first": "eds-pizza-menu",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.5
+      "highlight": false,
+      "rating": 4.5,
+      "isExpanded": false
     },
     {
       "name": "Fat Cats",
@@ -77,10 +97,16 @@
       "cost": "Inexpensive to Moderate",
       "description": "",
       "phoneNumber": "315-866-5716",
-      "image": "fat-cats",
+      "image": {
+        "first": "fat-cats",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.6
+      "highlight": false,
+      "rating": 4.6,
+      "isExpanded": false
     },
     {
       "name": "Copper Moose Ale House",
@@ -89,10 +115,16 @@
       "cost": "Moderate",
       "description": "",
       "phoneNumber": "315-508-5150",
-      "image": "",
+      "image": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.4
+      "highlight": false,
+      "rating": 4.4,
+      "isExpanded": false
     },
     {
       "name": "Ruggiero's Trattoria",
@@ -101,10 +133,16 @@
       "cost": "Moderate",
       "description": "",
       "phoneNumber": "315-823-1414",
-      "image": "",
+      "image": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.3
+      "highlight": false,
+      "rating": 4.3,
+      "isExpanded": false
     },
     {
       "name": "Yetty's Pizza",
@@ -113,10 +151,16 @@
       "cost": "Inexpensive to Moderate",
       "description": "",
       "phoneNumber": "315-866-4201",
-      "image": "yettys-pizza",
+      "image": {
+        "first": "yettys-pizza",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "https://www.yettys.com",
-      "highlighted": false,
-      "rating": 4.2
+      "highlight": false,
+      "rating": 4.2,
+      "isExpanded": false
     },
     {
       "name": "Sorrento Pizzeria & Restaurant",
@@ -125,10 +169,16 @@
       "cost": "Moderate",
       "description": "",
       "phoneNumber": "315-894-9991",
-      "image": "",
+      "image": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.2
+      "highlight": false,
+      "rating": 4.2,
+      "isExpanded": false
     },
     {
       "name": "Tokyo Sushi",
@@ -137,10 +187,16 @@
       "cost": "Moderate",
       "description": "",
       "phoneNumber": "315-866-8899",
-      "image": "",
+      "image": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""},
       "website": "",
-      "highlighted": false,
-      "rating": 4.5
+      "highlight": false,
+      "rating": 4.5,
+      "isExpanded": false
     }
   ]
 }

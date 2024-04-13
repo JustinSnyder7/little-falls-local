@@ -15,9 +15,9 @@
     background-color: #ad4319!important;
     position: fixed!important;
     bottom: 9px!important;
-    right: 9px!important;
-    width: 40px!important;
-    border-radius:15px 0px 15px 0px!important;
+    right: 0px!important;
+    width: 42px!important;
+    border-radius:15px 0px 0px 15px!important;
   }
 
   #bmc-wbtn div { /* buy me a coffee */
@@ -112,6 +112,16 @@
   }
 
  /* 1b. Item elements within 4 main lists. ---------------------------------------------- */
+
+  .minimizer {
+    position: absolute;
+    border: 0px solid #1995AD;
+    background-color: transparent;
+    top: 0; /* Align the item to the top */
+    right: 0; /* Align the item to the right */
+    border-radius: 6px;
+    margin: auto;
+  }
 
   .item-container {
     grid-area: contentContainer;

@@ -1,9 +1,22 @@
-.image-carousel {
+  .image-carousel {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  .primary-image-wrapper {
+    display: block;
+    /* background-color: white; */
+    width: 99%;
+    height: 270px;
+  }
   
+  .image-carousel img {
+    max-height: 270px;
+    max-width: 99%;
+    object-fit: contain;
+  }
+
   .thumbnail-container {
     display: flex;
     justify-content: center;
@@ -11,11 +24,11 @@
   }
   
   .thumbnail-container img {
-    width: 19%;
-    /* height: 40px; */
+    width: 20%;
+    height: 40px;
     margin: 0 5px;
     cursor: pointer;
-    border: 1px solid rgb(124, 124, 124);
+    border: 1px solid rgba(124, 124, 124, 0.1);
   }
   
   .thumbnail-container img.selected {

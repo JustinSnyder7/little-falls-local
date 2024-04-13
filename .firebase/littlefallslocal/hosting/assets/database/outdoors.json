@@ -2,7 +2,7 @@
     "activities": [
       {
         "name": "Burke Park (Western)",
-        "location": "E Lansing St, Little Falls, NY",
+        "location": "E Lansing St",
         "rating": 4.7,
         "hours": "Open 24 hours",
         "description": "Nice little park, great for relaxation or a picnic. Occasional events.",
@@ -14,7 +14,7 @@
       },
       {
         "name": "Veterans Memorial Park",
-        "location": "247 Burwell St, Little Falls, NY",
+        "location": "247 Burwell St",
         "rating": 4.8,
         "hours": "Open 24 hours",
         "description": "",
@@ -26,7 +26,7 @@
       },
       {
         "name": "Moreland Park",
-        "location": "Manheim St and Ritter Rd, Little Falls, NY",
+        "location": "Manheim St and Ritter Rd",
         "rating": 4.7,
         "hours": "TBD",
         "description": "Very nice park in a quiet spot, has grills and a big playground for the kids. You can take a walk or jog on the trails through the woods. It's kept clean and tidy, definitely a gem for the community.",
@@ -38,7 +38,7 @@
       },
       {
         "name": "Municipal Playground",
-        "location": "Eastern Park, Little Falls, NY",
+        "location": "Eastern Park",
         "rating": 4.6,
         "hours": "Open 24 hours",
         "description": "",
@@ -74,7 +74,7 @@
       },
       {
         "name": "Little Falls Marina \n Rotary Park",
-        "location": "74 Southern Ave, Little Falls, NY",
+        "location": "74 Southern Ave",
         "rating": 4.8,
         "hours": "Open 24 hours",
         "description": "",
@@ -86,7 +86,7 @@
       },
       {
         "name": "Rock Climbing @ Moss Island",
-        "location": "Moss Island Parking Area, Little Falls, NY",
+        "location": "Moss Island Parking Area",
         "rating": 4.5,
         "hours": "Open 24 hours",
         "description": "",

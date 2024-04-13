@@ -10,13 +10,14 @@ export class ImageCarouselComponent {
 
   currentImage: string = ''; // Currently displayed main image
   thumbnailImages: string[] = []; // Array of thumbnail image URLs
+  fallbackImageUrl: string = '/assets/images/mesh.png'; // Fallback image URL
 
   ngOnInit(): void {
     if (this.images) {
       // Initialize main image and thumbnail images
-      this.currentImage = this.images.primary;
+      this.currentImage = this.images.first;
       this.thumbnailImages = [
-        this.images.primary,
+        this.images.first,
         this.images.second,
         this.images.third,
         this.images.fourth,
@@ -27,5 +28,10 @@ export class ImageCarouselComponent {
 
   setCurrentImage(image: string): void {
     this.currentImage = image; // Set clicked thumbnail as main image
+  }
+
+  // Method to handle image loading errors
+  handleImageError(event: any): void {
+    event.target.src = this.fallbackImageUrl; // Replace failed image with fallback URL
   }
 }

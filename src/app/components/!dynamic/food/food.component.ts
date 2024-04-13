@@ -1,6 +1,8 @@
 import { Pipe, PipeTransform,Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faWindowMinimize, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
 interface FoodItem {
@@ -42,7 +44,10 @@ export class TruncatePipe implements PipeTransform {
 export class FoodComponent implements OnInit {
   foodPlacesVar: any[] = [];
 
-  constructor(private http: HttpClient, private meta: Meta) {}
+  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary) {
+
+    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter);
+  }
 
   ngOnInit(): void {
     this.fetchFoodPlaces();
@@ -54,7 +59,7 @@ export class FoodComponent implements OnInit {
     this.http.get<any>('/assets/database/food.json').subscribe(data => {
       this.foodPlacesVar = data.foodPlaces.map((foodPlaces: any) => ({ ...foodPlaces, isExpanded: false }));
 
-      console.log('Food Places Data:', this.foodPlacesVar); // Log food places data
+      // console.log('Food Places Data:', this.foodPlacesVar);
     });
   }
 
@@ -66,9 +71,25 @@ export class FoodComponent implements OnInit {
     return `/assets/images/food/${image}.jpg`;
   }
 
-  expandItem(foodPlaces: FoodItem): void {
-    foodPlaces.isExpanded = !foodPlaces.isExpanded;
+
+  expandItem(foodPlaces: any): void {
+    if (foodPlaces.isExpanded) {
+      // Check if this is already expanded; do nothing or handle click logic
+      console.log("clicked it");
+      
+    } else {
+      // Collapse any previously expanded item
+      this.foodPlacesVar.forEach(item => {
+        if (item.isExpanded && item !== foodPlaces) {
+          item.isExpanded = false;
+        }
+      });
+  
+      // Expand the clicked item
+      foodPlaces.isExpanded = true;
+    }
   }
+
 
   formatRestaurantName(foodPlacesName: string): string {
     // Remove punctuation using a regular expression
