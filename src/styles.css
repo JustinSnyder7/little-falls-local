@@ -58,7 +58,7 @@
     font-size: 18px;
     color: rgba(0, 0, 0, 0.25);
     /* font-weight: bold; */
-    padding: 8px 0;
+    padding: 6px 0;
     margin: 0 auto;
     text-align: center;
     width: 100%;
@@ -129,7 +129,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto; /* Stack vertically on mobile */
     grid-gap: 5px;
-    margin: 5px;
+    margin: 5px 1px 5px 5px;
     padding-bottom: 83px;
     overflow-y: auto; /* Allow content to scroll if it exceeds the viewport height */
     align-content: center;

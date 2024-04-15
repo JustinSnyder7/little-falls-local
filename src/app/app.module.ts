@@ -24,6 +24,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { SubmitEventComponent } from './components/!static/submit-event/submit-event.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ImageCarouselComponent } from './components/!sub-components/image-carousel/image-carousel.component';
+import { FiltersComponent } from './components/!sub-components/filters/filters.component';
+import { TitleComponent } from './components/!primary/title/title.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { ImageCarouselComponent } from './components/!sub-components/image-carou
     TruncatePipe,
     SubmitEventComponent,
     ImageCarouselComponent,
+    FiltersComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,

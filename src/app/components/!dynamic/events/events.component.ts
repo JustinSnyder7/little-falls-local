@@ -17,6 +17,7 @@ interface EventItem {
   locationName: string;
   description: string;
   url: string;
+  type: string;
   highlight: boolean;
   isExpanded: boolean;
 }
@@ -46,6 +47,7 @@ export class TruncatePipe implements PipeTransform {
 
 export class EventsComponent implements OnInit {
   EventsVar: EventItem[] = [];
+  filteredEvents: EventItem[] = [];
 
   constructor(private http: HttpClient, private meta: Meta, private datePipe: DatePipe) {}
 
@@ -62,6 +64,10 @@ export class EventsComponent implements OnInit {
       this.EventsVar = data.events.map((events: any) => ({ ...events, isExpanded: false }));
       // Filter out past events
       this.EventsVar = this.filterPastEvents(data.events);
+
+      // Create version of list to apply additional filtering
+      this.filteredEvents = this.EventsVar;
+
     });
   }
 

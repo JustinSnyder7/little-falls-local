@@ -5,10 +5,10 @@
       <!-- Collapsed item view -->
       <div *ngIf="!activity.isExpanded">
 
-      <div class="item-image-wrapper" *ngIf="activity.image"><img [src]="getImagePath(activity.image)" class="item-image" alt="Image"></div>
+      <div class="item-image-wrapper" *ngIf="activity.image.first"><img [src]="getImagePath(activity.image.first)" class="item-image" alt="Image"></div>
 
-      <span *ngIf="activity.image" class="item-name">{{ activity.name | truncate: 19 }}</span>
-      <span *ngIf="!activity.image" class="item-name">{{ activity.name | truncate: 24 }}</span><br>
+      <span *ngIf="activity.image.first" class="item-name">{{ activity.name | truncate: 19 }}</span>
+      <span *ngIf="!activity.image.first" class="item-name">{{ activity.name | truncate: 24 }}</span><br>
 
       <span class="item-rating">{{ activity.rating }} stars <app-rating [rating]="activity.rating"></app-rating></span><br>
       <span class="item-location">{{ activity.location }}</span>
@@ -24,8 +24,8 @@
         <span *ngIf="activity.location"><a href="#">{{ activity.location }}</a></span>
       </span>
       
-      <span *ngIf="activity.image; else noImageBlock">
-        <img [src]="getImagePath(activity.image)" class="item-image-expanded" alt="Image" width="95%">
+      <span *ngIf="activity.image.first; else noImageBlock">
+        <img [src]="getImagePath(activity.image.first)" class="item-image-expanded" alt="Image" width="95%">
       </span>
       <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
