@@ -13,6 +13,7 @@
         "locationName": "",
         "description": "",
         "url": "",
+        "type": "",
         "highlight": false,
         "isExpanded": false
       },
@@ -29,6 +30,7 @@
         "locationName": "",
         "description": "Featuring Ghostbuster: Frozen Empire. Admission is free and featuring discounted snacks! This movie is rated PG-13.",
         "url": "",
+        "type": "Family",
         "highlight": false,
         "isExpanded": false
       },
@@ -45,6 +47,7 @@
         "locationName": "",
         "description": "",
         "url": "",
+        "type": "Family",
         "highlight": false,
         "isExpanded": false
       },
@@ -61,6 +64,7 @@
         "locationName": "",
         "description": "Join us in celebrating the first anniversary of the Renaissance Pub's grand opening! Enjoy live music from the incredible Kevin Alexander as we mark this special occasion together.",
         "url": "",
+        "type": "Music",
         "highlight": false,
         "isExpanded": false
       },
@@ -77,6 +81,7 @@
         "locationName": "",
         "description": "Join us for the Rock Valley debut of the Jake Lozo Band!",
         "url": "",
+        "type": "Music",
         "highlight": false,
         "isExpanded": false
       },
@@ -93,6 +98,7 @@
         "locationName": "",
         "description": "Finding Alice plays Rock Valley Brewing, Little Falls, NY!",
         "url": "",
+        "type": "Music",
         "highlight": false,
         "isExpanded": false
       },
@@ -109,6 +115,7 @@
         "locationName": "",
         "description": "Join us for an electrifying performance as Tom Nitti, a talented local country artist and former contestant on The Voice, returns to the Rock Valley stage, bringing his signature country grit!",
         "url": "",
+        "type": "Music",
         "highlight": false,
         "isExpanded": false
       },
@@ -125,6 +132,7 @@
         "locationName": "",
         "description": "Alternative rock group Kingston Kane makes their debut at Rock Valley Brewing Co!",
         "url": "",
+        "type": "Music",
         "highlight": false,
         "isExpanded": false
       },
@@ -141,6 +149,7 @@
         "locationName": "",
         "description": "Indulge in an evening under the open sky, filled with live music, dancing, and mouthwatering delights from food trucks! You support the food trucks, and we'll handle the rest! Limited seating provided, but feel free to bring your own chairs! Event is on, rain or shine!",
         "url": "https://www.facebook.com/p/Insight-Dairy-LLC-100077017676316/",
+        "type": "Food",
         "highlight": false,
         "isExpanded": false
       },
@@ -157,6 +166,7 @@
         "locationName": "",
         "description": "Get ready for a fantastic family festival at Ward Square/Eastern Park, E. Main Street, Little Falls, NY, come rain or shine! (In case of rain, the music moves to the Parish Gym.) Enjoy delicious fare from The Holy Family Food Tent, food trucks, browse through craft vendors, and let the kids have a blast with activities like the bounce house. Plus, groove to live music, participate in raffles, and don't miss tours of our stunning historic church and its intricate stained glass windows.",
         "url": "",
+        "type": "Festival",
         "highlight": false,
         "isExpanded": false
       },
@@ -173,6 +183,7 @@
         "locationName": "",
         "description": "Little Falls Pride is back for our fourth year! Join us in honoring the right for everyone to embrace their own unique individuality. This event is brought to you by the Youth and Family Center, in collaboration with Little Falls Outreach.",
         "url": "",
+        "type": "Festival",
         "highlight": false,
         "isExpanded": false
       },
@@ -189,6 +200,7 @@
         "locationName": "",
         "description": "For 36 years running, the Annual Canal Celebration has been a testament to our community's spirit, heritage, and the special essence that sets Little Falls apart in the Mohawk Valley. Drawing in thousands of visitors, this week-long event features a myriad of family-friendly programs. None of this would be possible without the hard work of over a hundred individuals from local organizations, businesses, industries, and the City of Little Falls employees, all coming together to make it happen.",
         "url": "",
+        "type": "Family",
         "highlight": false,
         "isExpanded": false
       },
@@ -205,6 +217,7 @@
         "locationName": "",
         "description": "Come soak up the summer vibes along the picturesque Erie Canal! Jam out to tunes from talented local musicians, browse through unique creations from artisans and vendors, indulge in tasty treats, and most importantly, cherish moments with neighbors and friends. In loving memory of Gregg Caringi.",
         "url": "",
+        "type": "Music",
         "highlight": false,
         "isExpanded": false
       },
@@ -221,6 +234,7 @@
         "locationName": "",
         "description": "The Mohawk Valley boasts an ideal climate and soil for cultivating garlic and herbs, leading to a plethora of local producers. Our festival is a non-profit endeavor focused on promoting these crops, offering valuable insights to aspiring farmers and gardeners in the area. Additionally, we celebrate our community's rich arts scene by featuring musicians and local artisans. A portion of our proceeds goes to support the Mohawk Valley Center for the Arts, our esteemed neighbor and local non-profit.",
         "url": "",
+        "type": "Food",
         "highlight": false,
         "isExpanded": false
       },
@@ -237,6 +251,7 @@
         "locationName": "",
         "description": "Welcome to the ultimate gathering of cheesemakers in New York State! Join us in celebrating the vibrant dairy heritage of Central New York and honoring the local businesses that uphold these time-honored traditions. Explore a delightful array of over 120 cheeses, along with handcrafted artisan foods and refreshing craft beverages, all proudly made right here in our region!",
         "url": "",
+        "type": "Food",
         "highlight": false,
         "isExpanded": false
       },
@@ -253,6 +268,7 @@
         "locationName": "",
         "description": "Halloween in Little Falls is a festive and family-friendly affair that attracts folks of all ages from near and far. It's a night filled with catching up with friends, enjoying family outings, admiring the spooky decorations, and fostering a strong sense of community spirit throughout the city.",
         "url": "",
+        "type": "Family",
         "highlight": false,
         "isExpanded": false
       },
@@ -269,6 +285,7 @@
         "locationName": "",
         "description": "Experience the magic of Christmas in Little Falls, a festive holiday celebration brought to you by local businesses and non-profit organizations. Our array of enjoyable, mostly free events have delighted thousands of visitors from across the Mohawk Valley, inviting everyone to immerse themselves in the holiday cheer of our charming, scenic town nestled along the Erie Canal.",
         "url": "",
+        "type": "Family",
         "highlight": false,
         "isExpanded": false
       }

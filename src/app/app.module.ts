@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/!primary/navbar/navbar.component';
 import { EventsComponent } from './components/!dynamic/events/events.component';
-import { HeaderComponent } from './components/!primary/header/header.component';
 import { FooterComponent } from './components/!primary/footer/footer.component';
 import { AboutComponent } from './components/!static/about/about.component';
 import { ShopsComponent } from './components/!dynamic/shops/shops.component';
@@ -32,7 +31,6 @@ import { TitleComponent } from './components/!primary/title/title.component';
     AppComponent,
     NavbarComponent,
     EventsComponent,
-    HeaderComponent,
     FooterComponent,
     AboutComponent,
     ShopsComponent,

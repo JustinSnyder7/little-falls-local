@@ -2,7 +2,14 @@
 <div class="container">
 
   <header>
-    <app-header></app-header>
+
+    <app-title></app-title>
+    <app-navbar></app-navbar>
+    
+    <div *ngIf="isEventsPageActive()">
+        <app-filters></app-filters>
+    </div>
+
   </header>
 
   <router-outlet></router-outlet>

@@ -7,7 +7,12 @@
         "hours": "Open 24 hours",
         "description": "Nice little park, great for relaxation or a picnic. Occasional events.",
         "icon": "three-stars",
-        "image": "burke-park",
+        "image": {
+          "first": "burke-park",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
@@ -19,7 +24,12 @@
         "hours": "Open 24 hours",
         "description": "",
         "icon": "three-stars",
-        "image": "",
+        "image": {
+          "first": "",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
@@ -31,7 +41,12 @@
         "hours": "TBD",
         "description": "Very nice park in a quiet spot, has grills and a big playground for the kids. You can take a walk or jog on the trails through the woods. It's kept clean and tidy, definitely a gem for the community.",
         "icon": "three-stars",
-        "image": "",
+        "image": {
+          "first": "",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
@@ -43,7 +58,12 @@
         "hours": "Open 24 hours",
         "description": "",
         "icon": "three-stars",
-        "image": "",
+        "image": {
+          "first": "",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
@@ -55,7 +75,12 @@
         "hours": "Open 24 hours",
         "description": "Hike from Municipal Parking Area off of Burch Street",
         "icon": "three-stars",
-        "image": "",
+        "image": {
+          "first": "buttermilk-falls1",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
@@ -67,7 +92,12 @@
         "hours": "Open 24 hours",
         "description": "",
         "icon": "three-stars",
-        "image": "",
+        "image": {
+          "first": "",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
@@ -79,7 +109,12 @@
         "hours": "Open 24 hours",
         "description": "",
         "icon": "three-stars",
-        "image": "",
+        "image": {
+          "first": "",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
@@ -91,7 +126,12 @@
         "hours": "Open 24 hours",
         "description": "",
         "icon": "three-stars",
-        "image": "",
+        "image": {
+          "first": "",
+          "second": "",
+          "third": "",
+          "fourth": "",
+          "fifth": ""},
         "url":"",
         "highlighted": false,
         "isExpanded": false
