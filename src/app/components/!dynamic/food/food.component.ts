@@ -2,19 +2,20 @@ import { Pipe, PipeTransform,Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faWindowMinimize, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
+import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
-interface FoodItem {
+interface foodDataElements {
   name: string;
+  type: string;
   location: string;
-  placeID: string;
-  rating: number;
   hours: string;
+  cost: string;
   description: string;
-  icon: string;
-  image: string;
+  phoneNumber: string;
+  image: any;
   url: string;
+  rating: number;
   highlight: boolean;
   isExpanded: boolean;
 }
@@ -42,25 +43,36 @@ export class TruncatePipe implements PipeTransform {
 })
 
 export class FoodComponent implements OnInit {
-  foodPlacesVar: any[] = [];
+  foodData: foodDataElements[] = [];
+  filteredData: foodDataElements[] = [];
 
   constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary) {
 
-    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter);
+    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter);
   }
 
   ngOnInit(): void {
-    this.fetchFoodPlaces();
+    this.fetchFoodData();
 
-    this.meta.updateTag({ name: 'description', content: 'Explore some of the best restaurants Little Falls, and the surrounding area, has to offer! There are plent of excellent choices close to our small city.' });
+    this.meta.updateTag({ name: 'description', content: 'Explore some of the best restaurants Little Falls, and the surrounding area, has to offer! There are plent of excellent choices, if you know where to look.' });
   }
 
-  fetchFoodPlaces(): void {
+  fetchFoodData(): void {
     this.http.get<any>('/assets/database/food.json').subscribe(data => {
-      this.foodPlacesVar = data.foodPlaces.map((foodPlaces: any) => ({ ...foodPlaces, isExpanded: false }));
+      this.foodData = data.foodItem.map((foodItem: any) => ({ ...foodItem, isExpanded: false }));
 
-      // console.log('Food Places Data:', this.foodPlacesVar);
+      // Create version of list to apply additional filtering
+      this.filteredData = this.foodData;
     });
+  }
+
+  filterByType(type: string): void {
+    this.filteredData = this.foodData.filter(event => event.type === type);
+
+  }
+  
+  resetFilter(): void {
+    this.filteredData = this.foodData; // Reset to show all events
   }
 
   getIconPath(icon: string): string {
@@ -71,29 +83,28 @@ export class FoodComponent implements OnInit {
     return `/assets/images/food/${image}.jpg`;
   }
 
-
-  expandItem(foodPlaces: any): void {
-    if (foodPlaces.isExpanded) {
+  expandItem(foodItem: any): void {
+    if (foodItem.isExpanded) {
       // Check if this is already expanded; do nothing or handle click logic
       console.log("clicked it");
       
     } else {
       // Collapse any previously expanded item
-      this.foodPlacesVar.forEach(item => {
-        if (item.isExpanded && item !== foodPlaces) {
+      this.foodData.forEach(item => {
+        if (item.isExpanded && item !== foodItem) {
           item.isExpanded = false;
         }
       });
   
       // Expand the clicked item
-      foodPlaces.isExpanded = true;
+      foodItem.isExpanded = true;
     }
   }
 
 
-  formatRestaurantName(foodPlacesName: string): string {
+  formatRestaurantName(foodItemName: string): string {
     // Remove punctuation using a regular expression
-    const sanitizedName = foodPlacesName.replace(/[^\w\s]/g, '');
+    const sanitizedName = foodItemName.replace(/[^\w\s]/g, '');
     
     // Replace spaces with '+' signs and convert to lowercase
     const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';

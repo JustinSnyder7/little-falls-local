@@ -1,59 +1,68 @@
 
+<div class="filters-container">
+  <fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>
+  <a (click)="resetFilter();" style="cursor: pointer;" id="eventsFilter">reset</a>&nbsp;
+  <a (click)="filterByType('Festival');" style="cursor: pointer;">Festivals</a><span class="divider"> | </span>
+  <a (click)="filterByType('Music');" style="cursor: pointer;">Music</a><span class="divider"> | </span>
+  <a (click)="filterByType('Family');" style="cursor: pointer;">Family</a><span class="divider"> | </span>
+  <a (click)="filterByType('Food');" style="cursor: pointer;">Food</a>
+</div>
+
 <div class="item-container">
-  <div *ngFor="let events of EventsVar" class="item-iter" [class.expanded]="events.isExpanded" (click)="expandItem(events)">
+  <div *ngFor="let eventItem of filteredEvents" class="item-iter" [class.expanded]="eventItem.isExpanded" (click)="expandItem(eventItem)">
     <div class="item-wrapper">
 
     <!-- Collapsed item view -->
-    <div *ngIf="!events.isExpanded">
+    <div *ngIf="!eventItem.isExpanded">
           
-      <div class="item-image-wrapper" *ngIf="events.image"><img [src]="getImagePath(events.image)" class="item-image" alt="Image"></div>
-      <div *ngIf="!events.image"><img [src]="getIconPath(events.icon)" class="item-icon" alt="Icon" height="32" width="32"></div>
+      <div class="item-image-wrapper" *ngIf="eventItem.image"><img [src]="getImagePath(eventItem.image)" class="item-image" alt="Image"></div>
+      <div *ngIf="!eventItem.image"><img [src]="getIconPath(eventItem.icon)" class="item-icon" alt="Icon" height="32" width="32"></div>
 
 
-      <span *ngIf="!events.endDate" class="item-date">{{ formatDate(events.startDate) }}</span>
-      <span *ngIf="events.endDate" class="item-date">{{ formatDateRange(events.startDate, events.endDate) }}</span>
+      <span *ngIf="!eventItem.endDate" class="item-date">{{ formatDate(eventItem.startDate) }}</span>
+      <span *ngIf="eventItem.endDate" class="item-date">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
 
-      <span *ngIf="!events.endTime && events.startTime" class="item-time"> at {{ events.startTime }}</span>
-      <span *ngIf="events.endTime && events.startTime" class="item-time">, {{ events.startTime }}-{{ events.endTime }}</span><br>
+      <span *ngIf="!eventItem.endTime && eventItem.startTime" class="item-time"> at {{ eventItem.startTime }}</span>
+      <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span><br>
 
-      <span *ngIf="events.image" class="item-name">{{ events.name | truncate: 19 }}</span>
-      <span *ngIf="!events.image" class="item-name">{{ events.name | truncate: 24 }}</span><br>
+      <span *ngIf="eventItem.image" class="item-name">{{ eventItem.name | truncate: 19 }}</span>
+      <span *ngIf="!eventItem.image" class="item-name">{{ eventItem.name | truncate: 24 }}</span><br>
 
-      <span class="item-location">{{ events.location }}</span><br>
+      <span class="item-location">{{ eventItem.location }}</span><br>
     </div>
   
     <!-- TODO: need to add local sports to the events page, this could be amazing -->
 
 
     <!-- Expanded item view -->
-    <div class="item-wrapper-expanded" *ngIf="events.isExpanded">
+    <div class="item-wrapper-expanded" *ngIf="eventItem.isExpanded">
       
       <div>
         <!-- Expanded event date handler -->
-        <span *ngIf="!events.endDate  && events.startDate" class="item-date-expanded">{{ formatDate(events.startDate) }}</span>
-        <span *ngIf="events.endDate" class="item-date-expanded">{{ formatDateRange(events.startDate, events.endDate) }}</span>
+        <span *ngIf="!eventItem.endDate  && eventItem.startDate" class="item-date-expanded">{{ formatDate(eventItem.startDate) }}</span>
+        <span *ngIf="eventItem.endDate" class="item-date-expanded">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
         
         <!-- Expanded event time handler -->
-        <span *ngIf="!events.endTime && events.startTime" class="item-time-expanded"> at {{ events.startTime }}</span>
-        <span *ngIf="events.endTime && events.startTime" class="item-time-expanded">, {{ events.startTime }}-{{ events.endTime }}</span>
+        <span *ngIf="!eventItem.endTime && eventItem.startTime" class="item-time-expanded"> at {{ eventItem.startTime }}</span>
+        <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time-expanded">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span>
       </div>
 
-      <div class="item-name-expanded">{{ events.name }}</div><br>
+      <div class="item-name-expanded">{{ eventItem.name }}</div><br>
       
-      <span *ngIf="events.cost" class="item-cost">Admission: {{ events.cost }}</span><br>
+      <span *ngIf="eventItem.cost" class="item-cost">Admission: {{ eventItem.cost }}</span><br>
 
       <!-- TODO: need to implement functionality for location name versus location -->
 
          
-      <span *ngIf="events.image; else noImageBlock"><img [src]="getImagePath(events.image)" class="item-image-expanded" alt="Image"></span>
+      <span *ngIf="eventItem.image; else noImageBlock"><img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image"></span>
         <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
       <span class="item-location">
-        <span *ngIf="events.locationName">at {{ events.locationName }}</span><br>
-        <span *ngIf="events.location"><a [href]="formatEventLocationName(events.location)" target="_blank">{{ events.location }}</a></span><br>
+        <span *ngIf="eventItem.locationName">at {{ eventItem.locationName }}</span><br>
+        <span *ngIf="eventItem.location"><a [href]="formatEventLocationName(eventItem.location)" target="_blank">{{ eventItem.location }}</a></span><br>
       </span>
 
-      <div class="item-description">{{ events.description }}</div>
+      <div class="item-description">{{ eventItem.description }}</div>
     </div>
   
     </div>

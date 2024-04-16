@@ -1,41 +1,50 @@
 
+<div class="filters-container">
+  <fa-icon icon="filter" class="fa-xs"></fa-icon>&nbsp;
+  <a (click)="filterByType('American');" style="cursor: pointer;">American</a><span class="divider"> | </span>
+  <a (click)="filterByType('Italian');" style="cursor: pointer;">Italian</a><span class="divider"> | </span>
+  <a (click)="filterByType('Mexican');" style="cursor: pointer;">Mexican</a><span class="divider"> | </span>
+  <a (click)="filterByType('Bars');" style="cursor: pointer;">Bars</a><span class="divider"> | </span>
+  <a (click)="resetFilter();" style="cursor: pointer;">Reset</a>
+</div>
+
 <div class="item-container">
-  <div *ngFor="let foodPlaces of foodPlacesVar" class="item-iter" [class.expanded]="foodPlaces.isExpanded" (click)="expandItem(foodPlaces)">
+  <div *ngFor="let foodItem of filteredData" class="item-iter" [class.expanded]="foodItem.isExpanded" (click)="expandItem(foodItem)">
     <div class="item-wrapper">
       <!-- Collapsed item view -->
-      <div *ngIf="!foodPlaces.isExpanded">
+      <div *ngIf="!foodItem.isExpanded">
 
-        <div class="item-image-wrapper" *ngIf="foodPlaces.image.first"><img [src]="getImagePath(foodPlaces.image.first)" class="item-image" alt="Image"></div>
+        <div class="item-image-wrapper" *ngIf="foodItem.image.first"><img [src]="getImagePath(foodItem.image.first)" class="item-image" alt="Image"></div>
 
-        <span *ngIf="foodPlaces.image" class="item-name">{{ foodPlaces.name | truncate: 19 }}</span>
-        <span *ngIf="!foodPlaces.image" class="item-name">{{ foodPlaces.name | truncate: 30 }}</span><br>
+        <span *ngIf="foodItem.image" class="item-name">{{ foodItem.name | truncate: 19 }}</span>
+        <span *ngIf="!foodItem.image" class="item-name">{{ foodItem.name | truncate: 30 }}</span><br>
 
-        <span class="item-type">{{ foodPlaces.type }}</span><br>
-        <span class="item-rating"> {{ foodPlaces.rating }} stars <app-rating [rating]="foodPlaces.rating"></app-rating></span><br>
+        <span class="item-type">{{ foodItem.type }}</span><br>
+        <span class="item-rating"> {{ foodItem.rating }} stars <app-rating [rating]="foodItem.rating"></app-rating></span><br>
       </div>
     </div>
   
 <!-- Expanded item view -->
-  <div class="item-wrapper-expanded" *ngIf="foodPlaces.isExpanded">
-    <div *ngIf="foodPlaces.isExpanded">
-      <div class="item-name-expanded">{{ foodPlaces.name }}</div>
+  <div class="item-wrapper-expanded" *ngIf="foodItem.isExpanded">
+    <div *ngIf="foodItem.isExpanded">
+      <div class="item-name-expanded">{{ foodItem.name }}</div>
 
-      <button class="minimizer" (click)="foodPlaces.isExpanded = false"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
+      <button class="minimizer" (click)="foodItem.isExpanded = false"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
 
-      <span class="item-type">{{ foodPlaces.type }}</span><br>
-      <span class="item-rating">{{ foodPlaces.rating }} stars <app-rating [rating]="foodPlaces.rating"></app-rating></span><br>
+      <span class="item-type">{{ foodItem.type }}</span><br>
+      <span class="item-rating">{{ foodItem.rating }} stars <app-rating [rating]="foodItem.rating"></app-rating></span><br>
 
-      <span *ngIf="foodPlaces.phoneNumber" class="item-phoneNumber"><a [href]="'tel:' + foodPlaces.phoneNumber">{{ foodPlaces.phoneNumber }}</a></span><br>
+      <span *ngIf="foodItem.phoneNumber" class="item-phoneNumber"><a [href]="'tel:' + foodItem.phoneNumber">{{ foodItem.phoneNumber }}</a></span><br>
 
       <span class="item-location">
-        <span *ngIf="foodPlaces.location">
-        <a [href]="formatRestaurantName(foodPlaces.name)" target="_blank">{{ foodPlaces.location }}</a></span>
+        <span *ngIf="foodItem.location">
+        <a [href]="formatRestaurantName(foodItem.name)" target="_blank">{{ foodItem.location }}</a></span>
       </span><br><br>
 
-      <app-image-carousel *ngIf="foodPlaces.image.first; else noImageBlock" [images]="foodPlaces.image"></app-image-carousel>
+      <app-image-carousel *ngIf="foodItem.image.first; else noImageBlock" [images]="foodItem.image"></app-image-carousel>
       <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
-      <div *ngIf="foodPlaces.description" class="item-description">{{ foodPlaces.description }}</div>
+      <div *ngIf="foodItem.description" class="item-description">{{ foodItem.description }}</div>
     </div>
   </div>
   </div>

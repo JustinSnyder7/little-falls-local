@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { EventsComponent } from './components/!dynamic/events/events.component';
 import { ShopsComponent } from './components/!dynamic/shops/shops.component';
 import { OutdoorsComponent } from './components/!dynamic/outdoors/outdoors.component';

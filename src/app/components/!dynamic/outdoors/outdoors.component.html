@@ -1,35 +1,44 @@
 
+<div class="filters-container">
+  <fa-icon icon="filter" class="fa-xs"></fa-icon>&nbsp;
+  <a (click)="filterByType('Park');" style="cursor: pointer;">Parks</a><span class="divider"> | </span>
+  <a (click)="filterByType('Activity');" style="cursor: pointer;">Activities</a><span class="divider"> | </span>
+  <a (click)="filterByType('Playground');" style="cursor: pointer;">Playgrounds</a><span class="divider"> | </span>
+  <a (click)="filterByType('Trail');" style="cursor: pointer;">Trails</a><span class="divider"> | </span>
+  <a (click)="resetFilter();" style="cursor: pointer;">Reset</a>
+</div>
+
 <div class="item-container">
-  <div *ngFor="let activity of outdoorActivities" class="item-iter" [class.expanded]="activity.isExpanded" (click)="expandItem(activity)">
+  <div *ngFor="let outdoorItem of filteredEvents" class="item-iter" [class.expanded]="outdoorItem.isExpanded" (click)="expandItem(outdoorItem)">
     <div class="item-wrapper">
       <!-- Collapsed item view -->
-      <div *ngIf="!activity.isExpanded">
+      <div *ngIf="!outdoorItem.isExpanded">
 
-      <div class="item-image-wrapper" *ngIf="activity.image.first"><img [src]="getImagePath(activity.image.first)" class="item-image" alt="Image"></div>
+      <div class="item-image-wrapper" *ngIf="outdoorItem.image.first"><img [src]="getImagePath(outdoorItem.image.first)" class="item-image" alt="Image"></div>
 
-      <span *ngIf="activity.image.first" class="item-name">{{ activity.name | truncate: 19 }}</span>
-      <span *ngIf="!activity.image.first" class="item-name">{{ activity.name | truncate: 24 }}</span><br>
+      <span *ngIf="outdoorItem.image.first" class="item-name">{{ outdoorItem.name | truncate: 19 }}</span>
+      <span *ngIf="!outdoorItem.image.first" class="item-name">{{ outdoorItem.name | truncate: 24 }}</span><br>
 
-      <span class="item-rating">{{ activity.rating }} stars <app-rating [rating]="activity.rating"></app-rating></span><br>
-      <span class="item-location">{{ activity.location }}</span>
+      <span class="item-rating">{{ outdoorItem.rating }} stars <app-rating [rating]="outdoorItem.rating"></app-rating></span><br>
+      <span class="item-location">{{ outdoorItem.location }}</span>
       </div>
     </div>
   
 <!-- Expanded item view -->
-  <div class="item-wrapper-expanded" *ngIf="activity.isExpanded">
-    <div *ngIf="activity.isExpanded">
-      <div class="item-name-expanded">{{ activity.name }}</div><br>
-      <span class="item-rating">{{ activity.rating }} stars <app-rating [rating]="activity.rating"></app-rating></span><br>
+  <div class="item-wrapper-expanded" *ngIf="outdoorItem.isExpanded">
+    <div *ngIf="outdoorItem.isExpanded">
+      <div class="item-name-expanded">{{ outdoorItem.name }}</div><br>
+      <span class="item-rating">{{ outdoorItem.rating }} stars <app-rating [rating]="outdoorItem.rating"></app-rating></span><br>
       <span class="item-location">
-        <span *ngIf="activity.location"><a href="#">{{ activity.location }}</a></span>
+        <span *ngIf="outdoorItem.location"><a href="#">{{ outdoorItem.location }}</a></span>
       </span>
       
-      <span *ngIf="activity.image.first; else noImageBlock">
-        <img [src]="getImagePath(activity.image.first)" class="item-image-expanded" alt="Image" width="95%">
+      <span *ngIf="outdoorItem.image.first; else noImageBlock">
+        <img [src]="getImagePath(outdoorItem.image.first)" class="item-image-expanded" alt="Image" width="95%">
       </span>
       <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
-      <div class="item-description">{{ activity.description }}</div>
+      <div class="item-description">{{ outdoorItem.description }}</div>
     </div>
   </div>
   </div>

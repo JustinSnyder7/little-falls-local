@@ -1,5 +1,4 @@
 
-
   .expanded {
     background-color: #42EB5E;
     height: 96%;
@@ -8,7 +7,6 @@
   .item-iter:hover {
     border: 2px solid rgba(58, 58, 58, 0.5);
   }
-
 
 @media (max-width: 768px) {
   .expanded {

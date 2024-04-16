@@ -2,7 +2,7 @@
   "foodPlaces": [
     {
       "name": "El Tren De Villa",
-      "type": "Mexican Restaurant",
+      "type": "Mexican",
       "location": "95 E Main St, Mohawk, NY",
       "cost": "Inexpensive to Moderate",
       "description": "",
@@ -20,7 +20,7 @@
     },
     {
       "name": "Crazy Otto's Empire Diner",
-      "type": "American Diner",
+      "type": "American",
       "location": "100 W Albany St, Herkimer, NY",
       "cost": "Moderate",
       "description": "",
@@ -38,7 +38,7 @@
     },
     {
       "name": "Ann Street Restaurant & Deli",
-      "type": "American Restaurant",
+      "type": "American",
       "location": "381 S Ann St, Little Falls",
       "cost": "Inexpensive to Moderate",
       "description": "",
@@ -74,7 +74,7 @@
     },
     {
       "name": "Ed's Pizza Place",
-      "type": "Pizza Restaurant",
+      "type": "Italian",
       "location": "532 E Main St, Little Falls, NY",
       "cost": "Inexpensive to Moderate",
       "description": "Delivery, Takeout or Dine-In. One of the best pizza places in the area!",
@@ -110,7 +110,7 @@
     },
     {
       "name": "Copper Moose Ale House",
-      "type": "American Pub",
+      "type": "American",
       "location": "517 E Main St, Little Falls, NY",
       "cost": "Moderate",
       "description": "",

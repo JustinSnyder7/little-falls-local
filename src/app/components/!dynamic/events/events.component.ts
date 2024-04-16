@@ -1,10 +1,12 @@
-import { Pipe, PipeTransform, Component, OnInit } from '@angular/core';
+import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef  } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faFilter, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
-interface EventItem {
+interface eventDataElements {
   name: string;
   startDate: string;
   endDate: string;
@@ -46,42 +48,92 @@ export class TruncatePipe implements PipeTransform {
 })
 
 export class EventsComponent implements OnInit {
-  EventsVar: EventItem[] = [];
-  filteredEvents: EventItem[] = [];
+  eventData: eventDataElements[] = [];
+  filteredEvents: eventDataElements[] = [];
 
-  constructor(private http: HttpClient, private meta: Meta, private datePipe: DatePipe) {}
+  isFilterApplied = false;
 
-  // formattedDate=this.datePipe.transform(new Date(), 'EEE MMM dd');
-
-  ngOnInit(): void {
-    this.fetchEventsVar();
-
-    this.meta.updateTag({ name: 'description', content: 'Explore our community&#39;s heartbeat with concerts, farmers markets, and more on our events page. Stay in the loop with what&#39;s happening in Little Falls and nearby, and experience the lively culture and spirit of our town.' });
+  constructor(private http: HttpClient, private meta: Meta, private datePipe: DatePipe, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
+    library.addIcons(faFilter, faFilterCircleXmark);
   }
 
-  fetchEventsVar(): void {
+  ngOnInit(): void {
+    this.fetchEventData();
+
+    this.meta.updateTag({ name: 'description', content: 'Explore our community&#39;s heartbeat with concerts, farmers markets, and more on our events page. Stay in the loop with what&#39;s happening in Little Falls and nearby, and experience the lively culture and spirit of our town.' });
+
+  }
+
+  fetchEventData(): void {
     this.http.get<any>('/assets/database/events.json').subscribe(data => {
-      this.EventsVar = data.events.map((events: any) => ({ ...events, isExpanded: false }));
+      this.eventData = data.eventItem.map((eventItem: any) => ({ ...eventItem, isExpanded: false }));
       // Filter out past events
-      this.EventsVar = this.filterPastEvents(data.events);
+      this.eventData = this.filterPastEvents(data.eventItem);
 
       // Create version of list to apply additional filtering
-      this.filteredEvents = this.EventsVar;
+      this.filteredEvents = this.eventData;
 
     });
   }
 
   // use to filter out events that are past -------------------------------------------------------------------------------------
-  filterPastEvents(events: any[]): any[] {
+  filterPastEvents(eventItem: any[]): any[] {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
 
-    return events.filter(event => {
+    return eventItem.filter(eventItem => {
       // Parse event date and compare with today's date
-      const eventDate = new Date(event.startDate);
+      const eventDate = new Date(eventItem.startDate);
       return eventDate > yesterday;
     });
 
+  }
+
+  filterByType(type: string): void {
+    this.filteredEvents = this.eventData.filter(event => event.type === type);
+    this.isFilterApplied = true;
+
+    // Toggle on reset button
+    const iconElement = this.elementRef.nativeElement.querySelector('#eventsFilter');
+
+    if (iconElement) {
+      this.renderer.setStyle(iconElement, 'display', 'inline');
+    }
+  }
+
+  resetFilter(): void {
+    this.filteredEvents = this.eventData; // Reset to show all events
+    this.isFilterApplied = false;
+
+    // Toggle off reset button
+    const iconElement = this.elementRef.nativeElement.querySelector('#eventsFilter');
+
+    if (iconElement) {
+      this.renderer.setStyle(iconElement, 'display', 'none');
+    }
+  }
+
+
+  
+
+  filterOne(): void {
+    console.log('Filter one clicked!');
+    // Perform other actions...
+  }
+
+  filterTwo(): void {
+    console.log('Filter two clicked!');
+    // Perform other actions...
+  }
+
+  filterThree(): void {
+    console.log('Filter three clicked!');
+    // Perform other actions...
+  }
+
+  filterFour(): void {
+    console.log('Filter four clicked!');
+    // Perform other actions...
   }
 
   getIconPath(icon: string): string {
@@ -92,8 +144,8 @@ export class EventsComponent implements OnInit {
     return `/assets/images/events/${icon}.jpg`;
   }
 
-  expandItem(events: EventItem): void {
-    events.isExpanded = !events.isExpanded;
+  expandItem(eventItem: eventDataElements): void {
+    eventItem.isExpanded = !eventItem.isExpanded;
   }
 
   // format the date for single day events
