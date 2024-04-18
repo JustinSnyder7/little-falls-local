@@ -96,6 +96,25 @@
       "isExpanded": false
     },
     {
+      "name": "The Renaissance Pub",
+      "type": "Bar",
+      "location": "550 E Main St",
+      "hours": "",
+      "cost": "",
+      "description": "",
+      "phoneNumber": "315-556-1006",
+      "image": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": "",
+        "fifth": ""}, 
+      "url": "",
+      "highlight": false,
+      "rating": 4.5,
+      "isExpanded": false
+    },
+    {
       "name": "Fat Cats",
       "type": "Seafood",
       "location": "200 King St, Herkimer, NY",
@@ -115,22 +134,22 @@
       "isExpanded": false
     },
     {
-      "name": "Copper Moose Ale House",
+      "name": "Beardslee Castle",
       "type": "American",
-      "location": "517 E Main St, Little Falls, NY",
+      "location": "123 Old State Rd",
       "hours": "",
-      "cost": "Moderate",
-      "description": "",
-      "phoneNumber": "315-508-5150",
+      "cost": "Moderate to Expensive",
+      "description": "Inspired American Cuisine in a magnificent setting. Built in 1860 as a replica of an Irish Castle, Beardslee Castle is at once both modern and ancient... with the finest in creative cuisine, memorable wedding receptions banquets and special events.",
+      "phoneNumber": "315-823-3000",
       "image": {
-        "first": "",
+        "first": "beardslee-castle",
         "second": "",
         "third": "",
         "fourth": "",
-        "fifth": ""},
-      "url": "",
+        "fifth": ""}, 
+      "url": "http://beardsleecastle.com/",
       "highlight": false,
-      "rating": 4.4,
+      "rating": 4.6,
       "isExpanded": false
     },
     {

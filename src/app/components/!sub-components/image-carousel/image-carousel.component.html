@@ -4,8 +4,6 @@
   <div class="primary-image-wrapper">
   <img [src]="'/assets/images/food/' + currentImage + '.jpg'" alt="Featured Image"></div>
 
-  <!-- TODO: need to figure out how to pass ALT argument foodPlaces.name -->
-
   <div class="thumbnail-container">
     <img *ngFor="let image of thumbnailImages" 
          [src]="'/assets/images/food/' + image + '.jpg'" 
@@ -15,3 +13,7 @@
   </div>
 
 </div>
+
+ <!-- Image dimensions shall be 1024 by 768 -->
+
+<!-- TODO: need to figure out how to pass ALT argument foodPlaces.name -->

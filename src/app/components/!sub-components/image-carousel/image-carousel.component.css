@@ -2,25 +2,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 7px auto;
   }
 
   .primary-image-wrapper {
     display: block;
     /* background-color: white; */
     width: 99%;
-    height: 270px;
+    /* height: 270px; */
+  }
+
+  .image-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .image-carousel img {
-    max-height: 270px;
+    /* max-height: 270px; */
     max-width: 99%;
+    aspect-ratio: 4 / 3;
     object-fit: contain;
   }
 
   .thumbnail-container {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 5px;
   }
   
   .thumbnail-container img {

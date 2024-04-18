@@ -1,23 +1,25 @@
 
 <div class="filters-container">
-  <fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>
-  <a (click)="resetFilter();" style="cursor: pointer;" id="eventsFilter">reset</a>&nbsp;
+  <a (click)="filterByType('Sports');" style="cursor: pointer;">Sports</a><span class="divider"> | </span>
   <a (click)="filterByType('Festival');" style="cursor: pointer;">Festivals</a><span class="divider"> | </span>
   <a (click)="filterByType('Music');" style="cursor: pointer;">Music</a><span class="divider"> | </span>
   <a (click)="filterByType('Family');" style="cursor: pointer;">Family</a><span class="divider"> | </span>
   <a (click)="filterByType('Food');" style="cursor: pointer;">Food</a>
+
+  <span class="filterIconContainer">
+    <fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;<a (click)="resetFilter();" style="cursor: pointer;" id="itemsFilter">clear</a>
+  </span>
 </div>
 
 <div class="item-container">
   <div *ngFor="let eventItem of filteredEvents" class="item-iter" [class.expanded]="eventItem.isExpanded" (click)="expandItem(eventItem)">
-    <div class="item-wrapper">
+    <div *ngIf="!eventItem.oneOff; else oneOff" class="item-wrapper">
 
     <!-- Collapsed item view -->
     <div *ngIf="!eventItem.isExpanded">
           
       <div class="item-image-wrapper" *ngIf="eventItem.image"><img [src]="getImagePath(eventItem.image)" class="item-image" alt="Image"></div>
       <div *ngIf="!eventItem.image"><img [src]="getIconPath(eventItem.icon)" class="item-icon" alt="Icon" height="32" width="32"></div>
-
 
       <span *ngIf="!eventItem.endDate" class="item-date">{{ formatDate(eventItem.startDate) }}</span>
       <span *ngIf="eventItem.endDate" class="item-date">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
@@ -47,7 +49,7 @@
         <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time-expanded">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span>
       </div>
 
-      <div class="item-name-expanded">{{ eventItem.name }}</div><br>
+      <div class="item-name-expanded">{{ eventItem.name }}<br></div>
       
       <span *ngIf="eventItem.cost" class="item-cost">Admission: {{ eventItem.cost }}</span><br>
 
@@ -58,14 +60,23 @@
         <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
 
       <span class="item-location">
-        <span *ngIf="eventItem.locationName">at {{ eventItem.locationName }}</span><br>
-        <span *ngIf="eventItem.location"><a [href]="formatEventLocationName(eventItem.location)" target="_blank">{{ eventItem.location }}</a></span><br>
+        <span *ngIf="eventItem.location"><a [href]="formatEventLocationName(eventItem.location)" target="_blank">{{ eventItem.location }}</a><br></span>
+        <span *ngIf="eventItem.locationName">{{ eventItem.locationName }}<br></span>
       </span>
 
       <div class="item-description">{{ eventItem.description }}</div>
     </div>
   
     </div>
+
+    <ng-template #oneOff>
+      <a routerLink="/submit-event" style="text-decoration: none;"><div class="item-wrapper" style="border: 2px solid rgba(255, 255, 255, 0.75)!important; padding-bottom: 5px;">
+      <img src="../../../../assets/icons/community.svg" alt="Icon" height="32" width="32">
+
+      <span class="item-name">{{ eventItem.name }}</span>
+      <span class="item-location" style="font-size: 16px; color: #000;">{{ eventItem.location }}</span></div></a>
+    </ng-template>
+
   </div>
 </div>
   

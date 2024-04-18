@@ -104,7 +104,9 @@
     color: #C7E6EB;
   }
 
-  #eventsFilter {
+  /* TODO: rename itemsFilter to something like "clearFilterText" and move it with the other filters at some point */
+
+  #itemsFilter {
     display: none;
   }
 
@@ -123,7 +125,7 @@
   .filters-container {
     background-color: #338494;
 
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     font-size: 14px;
     font-weight: normal;
    
@@ -139,6 +141,10 @@
     z-index: 100;
 }
 
+.filterIconContainer {
+  float: right;
+}
+
 .divider {
     color: rgba(0, 0, 0, 0.25);
 }
@@ -149,7 +155,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto; /* Stack vertically on mobile */
     grid-gap: 5px;
-    margin: 26px 1px 5px 5px;
+    margin: 27px 1px 5px 5px;
     padding-bottom: 83px;
     overflow-y: auto;
     align-content: center;
@@ -194,7 +200,7 @@
   font-size: 22px;
   padding-left: 5px;
   padding-right: 8px;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 
 .item-name {
@@ -211,6 +217,10 @@
 
 .item-description {
   font-size: 17px;
+  margin: 5px 0px;
+  padding: 5px 5px;
+  border: 1px solid black;
+  border-radius: 0px 0px 8px 0px;
 }
 
 .item-phoneNumber {

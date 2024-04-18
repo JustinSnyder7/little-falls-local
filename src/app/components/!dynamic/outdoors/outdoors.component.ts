@@ -1,8 +1,8 @@
-import { Pipe, PipeTransform, Component, OnInit } from '@angular/core';
+import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
 interface outdoorDataElements {
@@ -45,8 +45,10 @@ export class OutdoorsComponent implements OnInit {
   outdoorData: outdoorDataElements[] = [];
   filteredEvents: outdoorDataElements[] = [];
 
-  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary) {
-    library.addIcons(faFilter);
+  isFilterApplied = false;
+
+  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
+    library.addIcons(faFilter, faFilterCircleXmark);
   }
 
   ngOnInit(): void {
@@ -57,7 +59,7 @@ export class OutdoorsComponent implements OnInit {
 
   fetchOutdoorData(): void {
     this.http.get<any>('/assets/database/outdoors.json').subscribe(data => {
-      this.outdoorData = data.activities.map((activity: any) => ({ ...activity, isExpanded: false }));
+      this.outdoorData = data.outdoorItem.map((outdoorItem: any) => ({ ...outdoorItem, isExpanded: false }));
 
       // Create version of list to apply additional filtering
       this.filteredEvents = this.outdoorData;
@@ -66,11 +68,27 @@ export class OutdoorsComponent implements OnInit {
 
   filterByType(type: string): void {
     this.filteredEvents = this.outdoorData.filter(event => event.type === type);
+    this.isFilterApplied = true;
+
+    // Toggle on reset button
+    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+
+    if (iconElement) {
+      this.renderer.setStyle(iconElement, 'display', 'inline');
+    }
 
   }
   
   resetFilter(): void {
     this.filteredEvents = this.outdoorData; // Reset to show all events
+    this.isFilterApplied = false;
+
+    // Toggle off reset button
+    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+
+    if (iconElement) {
+      this.renderer.setStyle(iconElement, 'display', 'none');
+    }
   }
 
   getIconPath(icon: string): string {

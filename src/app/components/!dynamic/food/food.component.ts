@@ -1,8 +1,8 @@
-import { Pipe, PipeTransform,Component, OnInit, Input } from '@angular/core';
+import { Pipe, PipeTransform,Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
 interface foodDataElements {
@@ -46,9 +46,11 @@ export class FoodComponent implements OnInit {
   foodData: foodDataElements[] = [];
   filteredData: foodDataElements[] = [];
 
-  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary) {
+  isFilterApplied = false;
 
-    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter);
+  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
+
+    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark);
   }
 
   ngOnInit(): void {
@@ -69,10 +71,26 @@ export class FoodComponent implements OnInit {
   filterByType(type: string): void {
     this.filteredData = this.foodData.filter(event => event.type === type);
 
+    this.isFilterApplied = true;
+
+    // Toggle on reset button
+    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+
+    if (iconElement) {
+      this.renderer.setStyle(iconElement, 'display', 'inline');
+    }
   }
   
   resetFilter(): void {
     this.filteredData = this.foodData; // Reset to show all events
+    this.isFilterApplied = false;
+
+    // Toggle off reset button
+    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+
+    if (iconElement) {
+      this.renderer.setStyle(iconElement, 'display', 'none');
+    }
   }
 
   getIconPath(icon: string): string {

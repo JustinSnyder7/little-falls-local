@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef  } from '@angular/core';
+import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
@@ -22,6 +22,8 @@ interface eventDataElements {
   type: string;
   highlight: boolean;
   isExpanded: boolean;
+  oneOff: boolean;
+  
 }
 
 @Pipe({
@@ -83,8 +85,9 @@ export class EventsComponent implements OnInit {
 
     return eventItem.filter(eventItem => {
       // Parse event date and compare with today's date
-      const eventDate = new Date(eventItem.startDate);
-      return eventDate > yesterday;
+      const eventStartDate = new Date(eventItem.startDate);
+      const eventEndDate = new Date(eventItem.endDate);
+      return eventStartDate > yesterday || eventEndDate > yesterday;
     });
 
   }
@@ -94,7 +97,7 @@ export class EventsComponent implements OnInit {
     this.isFilterApplied = true;
 
     // Toggle on reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#eventsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'inline');
@@ -106,7 +109,7 @@ export class EventsComponent implements OnInit {
     this.isFilterApplied = false;
 
     // Toggle off reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#eventsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'none');

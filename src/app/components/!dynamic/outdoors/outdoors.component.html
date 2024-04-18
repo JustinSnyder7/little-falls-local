@@ -1,11 +1,13 @@
 
 <div class="filters-container">
-  <fa-icon icon="filter" class="fa-xs"></fa-icon>&nbsp;
   <a (click)="filterByType('Park');" style="cursor: pointer;">Parks</a><span class="divider"> | </span>
   <a (click)="filterByType('Activity');" style="cursor: pointer;">Activities</a><span class="divider"> | </span>
   <a (click)="filterByType('Playground');" style="cursor: pointer;">Playgrounds</a><span class="divider"> | </span>
-  <a (click)="filterByType('Trail');" style="cursor: pointer;">Trails</a><span class="divider"> | </span>
-  <a (click)="resetFilter();" style="cursor: pointer;">Reset</a>
+  <a (click)="filterByType('Trail');" style="cursor: pointer;">Trails</a>
+  
+  <span class="filterIconContainer">
+    <fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;<a (click)="resetFilter();" style="cursor: pointer;" id="itemsFilter">clear</a>
+  </span>
 </div>
 
 <div class="item-container">

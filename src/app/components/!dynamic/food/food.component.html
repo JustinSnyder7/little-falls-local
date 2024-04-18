@@ -1,11 +1,13 @@
 
 <div class="filters-container">
-  <fa-icon icon="filter" class="fa-xs"></fa-icon>&nbsp;
   <a (click)="filterByType('American');" style="cursor: pointer;">American</a><span class="divider"> | </span>
   <a (click)="filterByType('Italian');" style="cursor: pointer;">Italian</a><span class="divider"> | </span>
   <a (click)="filterByType('Mexican');" style="cursor: pointer;">Mexican</a><span class="divider"> | </span>
-  <a (click)="filterByType('Bars');" style="cursor: pointer;">Bars</a><span class="divider"> | </span>
-  <a (click)="resetFilter();" style="cursor: pointer;">Reset</a>
+  <a (click)="filterByType('Bar');" style="cursor: pointer;">Bars</a>
+    
+  <span class="filterIconContainer">
+    <fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;<a (click)="resetFilter();" style="cursor: pointer;" id="itemsFilter">clear</a>
+  </span>
 </div>
 
 <div class="item-container">
@@ -31,7 +33,7 @@
 
       <button class="minimizer" (click)="foodItem.isExpanded = false"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
 
-      <span class="item-type">{{ foodItem.type }}</span><br>
+      <span class="item-type">{{ foodItem.type }}</span> | 
       <span class="item-rating">{{ foodItem.rating }} stars <app-rating [rating]="foodItem.rating"></app-rating></span><br>
 
       <span *ngIf="foodItem.phoneNumber" class="item-phoneNumber"><a [href]="'tel:' + foodItem.phoneNumber">{{ foodItem.phoneNumber }}</a></span><br>
@@ -39,7 +41,7 @@
       <span class="item-location">
         <span *ngIf="foodItem.location">
         <a [href]="formatRestaurantName(foodItem.name)" target="_blank">{{ foodItem.location }}</a></span>
-      </span><br><br>
+      </span><br>
 
       <app-image-carousel *ngIf="foodItem.image.first; else noImageBlock" [images]="foodItem.image"></app-image-carousel>
       <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>

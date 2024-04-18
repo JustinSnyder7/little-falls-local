@@ -15,7 +15,8 @@
         "url": "",
         "type": "",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Family Movie Night",
@@ -32,7 +33,8 @@
         "url": "",
         "type": "Family",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Powder Puff & Pinewood Derbies",
@@ -49,7 +51,8 @@
         "url": "",
         "type": "Family",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "One Year Anniversary Party",
@@ -66,7 +69,8 @@
         "url": "",
         "type": "Music",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Jake Lozo Band",
@@ -83,7 +87,8 @@
         "url": "",
         "type": "Music",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Finding Alice",
@@ -100,7 +105,8 @@
         "url": "",
         "type": "Music",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Tom Nitti",
@@ -117,7 +123,44 @@
         "url": "",
         "type": "Music",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
+      },
+      {
+        "name": "LF HS Spring Concert",
+        "startDate": "05/07/2024",
+        "endDate": "",
+        "startTime": "6:00PM",
+        "endTime": "8:00PM",
+        "cost": "",
+        "icon": "music-double-note",
+        "image": "",
+        "location": "Little Falls High School",
+        "locationName": "MS/HS Auditorium",
+        "description": "High School Spring Concert.",
+        "url": "",
+        "type": "Music",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": false
+      },
+      {
+        "name": "Hosting an event?",
+        "startDate": "1/01/2024",
+        "endDate": "12/31/2025",
+        "startTime": "",
+        "endTime": "",
+        "cost": "",
+        "icon": "community",
+        "image": "",
+        "location": "Click here for more details.",
+        "locationName": "",
+        "description": "",
+        "url": "",
+        "type": "",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": true
       },
       {
         "name": "Kingston Kane",
@@ -134,7 +177,8 @@
         "url": "",
         "type": "Music",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Farm to Food Truck Hoedown",
@@ -151,7 +195,8 @@
         "url": "https://www.facebook.com/p/Insight-Dairy-LLC-100077017676316/",
         "type": "Food",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Holy Family Parish Festival",
@@ -168,7 +213,8 @@
         "url": "",
         "type": "Festival",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Little Falls Pride 4",
@@ -185,7 +231,26 @@
         "url": "",
         "type": "Festival",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
+      },
+      {
+        "name": "The Posers",
+        "startDate": "06/17/2024",
+        "endDate": "",
+        "startTime": "4:30PM",
+        "endTime": "",
+        "cost": "",
+        "icon": "music-double-note",
+        "image": "",
+        "location": "99 N Park Pl, Herkimer, NY",
+        "locationName": "The New Herkimer Downtown Chowdown",
+        "description": "Come join us for a rockin' afternoon at the park, as The Posers take the stage! This group of longtime friends turned classic rock band knows how to bring the party. Expect a lively atmosphere filled with good vibes, great music, and plenty of fun. Whether you're a fan of classic rock or just looking to enjoy some live music with friends and family, The Posers always deliver.",
+        "url": "",
+        "type": "Music",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Canal Celebration",
@@ -202,7 +267,26 @@
         "url": "",
         "type": "Family",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
+      },
+      {
+        "name": "Anthonly LaBarbara & The Fast IV",
+        "startDate": "08/05/2024",
+        "endDate": "",
+        "startTime": "4:30PM",
+        "endTime": "",
+        "cost": "",
+        "icon": "music-double-note",
+        "image": "",
+        "location": "99 N Park Pl, Herkimer, NY",
+        "locationName": "The New Herkimer Downtown Chowdown",
+        "description": "",
+        "url": "",
+        "type": "Music",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Rock on the Mohawk",
@@ -219,7 +303,26 @@
         "url": "",
         "type": "Music",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
+      },
+      {
+        "name": "Soul Injection Band",
+        "startDate": "08/19/2024",
+        "endDate": "",
+        "startTime": "4:30PM",
+        "endTime": "",
+        "cost": "",
+        "icon": "music-double-note",
+        "image": "",
+        "location": "99 N Park Pl, Herkimer, NY",
+        "locationName": "The New Herkimer Downtown Chowdown",
+        "description": "",
+        "url": "",
+        "type": "",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Garlic & Herb Festival",
@@ -236,7 +339,8 @@
         "url": "",
         "type": "Food",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Cheese Festival",
@@ -253,7 +357,8 @@
         "url": "",
         "type": "Food",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Halloween in Little Falls",
@@ -270,7 +375,8 @@
         "url": "",
         "type": "Family",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       },
       {
         "name": "Rock the Holidays",
@@ -287,7 +393,8 @@
         "url": "",
         "type": "Family",
         "highlight": false,
-        "isExpanded": false
+        "isExpanded": false,
+        "oneOff": false
       }
     ]
 }
