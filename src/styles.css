@@ -7,12 +7,41 @@
  /* 3. Tablet Experience ---------------------------------------------------------------- */
  /* ------------------------------------------------------------------------------------- */
 
+ /* I like the color #67C2D4; for item-iter */
+
+:root {
+  --primary-color: #FFFFFF; /* Title color, main body background */
+  /* --primary-color: #42EB5E; original */ 
+  /* --primary-color: #D9DAD9; blue, green, gray */
+
+  --secondary-color: #CAD4DF; /* Navbar and footer color */
+  /* --secondary-color: #1995AD; */
+  /* --secondary-color: #68A4A5; */
+
+  --tertiary-color: #656E77; /* Filters menu */
+  /* --tertiary-color: #338494; */
+  /* --tertiary-color: #4C8055; */
+
+
+
+  --buy-me-coffee-color: #AD4319; /* Buy me a coffee */
+
+  --text-color-light: #fff;
+  --text-color-dark: #7B9CB2;
+  /* --text-color-dark: #000; */
+
+  --item-iter-border: rgba(156, 156, 156, 0.50);
+  --item-borders-1: rgba(0, 0, 0, 0.1);
+  --point25-alpha: rgba(0, 0, 0, 0.25);
+  --dark: red;
+}
+
  /* 1. Mobile Experience ----------------------------------------------------------------- */
 
  @media (max-width: 768px) {
 
   #bmc-wbtn { /* buy me a coffee */
-    background-color: #ad4319!important;
+    background-color: var(--buy-me-coffee-color)!important;
     position: fixed!important;
     bottom: 9px!important;
     right: 0px!important;
@@ -47,26 +76,26 @@
   }
   
   .navbar {
-    background-color: #1995AD;
+    background-color: var(--secondary-color);
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.25);
+    color: var(--point25-alpha);
     /* font-weight: bold; */
     padding: 6px 0;
     margin: 0 auto;
     text-align: center;
     width: 100%;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    border-bottom: 1px solid rgba(0,0,0,0.3);
+    border-top: 1px solid var(--item-borders-1);
+    border-bottom: 1px solid var(--point25-alpha);
   }
   
   .navbar a {
-    color: #fff;
+    color: var(--text-color-light);
     text-decoration: none;
     padding: 4px 6px;
   }
   
   .navbar a:hover {
-    background-color: rgba(0,0,0,0.1);
+    background-color: var(--item-borders-1);
   }
 
   footer {
@@ -75,19 +104,19 @@
     z-index: 100;
     border-radius: 8px 0px 0px 0px;
 
-    background-color: #1995AD;
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
     /* text-align: center; */
     padding: 10px 0px;
     margin: 0;
     position: fixed;
 
     width: 100%;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid var(--item-borders-1);
   }
   
   footer a {
-    color: #fff;
+    color: var(--text-color-light);
     text-decoration: none;
   }
 
@@ -114,7 +143,7 @@
 
   .minimizer {
     position: absolute;
-    border: 0px solid #1995AD;
+    border: 0px solid var(--secondary-color);
     background-color: transparent;
     top: 0; /* Align the item to the top */
     right: 0; /* Align the item to the right */
@@ -123,7 +152,7 @@
   }
 
   .filters-container {
-    background-color: #338494;
+    background-color: var(--tertiary-color);
 
     /* font-family: Arial, Helvetica, sans-serif; */
     font-size: 14px;
@@ -136,7 +165,7 @@
     padding: 2px 10px 3px 10px;
     margin: 0px;
     
-    color: #fff;
+    color: var(--text-color-light);
     position: fixed;
     z-index: 100;
 }
@@ -146,11 +175,12 @@
 }
 
 .divider {
-    color: rgba(0, 0, 0, 0.25);
+    color: var(--point25-alpha);
 }
 
   .item-container {
     grid-area: contentContainer;
+    background-image: url("../src/assets/falls.jpg");
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto; /* Stack vertically on mobile */
@@ -160,17 +190,18 @@
     overflow-y: auto;
     align-content: center;
     position: relative;
+    background-color: green;
   }
 
   .item-iter {
     font-family: Arial, sans-serif;
     font-size: 22px;
     color: rgba(0, 0, 0, 0.85);
-    background-color: #42EB5E;
+    background-color: var(--primary-color);
     opacity: 1;
     padding: 5px;
     width: 95%;
-    border: 2px solid rgba(156, 156, 156, 0.50);
+    border: 2px solid var(--item-iter-border);
     overflow: hidden;
     white-space: wrap;
     text-overflow: ellipsis;
@@ -206,13 +237,13 @@
 .item-name {
   font-size: 20px;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: var(--text-color-dark);
 }
 
 .item-name-expanded {
   font-size: 20px;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: var(--text-color-dark);
 }
 
 .item-description {
@@ -281,9 +312,11 @@
   font-weight: bold;
 }
 
+
+
 .item-image-wrapper {
   display: flex;
-  justify-content: center; /* horizontally centers the image */
+  justify-content: center; /*  horizontally centers the image */
   align-items: center; /* vertically centers the image */
   background-color: rgb(255, 255, 255);
   height: 80px;
@@ -291,7 +324,7 @@
   position: absolute;
   border: 1px solid #000000;
   top: 0; /* Align the item to the top */
-  right: 0; /* Align the item to the right */
+  left: 0;
 }
 
 .item-image {
@@ -301,6 +334,10 @@
 
   /* align-self: flex-end;
   margin-top: 5px; */
+}
+
+.item-text-wrapper {
+  display: inline-block;
 }
 
 .item-image-expanded {
@@ -381,22 +418,22 @@ header {
 }
 
 .navbar {
-  background-color: #1995AD;
+  background-color: var(--secondary-color);
   padding: 10px 0;
   text-align: center;
   width: 100%;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid var(--item-borders-1);
+  border-bottom: 1px solid var(--item-borders-1);
 }
 
 .navbar a {
-  color: #fff;
+  color: var(--text-color-light);
   text-decoration: none;
   padding: 8px 16px;
 }
 
 .navbar a:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--item-borders-1);
 }
 
 footer {
@@ -404,39 +441,25 @@ footer {
   bottom: 0;
   z-index: 100;
 
-  background-color: #1995AD;
-  color: #fff;
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
   text-align: center;
   padding: 10px 0px;
   margin: 0;
   position: fixed;
 
   width: 100%;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid var(--item-borders-1);
 
   max-width: 1500px;
 }
 
 footer a {
-  color: #fff;
+  color: var(--text-color-light);
   text-decoration: none;
 }
 
 /* 2b. Item elements within 4 main lists. ---------------------------------------------- */
-
-/* .contentContainer {
-  grid-area: contentContainer;
-  min-height: 100%;
-  min-width: 100%;
-  margin: 0px;
-  padding: 5px 0;
-  background-color: #F1F1F2;
-  width: 100%;
-  height: 100%;
-  grid-row: 2;
-  overflow-y: auto; 
-  align-content: center;
-} */
 
   .item-container {
   /* has mobile */
@@ -452,7 +475,7 @@ footer a {
     font-family: Arial, sans-serif;
     font-size: 22px;
     color: rgba(0, 0, 0, 0.85);
-    background-color: #42EB5E;
+    background-color: var(--primary-color);
     opacity: 1;
     padding: 5px;
     width: 95%;
@@ -486,13 +509,13 @@ footer a {
   .item-name {
     font-size: 20px;
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    color: var(--text-color-dark);
   }
 
   .item-name-expanded {
     font-size: 24px;
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    color: var(--text-color-dark);
   }
 
   /* .item-description {
@@ -575,7 +598,7 @@ footer a {
 
 
 .fullscreen-welcome {
-  background-color: #fff;
+  background-color: var(--text-color-light);
 }
 }
 

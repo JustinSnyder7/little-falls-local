@@ -16,7 +16,7 @@
       <!-- Collapsed item view -->
       <div *ngIf="!foodItem.isExpanded">
 
-        <div class="item-image-wrapper" *ngIf="foodItem.image.first"><img [src]="getImagePath(foodItem.image.first)" class="item-image" alt="Image"></div>
+        <div class="item-image-wrapper" *ngIf="foodItem.image.first"><img [src]="getImagePath(foodItem.image.first)" class="item-image" alt="Image" loading="lazy"></div>
 
         <span *ngIf="foodItem.image" class="item-name">{{ foodItem.name | truncate: 19 }}</span>
         <span *ngIf="!foodItem.image" class="item-name">{{ foodItem.name | truncate: 30 }}</span><br>
@@ -44,7 +44,7 @@
       </span><br>
 
       <app-image-carousel *ngIf="foodItem.image.first; else noImageBlock" [images]="foodItem.image"></app-image-carousel>
-      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
+      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon" loading="lazy"></ng-template>
 
       <div *ngIf="foodItem.description" class="item-description">{{ foodItem.description }}</div>
     </div>

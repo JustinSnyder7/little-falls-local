@@ -18,9 +18,10 @@
     <!-- Collapsed item view -->
     <div *ngIf="!eventItem.isExpanded">
           
-      <div class="item-image-wrapper" *ngIf="eventItem.image"><img [src]="getImagePath(eventItem.image)" class="item-image" alt="Image"></div>
-      <div *ngIf="!eventItem.image"><img [src]="getIconPath(eventItem.icon)" class="item-icon" alt="Icon" height="32" width="32"></div>
+      <div class="item-image-wrapper" *ngIf="eventItem.image"><img [src]="getImagePath(eventItem.image)" class="item-image" alt="Image" loading="lazy"></div>
+      <div *ngIf="!eventItem.image"><img [src]="getIconPath(eventItem.icon)" class="item-icon" alt="Icon" height="32" width="32" loading="lazy"></div>
 
+      <div class="item-text-wrapper">
       <span *ngIf="!eventItem.endDate" class="item-date">{{ formatDate(eventItem.startDate) }}</span>
       <span *ngIf="eventItem.endDate" class="item-date">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
 
@@ -30,7 +31,7 @@
       <span *ngIf="eventItem.image" class="item-name">{{ eventItem.name | truncate: 19 }}</span>
       <span *ngIf="!eventItem.image" class="item-name">{{ eventItem.name | truncate: 24 }}</span><br>
 
-      <span class="item-location">{{ eventItem.location }}</span><br>
+      <span class="item-location">{{ eventItem.location }}</span><br></div>
     </div>
   
     <!-- TODO: need to add local sports to the events page, this could be amazing -->
@@ -56,8 +57,8 @@
       <!-- TODO: need to implement functionality for location name versus location -->
 
          
-      <span *ngIf="eventItem.image; else noImageBlock"><img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image"></span>
-        <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
+      <span *ngIf="eventItem.image; else noImageBlock"><img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image" loading="lazy"></span>
+        <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon" loading="lazy"></ng-template>
 
       <span class="item-location">
         <span *ngIf="eventItem.location"><a [href]="formatEventLocationName(eventItem.location)" target="_blank">{{ eventItem.location }}</a><br></span>
@@ -71,7 +72,7 @@
 
     <ng-template #oneOff>
       <a routerLink="/submit-event" style="text-decoration: none;"><div class="item-wrapper" style="border: 2px solid rgba(255, 255, 255, 0.75)!important; padding-bottom: 5px;">
-      <img src="../../../../assets/icons/community.svg" alt="Icon" height="32" width="32">
+      <img src="../../../../assets/icons/community.svg" alt="Icon" height="32" width="32" loading="lazy">
 
       <span class="item-name">{{ eventItem.name }}</span>
       <span class="item-location" style="font-size: 16px; color: #000;">{{ eventItem.location }}</span></div></a>

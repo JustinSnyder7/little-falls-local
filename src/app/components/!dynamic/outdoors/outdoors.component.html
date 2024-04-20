@@ -16,7 +16,7 @@
       <!-- Collapsed item view -->
       <div *ngIf="!outdoorItem.isExpanded">
 
-      <div class="item-image-wrapper" *ngIf="outdoorItem.image.first"><img [src]="getImagePath(outdoorItem.image.first)" class="item-image" alt="Image"></div>
+      <div class="item-image-wrapper" *ngIf="outdoorItem.image.first"><img [src]="getImagePath(outdoorItem.image.first)" class="item-image" alt="Image" loading="lazy"></div>
 
       <span *ngIf="outdoorItem.image.first" class="item-name">{{ outdoorItem.name | truncate: 19 }}</span>
       <span *ngIf="!outdoorItem.image.first" class="item-name">{{ outdoorItem.name | truncate: 24 }}</span><br>
@@ -36,9 +36,9 @@
       </span>
       
       <span *ngIf="outdoorItem.image.first; else noImageBlock">
-        <img [src]="getImagePath(outdoorItem.image.first)" class="item-image-expanded" alt="Image" width="95%">
+        <img [src]="getImagePath(outdoorItem.image.first)" class="item-image-expanded" alt="Image" width="95%" loading="lazy">
       </span>
-      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon"></ng-template>
+      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon" loading="lazy"></ng-template>
 
       <div class="item-description">{{ outdoorItem.description }}</div>
     </div>
