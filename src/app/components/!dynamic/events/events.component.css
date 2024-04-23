@@ -1,15 +1,9 @@
   .expanded {
-    background-color: #42EB5E;
+    background-color: var(--primary-color);
     height: 96%;
   }
 
   .item-iter:hover {
-    border: 2px solid rgba(58, 58, 58, 0.5);
+    background-color: rgba(253, 224, 128, 0.25);
+    /* border-top: 2px solid rgba(58, 58, 58, 0.5); */
   }
-
-@media (max-width: 768px) {
-  .expanded {
-    background-color: #42EB5E;
-    height: 100vh automatically;
-  }
-}

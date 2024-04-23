@@ -40,7 +40,7 @@
       </span>
       <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon" loading="lazy"></ng-template>
 
-      <div class="item-description">{{ outdoorItem.description }}</div>
+      <div *ngIf="outdoorItem.description" class="item-description">{{ outdoorItem.description }}</div>
     </div>
   </div>
   </div>

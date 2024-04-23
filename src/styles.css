@@ -1,3 +1,48 @@
+ /* Reset browser defaults ------------------------------------------------------------------------ */
+
+ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  /* font: inherit; */
+}
+
+ /* Establish variables --------------------------------------------------------------------------- */
+
+:root {
+  --primary-color: #FFFFFF; /* Title color, main body background */
+  /* --primary-color: #42EB5E; original */ 
+  /* --primary-color: #D9DAD9; blue, green, gray */
+  
+
+  --secondary-color: #32805c; /* Navbar and footer color */
+  /* --secondary-color: #1995AD; */
+  /* --secondary-color: #68A4A5; */
+  /* --secondary-color: #1995AD; */
+
+  --tertiary-color: #805032; /* Filters menu */
+  /* --tertiary-color: #338494; */
+  /* --tertiary-color: #4C8055; */
+  /* --tertiary-color: #338494;  */
+
+   /* I like the color #67C2D4; for item-iter */
+
+
+  --buy-me-coffee-color: #ad4319; /* Buy me a coffee */
+  
+
+  --text-color-light: #fff;
+  --text-color-dark: #000;
+  /* --text-color-dark: #000; */
+
+  --item-iter-border: rgba(156, 156, 156, 0.50);
+  --item-borders-1: rgba(0, 0, 0, 0.1);
+  --point25-alpha: rgba(0, 0, 0, 0.25);
+  --dark: red;
+}
+
+
  /* Table of Contents ------------------------------------------------------------------- */
  /* 1. Mobile Experience ---------------------------------------------------------------- */
  /* 1b. Item elements within 4 main lists. ---------------------------------------------- */
@@ -7,53 +52,24 @@
  /* 3. Tablet Experience ---------------------------------------------------------------- */
  /* ------------------------------------------------------------------------------------- */
 
- /* I like the color #67C2D4; for item-iter */
-
-:root {
-  --primary-color: #FFFFFF; /* Title color, main body background */
-  /* --primary-color: #42EB5E; original */ 
-  /* --primary-color: #D9DAD9; blue, green, gray */
-
-  --secondary-color: #CAD4DF; /* Navbar and footer color */
-  /* --secondary-color: #1995AD; */
-  /* --secondary-color: #68A4A5; */
-
-  --tertiary-color: #656E77; /* Filters menu */
-  /* --tertiary-color: #338494; */
-  /* --tertiary-color: #4C8055; */
-
-
-
-  --buy-me-coffee-color: #AD4319; /* Buy me a coffee */
-
-  --text-color-light: #fff;
-  --text-color-dark: #7B9CB2;
-  /* --text-color-dark: #000; */
-
-  --item-iter-border: rgba(156, 156, 156, 0.50);
-  --item-borders-1: rgba(0, 0, 0, 0.1);
-  --point25-alpha: rgba(0, 0, 0, 0.25);
-  --dark: red;
-}
-
  /* 1. Mobile Experience ----------------------------------------------------------------- */
 
- @media (max-width: 768px) {
+ @media only screen and (max-width: 600px) {
 
-  #bmc-wbtn { /* buy me a coffee */
-    background-color: var(--buy-me-coffee-color)!important;
-    position: fixed!important;
-    bottom: 9px!important;
-    right: 0px!important;
-    width: 42px!important;
-    border-radius:15px 0px 0px 15px!important;
+  #bmc-wbtn {
+    background-color: var(--tertiary-color)!important;
+    /* position: fixed!important; */
+    bottom: 15px!important;
+    right: 15px!important;
+    text-shadow: rgb(0, 0, 0) 0px 0px 2px!important;
+    /* width: 48px!important; */
+    /* border-radius: 50px!important; */
   }
 
   body {
-    font-family: "Merriweather", serif;
+    font-family: 'Nunito';
     margin:0 auto;
     padding: 0;
-    max-width: 1500px;
     min-height: 100vh;
     overflow: auto;
   }
@@ -68,70 +84,13 @@
   }
 
   header {
-    /* more header styles under header component css */
     grid-area: header;
     position: sticky;
     top: 0;
     z-index: 100;
   }
   
-  .navbar {
-    background-color: var(--secondary-color);
-    font-size: 18px;
-    color: var(--point25-alpha);
-    /* font-weight: bold; */
-    padding: 6px 0;
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-    border-top: 1px solid var(--item-borders-1);
-    border-bottom: 1px solid var(--point25-alpha);
-  }
-  
-  .navbar a {
-    color: var(--text-color-light);
-    text-decoration: none;
-    padding: 4px 6px;
-  }
-  
-  .navbar a:hover {
-    background-color: var(--item-borders-1);
-  }
 
-  footer {
-    grid-area: footer;
-    bottom: 0;
-    z-index: 100;
-    border-radius: 8px 0px 0px 0px;
-
-    background-color: var(--secondary-color);
-    color: var(--text-color-light);
-    /* text-align: center; */
-    padding: 10px 0px;
-    margin: 0;
-    position: fixed;
-
-    width: 100%;
-    border-top: 1px solid var(--item-borders-1);
-  }
-  
-  footer a {
-    color: var(--text-color-light);
-    text-decoration: none;
-  }
-
-  .footerbox {
-    display: block;
-    float: left;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    min-height: 60px;
-  }
-
-  .copyright {
-    color: #C7E6EB;
-  }
 
   /* TODO: rename itemsFilter to something like "clearFilterText" and move it with the other filters at some point */
 
@@ -145,27 +104,25 @@
     position: absolute;
     border: 0px solid var(--secondary-color);
     background-color: transparent;
-    top: 0; /* Align the item to the top */
-    right: 0; /* Align the item to the right */
+    top: 0;
+    right: 0;
     border-radius: 6px;
     margin: auto;
   }
 
   .filters-container {
     background-color: var(--tertiary-color);
-
-    /* font-family: Arial, Helvetica, sans-serif; */
     font-size: 14px;
     font-weight: normal;
    
     border-radius: 0px 0px 8px 0px;
     width: 100%;
-    box-sizing: border-box; /* Include padding and border in the element's total width */
-
+    box-sizing: border-box;
     padding: 2px 10px 3px 10px;
     margin: 0px;
     
-    color: var(--text-color-light);
+    /* color: var(--text-color-light); */
+    color: wheat;
     position: fixed;
     z-index: 100;
 }
@@ -180,28 +137,26 @@
 
   .item-container {
     grid-area: contentContainer;
-    background-image: url("../src/assets/falls.jpg");
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto; /* Stack vertically on mobile */
+    grid-template-rows: auto;
     grid-gap: 5px;
-    margin: 27px 1px 5px 5px;
-    padding-bottom: 83px;
+    margin: 28px 1px 5px 5px;
+    padding-bottom: 5px;
     overflow-y: auto;
     align-content: center;
     position: relative;
-    background-color: green;
   }
 
   .item-iter {
-    font-family: Arial, sans-serif;
     font-size: 22px;
     color: rgba(0, 0, 0, 0.85);
     background-color: var(--primary-color);
     opacity: 1;
     padding: 5px;
+    padding-bottom: 13px;
     width: 95%;
-    border: 2px solid var(--item-iter-border);
+    border-bottom: 1px solid var(--item-iter-border);
     overflow: hidden;
     white-space: wrap;
     text-overflow: ellipsis;
@@ -214,145 +169,139 @@
     display: none;
   }
 
-.item-wrapper {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: flex-start;
-  font-size: 22px;
-  padding-left: 5px;
-}
+  .item-wrapper {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 22px;
+    padding: 0px;
 
-.item-wrapper-expanded {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: left;
-  font-size: 22px;
-  padding-left: 5px;
-  padding-right: 8px;
-  padding-bottom: 4px;
-}
+  }
 
-.item-name {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--text-color-dark);
-}
+  .item-wrapper-expanded {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: left;
+    font-size: 22px;
+    padding-left: 5px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+  }
 
-.item-name-expanded {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--text-color-dark);
-}
+  .item-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color-dark);
+  }
 
-.item-description {
-  font-size: 17px;
-  margin: 5px 0px;
-  padding: 5px 5px;
-  border: 1px solid black;
-  border-radius: 0px 0px 8px 0px;
-}
+  .item-name-expanded {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color-dark);
+  }
 
-.item-phoneNumber {
-  font-size: 18px;
-}
+  .item-description {
+    font-size: 17px;
+    margin: 5px 0px;
+    padding: 5px 5px;
+    border: 1px solid black;
+    border-radius: 0px 0px 8px 0px;
+  }
 
-.item-description-expanded {
-  font-size: 16px;
-  
-}
+  .item-phoneNumber {
+    font-size: 18px;
+  }
 
-.item-cost {
-  font-size: 16px;
-  font-weight: bold;
-}
+  .item-description-expanded {
+    font-size: 16px;
+    
+  }
 
-.item-type {
-  font-size: 18px;
-  font-weight: normal;
-}
+  .item-cost {
+    font-size: 16px;
+    font-weight: bold;
+  }
 
-.item-type-expanded {
-  font-size: 18px;
-  font-weight: normal;
-}
-  
-.item-rating {
-  font-family: Arial, sans-serif;
-  font-size: 18px;
-  font-weight: normal;
-}
+  .item-type {
+    font-size: 18px;
+    font-weight: normal;
+  }
 
-.item-rating-expanded {
+  .item-type-expanded {
+    font-size: 18px;
+    font-weight: normal;
+  }
+    
+  .item-rating {
+    /* font-family: Arial, sans-serif; */
+    font-size: 18px;
+    font-weight: normal;
+  }
 
-  font-size: 18px;
-  font-weight: normal;
-}
+  .item-rating-expanded {
 
-.item-date {
-  font-size: 14px;
-  font-weight: bold;
-}
+    font-size: 18px;
+    font-weight: normal;
+  }
 
-.item-date-expanded {
-  display: inline;
-  font-size: 14px;
-  font-weight: bold;
-}
+  .item-date {
+    font-size: 14px;
+    font-weight: bold;
+  }
 
-.item-time {
-  font-size: 14px;
-  font-weight: bold;
-}
+  .item-date-expanded {
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+  }
 
-.item-time-expanded {
-  display: inline;
-  font-size: 14px;
-  font-weight: bold;
-}
+  .item-time {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .item-time-expanded {
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+  }
 
 
 
 .item-image-wrapper {
-  display: flex;
-  justify-content: center; /*  horizontally centers the image */
-  align-items: center; /* vertically centers the image */
+  align-items: center;
   background-color: rgb(255, 255, 255);
   height: 80px;
   width: 100px;
-  position: absolute;
-  border: 1px solid #000000;
-  top: 0; /* Align the item to the top */
-  left: 0;
+  float: left;
+  border: 0px solid #000000;
+  margin-left: 0px;
+  margin-right: 5px;
 }
 
 .item-image {
-
   height: 80px;
   max-width: 100px;
-
-  /* align-self: flex-end;
-  margin-top: 5px; */
 }
 
 .item-text-wrapper {
-  display: inline-block;
+  color: black;
+  line-height: 1.6rem;
 }
 
 .item-image-expanded {
   align-self: center;
   width: 100%;
   margin-top: 5px;
-}
+} 
 
 .item-icon {
-  position: absolute; /* Position the item absolutely */
-  top: 0; /* Align the item to the top */
-  right: 5px; /* Align the item to the right */
+  position: absolute;
+  top: 0;
+  right: 5px;
   height: 80px;
-  /* align-self: flex-end;
-  margin-top: 5px; */
 }
 
 .item-icon-expanded {
@@ -382,17 +331,10 @@
  /* 2. Desktop Experience --------------------------------------------------------------- */ 
  /* 2a. Body, header and footer elements ------------------------------------------------ */
 
- @media (min-width: 769px) {
+ /* @media (min-width: 769px) {
 
 body {
   font-family: "Merriweather", serif;
-  /* display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto max-content auto;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;  */
-
-  /* margin: 0; */
   margin:0 auto;
   padding: 0;
 
@@ -410,7 +352,6 @@ body {
 }
 
 header {
-  /* more header styles under header component css */
   grid-area: header;
   position: sticky;
   top: 0;
@@ -450,19 +391,17 @@ footer {
 
   width: 100%;
   border-top: 1px solid var(--item-borders-1);
-
   max-width: 1500px;
 }
 
 footer a {
   color: var(--text-color-light);
   text-decoration: none;
-}
+} */
 
 /* 2b. Item elements within 4 main lists. ---------------------------------------------- */
 
-  .item-container {
-  /* has mobile */
+  /* .item-container {
     display: grid;
     grid-area: contentContainer;
     grid-template-columns: repeat(3, 1fr);
@@ -471,7 +410,6 @@ footer a {
   }
   
   .item-iter {
-    /* **** expand and hover is on events.component.css ----- */
     font-family: Arial, sans-serif;
     font-size: 22px;
     color: rgba(0, 0, 0, 0.85);
@@ -480,12 +418,11 @@ footer a {
     padding: 5px;
     width: 95%;
     border: 2px solid rgba(156, 156, 156, 0.50);
-    /* height: 250px; */
     height: 250px;
     min-height: 250px;
     overflow: hidden;
-    white-space: wrap; /* Prevent text from wrapping */
-    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+    white-space: wrap;
+    text-overflow: ellipsis;
   }
 
   .item-wrapper {
@@ -502,8 +439,6 @@ footer a {
     flex-direction: column;
     align-items: center;
     font-size: 22px;
-    /* height: 100vh automatically; */
-    /* background-color: #FFFFFF; */
   }
   
   .item-name {
@@ -517,16 +452,6 @@ footer a {
     font-weight: bold;
     color: var(--text-color-dark);
   }
-
-  /* .item-description {
-    font-size: 18px;
-    
-  }
-
-  .item-description-expanded {
-    font-size: 18px;
-    
-  } */
 
   .item-type {
     font-size: 18px;
@@ -569,12 +494,11 @@ footer a {
   }
 
   .item-image {
-    position: absolute; /* Position the item absolutely */
-    top: 0; /* Align the item to the top */
-    right: 0; /* Align the item to the right */
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 80px;
-    /* align-self: flex-end;
-    margin-top: 5px; */
+
   }
 
   .item-image-expanded {
@@ -591,15 +515,15 @@ footer a {
   .item-location-expanded {
     font-size: 16px;
     font-weight: normal;
-  }
+  } */
 
   /* ------------------- end item elements section ------------------- */
 
 
 
-.fullscreen-welcome {
+/* .fullscreen-welcome {
   background-color: var(--text-color-light);
 }
-}
+} */
 
  /* 3. Tablet Experience ---------------------------------------------------------------- */
