@@ -1,0 +1,23 @@
+{
+  "id": "/",
+  "name": "LittleFallsLocal",
+  "short_name": "LittleFallsLocal",
+  "theme_color": "#009a00",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./app.component.html",
+  "icons": [
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/maskable_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

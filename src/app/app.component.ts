@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -18,7 +18,20 @@ export class AppComponent implements OnInit {
 
   showFilters: boolean = false;
 
-  constructor(private router: Router) {}
+  isSmallScreen: boolean = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: UIEvent) {
+    this.checkScreenSize();
+  }
+
+  constructor(private router: Router) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isSmallScreen = window.innerWidth < 600; // Adjust the threshold as needed
+  }
 
   ngOnInit(): void {
     this.router.events

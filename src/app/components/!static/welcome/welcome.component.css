@@ -9,7 +9,6 @@
       color: #fff;
       background-color: #507e87; /* Semi-transparent black background */
       width: 100%;
-      max-width: 1124px;
       height: 100%;
     }
 
@@ -29,8 +28,8 @@
     text-align: center;
     color: #fff;
     background-color: #507e87; /* Semi-transparent black background */
-    width: 100%;
-    max-width: 1124px;
+    /* width: 100%;
+    max-width: 1124px; */
     height: 100%;
   }
 

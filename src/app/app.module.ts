@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe, NgOptimizedImage } from '@angular/common';
@@ -26,6 +26,7 @@ import { FiltersComponent } from './components/!sub-components/filters/filters.c
 import { TitleComponent } from './components/!primary/title/title.component';
 import { HeaderComponent } from './components/!primary/header/header.component';
 import { RightPaneComponent } from './components/!primary/right-pane/right-pane.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,13 @@ import { RightPaneComponent } from './components/!primary/right-pane/right-pane.
     AppRoutingModule,
     NgxGoogleAnalyticsModule.forRoot('G-RHV2TGLWNT'),
     FontAwesomeModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

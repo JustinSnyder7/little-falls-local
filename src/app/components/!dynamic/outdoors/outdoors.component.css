@@ -1,5 +1,7 @@
 
+@media (max-width: 768px) {
   .expanded {
+    /* background-color: var(--primary-color); */
     height: 96%;
     background-color: var(--item-bg);
   }
@@ -7,3 +9,12 @@
   a {
     text-decoration: none;
   }
+
+}
+
+@media (min-width: 1024px) {
+  .expanded {
+    /* background-color: var(--primary-color); */
+    background-color: goldenrod;
+  }
+}

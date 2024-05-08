@@ -1,18 +1,14 @@
 
 @media (max-width: 768px) {
-
-.header-container {
+  .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     background-color: var(--header-footer-bg);
-    background-size:cover;
     color: var(--highlight-text);
     padding: 5px;
-    margin: 0;
-    width: auto;
     font-weight: bold;
     z-index: 100;
     border-bottom: 1px solid var(--point25-alpha);
@@ -21,7 +17,6 @@
   .nav-container {
     color: var(--dark-text);
     padding: 10px;
-
   }
 
   #menu {
@@ -40,14 +35,18 @@
     color: black;
   }
   
-  .menu-visible {
+  .menu-visible,
+  .menu-hidden {
     position: fixed!important;
+    z-index: 100;
+  }
+  
+  .menu-visible {
     left: 0!important;
     border-right: 1px solid black;
   }
   
   .menu-hidden {
-    position: fixed!important;
     left: -270px!important;
   }
 
@@ -56,7 +55,7 @@
   }
 
   .right-container {
-    padding: 0px 5px;
+    padding: 0 5px;
   }
   
   .little-falls {
@@ -67,7 +66,8 @@
     margin: 0;
   }
 
-  .primary-links {
+  .primary-links,
+  .primary-links a {
     color: goldenrod;
     font-size: 14px;
     text-decoration: none;
@@ -75,101 +75,95 @@
 
   .primary-links a {
     color: var(--dark-text);
-    font-size: 14px;
-    text-decoration: none;
   }
 
   .front-splash-container {
     display: none;
   }
-
 }
 
-  @media (min-width: 1024px) {
-
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      background-color: var(--header-footer-bg);
-      background-size:cover;
-      color: var(--highlight-text);
-      padding: 5px;
-      margin: 0;
-      width: auto;
-      font-weight: bold;
-      z-index: 100;
-      border-bottom: 1px solid var(--point25-alpha);
-    }
-  
-    .nav-container {
-      color: var(--dark-text);
-      padding: 10px;
-  
-    }
-  
-    #menu {
-      position: fixed;
-      top: 0;
-      left: -270px;
-      width: 250px;
-      height: 100%;
-      background-color: goldenrod;
-      padding: 10px;
-      transition: left 0.3s ease;
-      z-index: 100;
-    }
-  
-    #menu a {
-      color: black;
-    }
-    
-    .menu-visible {
-      position: fixed!important;
-      left: 0!important;
-      border-right: 1px solid black;
-    }
-    
-    .menu-hidden {
-      position: fixed!important;
-      left: -270px!important;
-    }
-  
-    .menu-item {
-      margin: 5px;
-    }
-  
-    .right-container {
-      padding: 0px 5px;
-    }
-    
-    .little-falls {
-      font-family: 'Merriweather', sans-serif;
-      color: var(--items-container-bg);
-      font-size: 24px;
-      padding: 0;
-      margin: 0;
-    }
-  
-    .primary-links {
-      color: goldenrod;
-      font-size: 14px;
-      text-decoration: none;
-    }
-  
-    .primary-links a {
-      color: var(--dark-text);
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .front-splash-container {
-      display: block;
-      min-height: 50vh;
-      max-height: calc(100vh - 100px);
-      background-image: url(../../../../assets/lf-main.jpg);
-    }
-
+@media (min-width: 1024px) {
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--header-footer-bg);
+    color: var(--highlight-text);
+    padding: 5px;
+    font-weight: bold;
+    z-index: 100;
+    border-bottom: 1px solid var(--point25-alpha);
   }
+
+  .nav-container {
+    color: var(--dark-text);
+    padding: 10px;
+  }
+
+  #menu {
+    position: fixed;
+    top: 0;
+    left: -270px;
+    width: 250px;
+    height: 100%;
+    background-color: goldenrod;
+    padding: 10px;
+    transition: left 0.3s ease;
+    z-index: 100;
+  }
+
+  #menu a {
+    color: black;
+  }
+  
+  .menu-visible,
+  .menu-hidden {
+    position: fixed!important;
+    z-index: 100;
+  }
+  
+  .menu-visible {
+    left: 0!important;
+    border-right: 1px solid black;
+  }
+  
+  .menu-hidden {
+    left: -270px!important;
+  }
+
+  .menu-item {
+    margin: 5px;
+  }
+
+  .right-container {
+    padding: 0 5px;
+  }
+  
+  .little-falls {
+    font-family: 'Merriweather', sans-serif;
+    color: var(--items-container-bg);
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .primary-links,
+  .primary-links a {
+    color: goldenrod;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .primary-links a {
+    color: var(--dark-text);
+  }
+
+  .front-splash-container {
+    display: block;
+    min-height: 50vh;
+    max-height: calc(100vh - 100px);
+    background-image: url(../../../../assets/lf-main.jpg);
+  }
+}
