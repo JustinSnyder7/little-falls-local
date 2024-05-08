@@ -2,7 +2,7 @@ import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef } from '@
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faFilterCircleXmark, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
 interface outdoorDataElements {
@@ -48,7 +48,7 @@ export class OutdoorsComponent implements OnInit {
   isFilterApplied = false;
 
   constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
-    library.addIcons(faFilter, faFilterCircleXmark);
+    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone);
   }
 
   ngOnInit(): void {
@@ -71,7 +71,7 @@ export class OutdoorsComponent implements OnInit {
     this.isFilterApplied = true;
 
     // Toggle on reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'inline');
@@ -84,7 +84,7 @@ export class OutdoorsComponent implements OnInit {
     this.isFilterApplied = false;
 
     // Toggle off reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'none');
@@ -101,5 +101,15 @@ export class OutdoorsComponent implements OnInit {
 
   expandItem(activity: outdoorDataElements): void {
     activity.isExpanded = !activity.isExpanded;
+  }
+
+  formatEventLocationName(eventLocationName: string): string {
+    // Remove punctuation using a regular expression
+    const sanitizedName = eventLocationName.replace(/[^\w\s]/g, '');
+    
+    // Replace spaces with '+' signs and convert to lowercase
+    const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';
+  
+    return formattedName;
   }
 }

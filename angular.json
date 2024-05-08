@@ -36,7 +36,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/styles-tablet.css",
+              "src/styles-desktop.css"
             ],
             "scripts": []
           },

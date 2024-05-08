@@ -2,7 +2,7 @@ import { Pipe, PipeTransform,Component, OnInit, Renderer2, ElementRef } from '@a
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
 interface foodDataElements {
@@ -50,7 +50,7 @@ export class FoodComponent implements OnInit {
 
   constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
 
-    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark);
+    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone);
   }
 
   ngOnInit(): void {
@@ -74,7 +74,7 @@ export class FoodComponent implements OnInit {
     this.isFilterApplied = true;
 
     // Toggle on reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'inline');
@@ -86,7 +86,7 @@ export class FoodComponent implements OnInit {
     this.isFilterApplied = false;
 
     // Toggle off reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'none');

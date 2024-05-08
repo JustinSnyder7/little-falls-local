@@ -1,0 +1,23 @@
+
+<div class="header-container">
+
+    <div class="right-container">
+        <span class="little-falls">LITTLE FALLS LOCAL</span><br>
+        <span class="primary-links"><a routerLink="/events">EVENTS</a> &#11049; <a routerLink="/food">FOOD & DRINK</a> &#11049; <a routerLink="/outdoors">OUTDOORS</a></span>
+    </div>
+
+    <!-- diamond dillyo &#11049; -->
+
+    <div class="nav-container" (click)="toggleMenu()"><fa-icon [icon]="'bars'" class='fa-xl' style="color: black;"></fa-icon></div>
+
+    <div id="menu" class="menu-hidden" [ngClass]="{'menu-visible': isMenuVisible, 'menu-hidden': !isMenuVisible}" (click)="toggleMenu()">
+        <div class="menu-item"><a routerLink="/about">About</a></div>
+        <div class="menu-item"><a routerLink="/contact-us">Contact Us</a></div>
+        <div class="menu-item"><a routerLink="/submit-event">Submit an Event</a></div>
+    </div>
+
+</div>
+
+<!-- <div class="front-splash-container">
+    <p>&nbsp;</p>
+</div> -->

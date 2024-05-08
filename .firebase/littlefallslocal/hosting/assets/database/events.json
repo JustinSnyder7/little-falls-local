@@ -145,24 +145,6 @@
         "oneOff": false
       },
       {
-        "name": "Hosting an event?",
-        "startDate": "1/01/2024",
-        "endDate": "12/31/2025",
-        "startTime": "",
-        "endTime": "",
-        "cost": "",
-        "icon": "community",
-        "image": "",
-        "location": "Click here for more details.",
-        "locationName": "",
-        "description": "",
-        "url": "",
-        "type": "",
-        "highlight": false,
-        "isExpanded": false,
-        "oneOff": true
-      },
-      {
         "name": "Kingston Kane",
         "startDate": "05/04/2024",
         "endDate": "",
@@ -179,6 +161,24 @@
         "highlight": false,
         "isExpanded": false,
         "oneOff": false
+      },
+      {
+        "name": "Hosting an event?",
+        "startDate": "1/01/2024",
+        "endDate": "12/31/2025",
+        "startTime": "",
+        "endTime": "",
+        "cost": "",
+        "icon": "community",
+        "image": "",
+        "location": "Click here for more details.",
+        "locationName": "",
+        "description": "",
+        "url": "",
+        "type": "",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": true
       },
       {
         "name": "Farm to Food Truck Hoedown",
@@ -242,7 +242,7 @@
         "endTime": "",
         "cost": "",
         "icon": "music-double-note",
-        "image": "",
+        "image": "the-posers",
         "location": "99 N Park Pl, Herkimer, NY",
         "locationName": "The New Herkimer Downtown Chowdown",
         "description": "Come join us for a rockin' afternoon at the park, as The Posers take the stage! This group of longtime friends turned classic rock band knows how to bring the party. Expect a lively atmosphere filled with good vibes, great music, and plenty of fun. Whether you're a fan of classic rock or just looking to enjoy some live music with friends and family, The Posers always deliver.",

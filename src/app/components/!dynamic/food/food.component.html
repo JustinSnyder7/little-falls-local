@@ -6,7 +6,7 @@
   <a (click)="filterByType('Bar');" style="cursor: pointer;">Bars</a>
     
   <span class="filterIconContainer">
-    <fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;<a (click)="resetFilter();" style="cursor: pointer;" id="itemsFilter">clear</a>
+    <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText"><fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;clear</a>
   </span>
 </div>
 
@@ -36,11 +36,11 @@
       <span class="item-type">{{ foodItem.type }}</span> | 
       <span class="item-rating">{{ foodItem.rating }} stars <app-rating [rating]="foodItem.rating"></app-rating></span><br>
 
-      <span *ngIf="foodItem.phoneNumber" class="item-phoneNumber"><a [href]="'tel:' + foodItem.phoneNumber">{{ foodItem.phoneNumber }}</a></span><br>
+      <span *ngIf="foodItem.phoneNumber" class="item-phoneNumber"><fa-icon [icon]="'phone'" class="fa-xs"></fa-icon>&nbsp;<a [href]="'tel:' + foodItem.phoneNumber">{{ foodItem.phoneNumber }}</a></span><br>
 
       <span class="item-location">
         <span *ngIf="foodItem.location">
-        <a [href]="formatRestaurantName(foodItem.name)" target="_blank">{{ foodItem.location }}</a></span>
+          <fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;<a [href]="formatRestaurantName(foodItem.name)" target="_blank">{{ foodItem.location }}</a></span>
       </span><br>
 
       <app-image-carousel *ngIf="foodItem.image.first; else noImageBlock" [images]="foodItem.image"></app-image-carousel>

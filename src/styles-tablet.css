@@ -1,6 +1,6 @@
 
-/* Mobile ---------------------------------------------------------------------------------------- */
-@media (max-width: 768px) {
+ /* 1. Tablet Experience ----------------------------------------------------------------- */
+ @media (min-width: 768px) and (max-width: 1023px) {
 
 /* Reset browser defaults ------------------------------------------------------------------------ */
 
@@ -9,29 +9,59 @@
   padding: 0;
   border: 0;
   font-size: 100%;
+  /* font: inherit; */
 }
 
  /* Establish variables --------------------------------------------------------------------------- */
 
 :root {
-  --header-footer-bg: #009a00;
+  --header-footer-bg: darkgray;
   --item-bg: whitesmoke;
   --items-container-bg: whitesmoke;
   --light-text: white;
   --dark-text: black;
-  --highlight-text: #007bff;
+  --highlight-text: #128afb;
   --text-color-light: white;
   --text-color-dark: #449E8C; /* used for links on items */
   --buy-me-coffee-color: #ad4319;
+
   --item-color: white;
   --item-color-dos: #E2DCD0;
+  /* --item-color-dos: #F4E4B7; */
 
+
+  /* --text-color-dark: #613A2D; */
   --item-iter-border: rgba(156, 156, 156, 0.50);
   --item-borders-1: rgba(0, 0, 0, 0.1);
   --point25-alpha: rgba(0, 0, 0, 0.25);
 
+  /* --item-color-dos: #ffebdf; not a bad color for item-iter */
+
+  /* --primary-color: #FFFFFF;
+  --secondary-color: #32805c;
+  --tertiary-color: #805032;
+  --item-color: wheat;
+  --item-color-dos: #FEF7DF;
+  --buy-me-coffee-color: #ad4319;
+  --text-color-light: #fff;
+  --text-color-dark: #000;
+  --item-iter-border: rgba(156, 156, 156, 0.50);
+  --item-borders-1: rgba(0, 0, 0, 0.1);
+  --point25-alpha: rgba(0, 0, 0, 0.25); */
 
 }
+
+
+ /* Table of Contents ------------------------------------------------------------------- */
+ /* 1. Mobile Experience ---------------------------------------------------------------- */
+ /* 1b. Item elements within 4 main lists. ---------------------------------------------- */
+ /* 2. Desktop Experience --------------------------------------------------------------- */
+ /* 2a. Body, header and footer elements ------------------------------------------------ */
+ /* 2b. Item elements within 4 main lists. ---------------------------------------------- */
+ /* 3. Tablet Experience ---------------------------------------------------------------- */
+ /* ------------------------------------------------------------------------------------- */
+
+
 
   #bmc-wbtn {
     background-color: var(--buy-me-coffee-color)!important;
@@ -42,6 +72,7 @@
 
   body {
     background-color: var(--items-container-bg);
+    background-color: red;
     font-family: 'Lato';
     margin:0 auto;
     padding: 0;
@@ -66,17 +97,19 @@
   }
 
   .filters-container {
+    /* background-color: var(--header-footer-bg); */
     background-color: var(--item-bg);
     font-size: 14px;
     font-weight: normal;
     border-bottom: 1px solid var(--point25-alpha);
+    /* border-top: 1px solid var(--point25-alpha); */
     width: 100%;
     box-sizing: border-box;
     padding: 2px 5px;
     margin: 0px;
     color: var(--dark-text);
     position: fixed;
-    z-index: 98;
+    z-index: 100;
 }
 
 #clearFilterText {
@@ -92,11 +125,15 @@
 }
 
   .item-container {
-    margin: 0px 1px 28px 5px;
-    padding: 20px 5px 5px 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: auto; /* Auto-sized rows */
+    margin: 20px 1px 28px 5px;
+    padding-bottom: 5px;
     overflow-y: scroll;
     align-content: center;
     position: relative;
+    max-height: 300px;
   }
 
   .item-iter {
@@ -125,10 +162,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* border: 2px solid rgba(255, 136, 0, 0.25)!important; */
-    border: 2px solid var(--highlight-text)!important;
-    padding-bottom: 2px;
-    margin-top: 2px;
+    border: 2px solid rgba(255, 136, 0, 0.25)!important;
+    padding-bottom: 0px;
   }
   
   .item-image-wrapper {
@@ -186,6 +221,7 @@
 
   .item-description-expanded {
     font-size: 16px;
+    
   }
 
   .item-cost {
@@ -215,17 +251,28 @@
     font-weight: normal;
   }
 
-  .item-date, .item-time {
+  .item-date {
     font-size: 14px;
     font-weight: bold;
   }
 
-  .item-date-expanded, .item-time-expanded {
+  .item-date-expanded {
     display: inline;
     font-size: 14px;
     font-weight: bold;
   }
 
+  .item-time {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .item-time-expanded {
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+
+  }
 
 .item-image {
   height: 80px;
@@ -239,9 +286,8 @@
 
 .item-image-expanded {
   align-self: center;
-  width: 99.5%;
+  width: 100%;
   margin-top: 5px;
-  border: 1px solid var(--point25-alpha);
 } 
 
 .item-icon {

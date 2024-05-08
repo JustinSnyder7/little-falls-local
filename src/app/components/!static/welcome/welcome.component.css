@@ -1,20 +1,41 @@
-.welcome-container {
-    margin: 10px;
-    padding: 10px;
-    text-align: left;
-    color: #fff;
-    background-color: #507e87; /* Semi-transparent black background */
-  }
+@media (max-width: 768px) {
+
+  .welcome-container {
+      display: block;
+      position: fixed;
+      margin: 0px;
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+      background-color: #507e87; /* Semi-transparent black background */
+      width: 100%;
+      max-width: 1124px;
+      height: 100%;
+    }
 
   h2 {
     text-align: center;
   }
 
-  /* Responsive Styles */
-@media (max-width: 768px) {
+}
 
-  .contentContainer {
-    background-image:url("../../../../assets/falls.jpg");
+@media (min-width: 1024px) {
+
+  .welcome-container {
+    display: block;
+    position: fixed;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background-color: #507e87; /* Semi-transparent black background */
+    width: 100%;
+    max-width: 1124px;
+    height: 100%;
   }
+
+h2 {
+  text-align: center;
+}
 
 }

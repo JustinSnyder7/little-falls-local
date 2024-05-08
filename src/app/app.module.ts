@@ -6,7 +6,6 @@ import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/!primary/navbar/navbar.component';
 import { EventsComponent } from './components/!dynamic/events/events.component';
 import { FooterComponent } from './components/!primary/footer/footer.component';
 import { AboutComponent } from './components/!static/about/about.component';
@@ -25,11 +24,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ImageCarouselComponent } from './components/!sub-components/image-carousel/image-carousel.component';
 import { FiltersComponent } from './components/!sub-components/filters/filters.component';
 import { TitleComponent } from './components/!primary/title/title.component';
+import { HeaderComponent } from './components/!primary/header/header.component';
+import { RightPaneComponent } from './components/!primary/right-pane/right-pane.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     EventsComponent,
     FooterComponent,
     AboutComponent,
@@ -47,6 +47,8 @@ import { TitleComponent } from './components/!primary/title/title.component';
     ImageCarouselComponent,
     FiltersComponent,
     TitleComponent,
+    HeaderComponent,
+    RightPaneComponent,
   ],
   imports: [
     BrowserModule,

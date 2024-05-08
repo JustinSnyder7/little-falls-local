@@ -3,7 +3,7 @@ import { Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faFilterCircleXmark, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
 interface eventDataElements {
@@ -56,7 +56,7 @@ export class EventsComponent implements OnInit {
   isFilterApplied = false;
 
   constructor(private http: HttpClient, private meta: Meta, private datePipe: DatePipe, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
-    library.addIcons(faFilter, faFilterCircleXmark);
+    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone);
   }
 
   ngOnInit(): void {
@@ -97,7 +97,7 @@ export class EventsComponent implements OnInit {
     this.isFilterApplied = true;
 
     // Toggle on reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'inline');
@@ -109,7 +109,7 @@ export class EventsComponent implements OnInit {
     this.isFilterApplied = false;
 
     // Toggle off reset button
-    const iconElement = this.elementRef.nativeElement.querySelector('#itemsFilter');
+    const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'none');

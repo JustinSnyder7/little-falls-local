@@ -127,7 +127,7 @@
         "oneOff": false
       },
       {
-        "name": "LF HS Spring Concert",
+        "name": "Spring Concert",
         "startDate": "05/07/2024",
         "endDate": "",
         "startTime": "6:00PM",
@@ -138,6 +138,24 @@
         "location": "Little Falls High School",
         "locationName": "MS/HS Auditorium",
         "description": "High School Spring Concert.",
+        "url": "",
+        "type": "Music",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": false
+      },
+      {
+        "name": "Kingston Kane",
+        "startDate": "05/04/2024",
+        "endDate": "",
+        "startTime": "7PM",
+        "endTime": "",
+        "cost": "",
+        "icon": "music-double-note",
+        "image": "kingston-kane",
+        "location": "Rock Valley Brewing Co",
+        "locationName": "",
+        "description": "Alternative rock group Kingston Kane makes their debut at Rock Valley Brewing Co!",
         "url": "",
         "type": "Music",
         "highlight": false,
@@ -161,24 +179,6 @@
         "highlight": false,
         "isExpanded": false,
         "oneOff": true
-      },
-      {
-        "name": "Kingston Kane",
-        "startDate": "05/04/2024",
-        "endDate": "",
-        "startTime": "7PM",
-        "endTime": "",
-        "cost": "",
-        "icon": "music-double-note",
-        "image": "kingston-kane",
-        "location": "Rock Valley Brewing Co",
-        "locationName": "",
-        "description": "Alternative rock group Kingston Kane makes their debut at Rock Valley Brewing Co!",
-        "url": "",
-        "type": "Music",
-        "highlight": false,
-        "isExpanded": false,
-        "oneOff": false
       },
       {
         "name": "Farm to Food Truck Hoedown",
@@ -242,7 +242,7 @@
         "endTime": "",
         "cost": "",
         "icon": "music-double-note",
-        "image": "",
+        "image": "the-posers",
         "location": "99 N Park Pl, Herkimer, NY",
         "locationName": "The New Herkimer Downtown Chowdown",
         "description": "Come join us for a rockin' afternoon at the park, as The Posers take the stage! This group of longtime friends turned classic rock band knows how to bring the party. Expect a lively atmosphere filled with good vibes, great music, and plenty of fun. Whether you're a fan of classic rock or just looking to enjoy some live music with friends and family, The Posers always deliver.",
@@ -271,7 +271,7 @@
         "oneOff": false
       },
       {
-        "name": "Anthonly LaBarbara & The Fast IV",
+        "name": "Anthony LaBarbera & The Fast IV",
         "startDate": "08/05/2024",
         "endDate": "",
         "startTime": "4:30PM",

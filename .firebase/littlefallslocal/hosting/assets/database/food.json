@@ -90,8 +90,8 @@
       "description": "Delivery, Takeout or Dine-In. One of the best pizza places in the area!",
       "phoneNumber": "315-823-0476",
       "image": {
-        "first": "eds-pizza-menu",
-        "second": "",
+        "first": "eds-pizza",
+        "second": "eds-pizza-2",
         "third": "",
         "fourth": "",
         "fifth": "" },

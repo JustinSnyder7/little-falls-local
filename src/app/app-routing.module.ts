@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'food', component: FoodComponent },
   { path: 'submit-event', component: SubmitEventComponent},
-  { path: '', component: HomePageComponent }, // Default route
-  { path: '**', redirectTo: '/welcome', pathMatch: 'full' } // Redirect any invalid routes to the default route
+  { path: '', component: EventsComponent }, // Default route
+  { path: '**', redirectTo: '/events', pathMatch: 'full' } // Redirect any invalid routes to the default route
 ];
 
 @NgModule({
