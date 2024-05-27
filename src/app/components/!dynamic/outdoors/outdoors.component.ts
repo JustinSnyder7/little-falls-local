@@ -2,7 +2,7 @@ import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef } from '@
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter, faFilterCircleXmark, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the type of event object
 interface outdoorDataElements {
@@ -48,7 +48,7 @@ export class OutdoorsComponent implements OnInit {
   isFilterApplied = false;
 
   constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
-    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone);
+    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter);
   }
 
   ngOnInit(): void {
@@ -99,8 +99,20 @@ export class OutdoorsComponent implements OnInit {
     return `/assets/images/outdoors/${image}.jpg`;
   }
 
-  expandItem(activity: outdoorDataElements): void {
-    activity.isExpanded = !activity.isExpanded;
+  expandItem(outdoorItem: outdoorDataElements): void {
+
+    this.filteredEvents.forEach(item => {
+      if (item !== outdoorItem) {
+        item.isExpanded = false;
+      }
+    });
+
+    outdoorItem.isExpanded = !outdoorItem.isExpanded;
+  }
+
+  closeItem(outdoorItem: outdoorDataElements, event: Event): void {
+    event.stopPropagation(); // Stop event propagation
+    outdoorItem.isExpanded = false;
   }
 
   formatEventLocationName(eventLocationName: string): string {

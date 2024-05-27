@@ -1,0 +1,40 @@
+
+.title {
+    font-family: "Merriweather", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #009a00;
+    text-align: center;
+    padding: 20px;
+}
+
+p {
+    font-family: "Merriweather", sans-serif;
+    font-size: 18px;
+}
+
+.splash-images {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+
+.splash-images img {
+    height: 50vh;
+}
+
+.splash-images p {
+    width: 10vw;
+}
+
+.qr-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: auto;
+    padding-left: 50px;
+}
+
+.qr-code {
+    padding: 10px;
+}

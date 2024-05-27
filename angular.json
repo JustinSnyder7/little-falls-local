@@ -32,14 +32,14 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/assets/favicon.png",
-              "src/assets/lflocal.png",
+              "src/assets/icons/lflocal.png",
               "src/assets",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css",
-              "src/styles-tablet.css",
               "src/styles-desktop.css"
             ],
             "scripts": []
@@ -54,7 +54,7 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
+                  "maximumWarning": "2.5kb",
                   "maximumError": "4kb"
                 }
               ],
@@ -96,7 +96,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/lflocal.png",
+              "src/assets/icons/lflocal.png",
               "src/assets",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest"

@@ -199,6 +199,24 @@
         "oneOff": false
       },
       {
+        "name": "Diamond Dawgs",
+        "startDate": "05/30/2024",
+        "endDate": "",
+        "startTime": "6:35PM",
+        "endTime": "",
+        "cost": "",
+        "icon": "community",
+        "image": "diamond-dawgs",
+        "location": "247 Burwell St",
+        "locationName": "Veteran's Memorial Park",
+        "description": "Season opener, against Albany Athletics. Tickets are $6 for adults, $5 for students and $4 for our senior citizens.",
+        "url": "https://www.mvdiamonddawgs.com",
+        "type": "Sports",
+        "highlight": false,
+        "isExpanded": false,
+        "oneOff": false
+      },
+      {
         "name": "Holy Family Parish Festival",
         "startDate": "06/01/2024",
         "endDate": "",

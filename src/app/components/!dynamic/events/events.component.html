@@ -10,67 +10,71 @@
     <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText"><fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;clear</a>
   </span>
 </div>
-
 <div class="item-container">
   <div *ngFor="let eventItem of filteredEvents" class="item-iter" [class.expanded]="eventItem.isExpanded" (click)="expandItem(eventItem)">
     <div *ngIf="!eventItem.oneOff; else oneOff" class="item-wrapper">
-
-    <!-- Collapsed item view -->
-    <div *ngIf="!eventItem.isExpanded">
       
-      <div class="item-text-wrapper">
-      <div class="item-image-wrapper" *ngIf="eventItem.image"><img [src]="getImagePath(eventItem.image)" class="item-image" alt="Image" loading="lazy"></div>
-      <!-- <div class="item-image-wrapper" *ngIf="!eventItem.image"><img [src]="getIconPath(eventItem.icon)" class="item-icon" alt="Icon" height="32" width="32" loading="lazy"></div> -->
-
-      
-      <span *ngIf="!eventItem.endDate" class="item-date">{{ formatDate(eventItem.startDate) }}</span>
-      <span *ngIf="eventItem.endDate" class="item-date">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
-
-      <span *ngIf="!eventItem.endTime && eventItem.startTime" class="item-time"> at {{ eventItem.startTime }}</span>
-      <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span><br>
-
-      <span *ngIf="eventItem.image" class="item-name">{{ eventItem.name | truncate: 19 }}</span>
-      <span *ngIf="!eventItem.image" class="item-name">{{ eventItem.name | truncate: 26 }}</span><br>
-
-      <span *ngIf="eventItem.image" class="item-location">{{ eventItem.location | truncate: 21 }}</span>
-      <span *ngIf="!eventItem.image" class="item-location">{{ eventItem.location | truncate: 26 }}</span><br></div>
-    </div>
-  
-    <!-- TODO: need to add local sports to the events page, this could be amazing -->
-
-
-    <!-- Expanded item view -->
-    <div class="item-wrapper-expanded" *ngIf="eventItem.isExpanded">
-      
-      <div>
-        <!-- Expanded event date handler -->
-        <span *ngIf="!eventItem.endDate  && eventItem.startDate" class="item-date-expanded">{{ formatDate(eventItem.startDate) }}</span>
-        <span *ngIf="eventItem.endDate" class="item-date-expanded">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
-        
-        <!-- Expanded event time handler -->
-        <span *ngIf="!eventItem.endTime && eventItem.startTime" class="item-time-expanded"> at {{ eventItem.startTime }}</span>
-        <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time-expanded">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span>
+      <!-- Collapsed item view -->
+      <div *ngIf="!eventItem.isExpanded">
+        <div class="item-text-wrapper">
+          <div class="item-image-wrapper" *ngIf="eventItem.image"><img [src]="getImagePath(eventItem.image)" class="item-image" alt="Image" loading="lazy"></div>
+          
+          <span *ngIf="!eventItem.endDate" class="item-date">{{ formatDate(eventItem.startDate) }}</span>
+          <span *ngIf="eventItem.endDate" class="item-date">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
+          
+          <span *ngIf="!eventItem.endTime && eventItem.startTime" class="item-time"> at {{ eventItem.startTime }}</span>
+          <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span><br>
+          
+          <span *ngIf="eventItem.image" class="item-name">{{ eventItem.name | truncate: 19 }}</span>
+          <span *ngIf="!eventItem.image" class="item-name">{{ eventItem.name | truncate: 26 }}</span><br>
+          
+          <span *ngIf="eventItem.image" class="item-location">{{ eventItem.location | truncate: 21 }}</span>
+          <span *ngIf="!eventItem.image" class="item-location">{{ eventItem.location | truncate: 26 }}</span><br>
+        </div>
       </div>
-
-      <div class="item-name-expanded">{{ eventItem.name }}<br></div>
       
-      <span *ngIf="eventItem.cost" class="item-cost">Admission: {{ eventItem.cost }}</span><br>
+      <!-- Expanded item view -->
+      <div class="item-wrapper-expanded" *ngIf="eventItem.isExpanded">
+        <div>
 
-      <!-- TODO: need to implement functionality for location name versus location -->
+          
 
-         
-      <span *ngIf="eventItem.image; else noImageBlock"><img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image" loading="lazy"></span>
-        <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon" loading="lazy"></ng-template>
+          <span *ngIf="!eventItem.endDate && eventItem.startDate" class="item-date-expanded">{{ formatDate(eventItem.startDate) }}</span>
+          <span *ngIf="eventItem.endDate" class="item-date-expanded">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
 
-      <span class="item-location">
-        <span *ngIf="eventItem.locationName">{{ eventItem.locationName }}<br></span>
-        <span *ngIf="eventItem.location"><fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;<a [href]="formatEventLocationName(eventItem.location)" target="_blank">{{ eventItem.location }}</a><br></span>
-      </span>
+          <button class="minimizer" (click)="closeItem(eventItem, $event)"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
+          
+          <span *ngIf="!eventItem.endTime && eventItem.startTime" class="item-time-expanded"> at {{ eventItem.startTime }}</span>
+          <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time-expanded">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span>
+        </div>
+        
+        <div class="item-name-expanded">{{ eventItem.name }}</div>
+        
+        <span *ngIf="eventItem.cost" class="item-cost">Admission: {{ eventItem.cost }}</span><br>
 
-      <div *ngIf="eventItem.description" class="item-description">{{ eventItem.description }}</div>
+        <span *ngIf="eventItem.image; else noImageBlock">
+          <img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image" loading="lazy">
+        </span>
+        <ng-template #noImageBlock>
+          <img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy">
+        </ng-template>
+
+        <span class="item-location">
+          <span *ngIf="eventItem.locationName">{{ eventItem.locationName }}<br></span>
+          <span *ngIf="eventItem.location">
+            <fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;
+            <a [href]="formatEventLocationName(eventItem.location)" target="_blank">{{ eventItem.location }}</a><br>
+          </span>
+        </span>
+
+        <div *ngIf="eventItem.description" class="item-description">{{ eventItem.description }}</div>
+        
+        <!-- Close button -->
+        <!-- <button class="close-button" (click)="closeItem(eventItem, $event)">Close</button> -->
+      </div>
+      
     </div>
-  
-    </div>
+
 
     <ng-template #oneOff>
       <a routerLink="/submit-event" style="text-decoration: none;"><div class="one-off-wrapper">

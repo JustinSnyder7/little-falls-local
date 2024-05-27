@@ -101,7 +101,7 @@ export class FoodComponent implements OnInit {
     return `/assets/images/food/${image}.jpg`;
   }
 
-  expandItem(foodItem: any): void {
+  expandItem(foodItem: foodDataElements): void {
     if (foodItem.isExpanded) {
       // Check if this is already expanded; do nothing or handle click logic
       console.log("clicked it");
@@ -119,6 +119,10 @@ export class FoodComponent implements OnInit {
     }
   }
 
+  closeItem(eventItem: foodDataElements, event: Event): void {
+    event.stopPropagation(); // Stop event propagation
+    eventItem.isExpanded = false;
+  }
 
   formatRestaurantName(foodItemName: string): string {
     // Remove punctuation using a regular expression

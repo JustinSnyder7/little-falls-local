@@ -1,9 +1,13 @@
 
-  <app-header></app-header>
+<div *ngIf="isSmallScreen"><app-header></app-header>
 
   <div class="container">
     <router-outlet></router-outlet>
-    <app-right-pane></app-right-pane>
   </div>
 
   <app-footer></app-footer>
+</div>
+
+<div *ngIf="!isSmallScreen" class="splashContainer">
+  <app-desktop-splash></app-desktop-splash>
+</div>

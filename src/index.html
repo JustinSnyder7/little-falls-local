@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 
   <!-- Buy me a coffee script -->
-  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="littlefallslocal" data-description="Support me on Buy me a coffee!" data-message="Want to support what we do? Buy us a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+  <!-- <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="littlefallslocal" data-description="Support me on Buy me a coffee!" data-message="Want to support what we do? Buy us a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script> -->
 
   <!-- Google tag (gtag.js) -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M14PJEHGXS"></script>
@@ -41,11 +41,20 @@
   <meta name="theme-color" content="#009a00">
   <!-- <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#009a00"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 </head>
 
 <body>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
-</body>
 
+  <ng-container *ngIf="(scrollService.widgetShown() | async)">
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="littlefallslocal" data-description="Support me on Buy me a coffee!" data-message="Want to support what we do? Buy us a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18">
+    </script>
+  </ng-container>
+
+</body>
 </html>

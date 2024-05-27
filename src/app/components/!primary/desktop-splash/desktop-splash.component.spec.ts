@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RightPaneComponent } from './right-pane.component';
+import { DesktopSplashComponent } from './desktop-splash.component';
 
-describe('RightPaneComponent', () => {
-  let component: RightPaneComponent;
-  let fixture: ComponentFixture<RightPaneComponent>;
+describe('DesktopSplashComponent', () => {
+  let component: DesktopSplashComponent;
+  let fixture: ComponentFixture<DesktopSplashComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RightPaneComponent]
+      declarations: [DesktopSplashComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RightPaneComponent);
+    fixture = TestBed.createComponent(DesktopSplashComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

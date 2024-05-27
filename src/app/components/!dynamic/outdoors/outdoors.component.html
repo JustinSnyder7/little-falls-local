@@ -30,6 +30,9 @@
   <div class="item-wrapper-expanded" *ngIf="outdoorItem.isExpanded">
     <div *ngIf="outdoorItem.isExpanded">
       <div class="item-name-expanded">{{ outdoorItem.name }}</div>
+
+      <button class="minimizer" (click)="closeItem(outdoorItem, $event)"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
+
       <span class="item-rating">{{ outdoorItem.rating }} stars <app-rating [rating]="outdoorItem.rating"></app-rating></span><br>
       <span class="item-location">
         <span *ngIf="outdoorItem.location"><fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;<a [href]="formatEventLocationName(outdoorItem.location)" target="_blank">{{ outdoorItem.location }}</a></span>

@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule, isDevMode, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe, NgOptimizedImage } from '@angular/common';
@@ -25,8 +25,19 @@ import { ImageCarouselComponent } from './components/!sub-components/image-carou
 import { FiltersComponent } from './components/!sub-components/filters/filters.component';
 import { TitleComponent } from './components/!primary/title/title.component';
 import { HeaderComponent } from './components/!primary/header/header.component';
-import { RightPaneComponent } from './components/!primary/right-pane/right-pane.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { DesktopSplashComponent } from './components/!primary/desktop-splash/desktop-splash.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { ImagePreloadService } from './services/image-preload.service';
+
+
+function preloadImageFactory(imagePreloadService: ImagePreloadService) {
+  return () => imagePreloadService.preloadImage('assets/images/coming-soon.jpg');
+}
+
 
 @NgModule({
   declarations: [
@@ -49,12 +60,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FiltersComponent,
     TitleComponent,
     HeaderComponent,
-    RightPaneComponent,
+    DesktopSplashComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule, // Add HttpClientModule here
     AppRoutingModule,
+    MatSnackBarModule,
     NgxGoogleAnalyticsModule.forRoot('G-RHV2TGLWNT'),
     FontAwesomeModule,
     NgOptimizedImage,
@@ -65,7 +77,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [DatePipe],
+  providers: [ DatePipe, 
+    provideAnimationsAsync(), 
+    {
+      provide: APP_INITIALIZER,
+      useFactory: preloadImageFactory,
+      deps: [ImagePreloadService],
+      multi: true
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

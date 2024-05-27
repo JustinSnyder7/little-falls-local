@@ -7,6 +7,24 @@
   "display": "standalone",
   "scope": "./",
   "start_url": "./app.component.html",
+  "description": "We aim to be your go-to app for all events, restaurants, and outdoor activities, in and around Little Falls, NY. If you're all about soaking up the vibrant essence of our beautiful town, you've landed at the perfect place.",
+  "screenshots": [
+    {
+      "src": "assets/splash/events.jpg",
+      "sizes": "356x697",
+      "type": "image/jpg"
+    },
+    {
+      "src": "assets/splash/food.jpg",
+      "sizes": "356x697",
+      "type": "image/jpg"
+    },
+    {
+      "src": "assets/splash/outdoors.jpg",
+      "sizes": "356x697",
+      "type": "image/jpg"
+    }
+  ],
   "icons": [
     {
       "src": "assets/icons/icon-512x512.png",
