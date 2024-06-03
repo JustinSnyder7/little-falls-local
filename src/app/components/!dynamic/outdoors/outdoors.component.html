@@ -11,7 +11,7 @@
 </div>
 
 <div class="item-container">
-  <div *ngFor="let outdoorItem of filteredEvents" class="item-iter" [class.expanded]="outdoorItem.isExpanded" (click)="expandItem(outdoorItem)">
+  <div *ngFor="let outdoorItem of filteredEvents; let i = index" class="item-iter" #outdoorItem [class.expanded]="outdoorItem.isExpanded" (click)="expandItem(outdoorItem, i)">
     <div class="item-wrapper">
       <!-- Collapsed item view -->
       <div *ngIf="!outdoorItem.isExpanded">
@@ -41,7 +41,7 @@
       <span *ngIf="outdoorItem.image.first; else noImageBlock">
         <img [src]="getImagePath(outdoorItem.image.first)" class="item-image-expanded" alt="Image" width="95%" loading="lazy">
       </span>
-      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon" loading="lazy"></ng-template>
+      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
 
       <div *ngIf="outdoorItem.description" class="item-description">{{ outdoorItem.description }}</div>
     </div>

@@ -4,21 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GeolocationService {
+  constructor() {}
 
-  requestLocation(successCallback: (latitude: number, longitude: number) => void, errorCallback: (error: GeolocationPositionError | string) => void): void {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          successCallback(position.coords.latitude, position.coords.longitude);
-        },
-        (error: GeolocationPositionError) => {
-          errorCallback(error);
-        }
-      );
-    } else {
-      errorCallback('Geolocation is not supported by this browser.');
-    }
+  getLocation(): Promise<GeolocationCoordinates> {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            resolve(position.coords);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+      } else {
+        reject(new Error('Geolocation is not supported by this browser.'));
+      }
+    });
   }
+}
 
   // TODO: Look to see if we want to add something like this. Placelocation is imported from another TS file in the training "Angular: Progressive Web Apps". 
 
@@ -36,7 +40,3 @@ export class GeolocationService {
   //   }  
   // }
 
-  
-
-  constructor() { }
-}

@@ -11,7 +11,7 @@
   </span>
 </div>
 <div class="item-container">
-  <div *ngFor="let eventItem of filteredEvents" class="item-iter" [class.expanded]="eventItem.isExpanded" (click)="expandItem(eventItem)">
+  <div *ngFor="let eventItem of filteredEvents; let i = index" class="item-iter" #eventItem [class.expanded]="eventItem.isExpanded" (click)="expandItem(eventItem, i)">
     <div *ngIf="!eventItem.oneOff; else oneOff" class="item-wrapper">
       
       <!-- Collapsed item view -->
@@ -25,19 +25,17 @@
           <span *ngIf="!eventItem.endTime && eventItem.startTime" class="item-time"> at {{ eventItem.startTime }}</span>
           <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span><br>
           
-          <span *ngIf="eventItem.image" class="item-name">{{ eventItem.name | truncate: 19 }}</span>
-          <span *ngIf="!eventItem.image" class="item-name">{{ eventItem.name | truncate: 26 }}</span><br>
+          <span *ngIf="eventItem.image" class="item-name">{{ eventItem.name | truncate: 22 }}</span>
+          <span *ngIf="!eventItem.image" class="item-name">{{ eventItem.name | truncate: 28 }}</span><br>
           
-          <span *ngIf="eventItem.image" class="item-location">{{ eventItem.location | truncate: 21 }}</span>
-          <span *ngIf="!eventItem.image" class="item-location">{{ eventItem.location | truncate: 26 }}</span><br>
+          <span *ngIf="eventItem.image" class="item-location">{{ eventItem.locationAddress | truncate: 21 }}</span>
+          <span *ngIf="!eventItem.image" class="item-location">{{ eventItem.locationAddress | truncate: 26 }}</span><br>
         </div>
       </div>
       
       <!-- Expanded item view -->
       <div class="item-wrapper-expanded" *ngIf="eventItem.isExpanded">
         <div>
-
-          
 
           <span *ngIf="!eventItem.endDate && eventItem.startDate" class="item-date-expanded">{{ formatDate(eventItem.startDate) }}</span>
           <span *ngIf="eventItem.endDate" class="item-date-expanded">{{ formatDateRange(eventItem.startDate, eventItem.endDate) }}</span>
@@ -48,9 +46,9 @@
           <span *ngIf="eventItem.endTime && eventItem.startTime" class="item-time-expanded">, {{ eventItem.startTime }}-{{ eventItem.endTime }}</span>
         </div>
         
-        <div class="item-name-expanded">{{ eventItem.name }}</div>
+        <div class="item-name-expanded">{{ eventItem.name | truncate: 30 }}</div>
         
-        <span *ngIf="eventItem.cost" class="item-cost">Admission: {{ eventItem.cost }}</span><br>
+        <span *ngIf="eventItem.cost" class="item-cost">Admission: {{ eventItem.cost }}</span>
 
         <span *ngIf="eventItem.image; else noImageBlock">
           <img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image" loading="lazy">
@@ -61,13 +59,13 @@
 
         <span class="item-location">
           <span *ngIf="eventItem.locationName">{{ eventItem.locationName }}<br></span>
-          <span *ngIf="eventItem.location">
+          <span *ngIf="eventItem.locationAddress">
             <fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;
-            <a [href]="formatEventLocationName(eventItem.location)" target="_blank">{{ eventItem.location }}</a><br>
+            <a [href]="formatEventLocationName(eventItem.locationAddress)" target="_blank">{{ eventItem.locationAddress }}</a><br>
           </span>
         </span>
 
-        <div *ngIf="eventItem.description" class="item-description">{{ eventItem.description }}</div>
+        <div *ngIf="eventItem.description" class="item-description">{{eventItem.name}}. {{ eventItem.description }}</div>
         
         <!-- Close button -->
         <!-- <button class="close-button" (click)="closeItem(eventItem, $event)">Close</button> -->
@@ -81,7 +79,7 @@
       <img src="../../../../assets/icons/community.svg" alt="Icon" height="32" width="32" loading="lazy">
 
       <span class="item-name">{{ eventItem.name }}</span>
-      <span class="item-location" style="font-size: 16px; color: #000;">{{ eventItem.location }}</span></div></a>
+      <span class="item-location" style="font-size: 16px; color: #000;">{{ eventItem.locationAddress }}</span></div></a>
     </ng-template>
 
   </div>

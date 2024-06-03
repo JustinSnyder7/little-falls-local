@@ -1,8 +1,11 @@
-import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
+
+// import { DistanceService } from 'app/services/distance.service';
+//  private distanceService: DistanceService
 
 // Define an interface for the type of event object
 interface outdoorDataElements {
@@ -47,7 +50,9 @@ export class OutdoorsComponent implements OnInit {
 
   isFilterApplied = false;
 
-  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
+  @ViewChildren('outdoorItem') outdoorItems!: QueryList<ElementRef>;
+
+  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef ) {
     library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter);
   }
 
@@ -99,7 +104,7 @@ export class OutdoorsComponent implements OnInit {
     return `/assets/images/outdoors/${image}.jpg`;
   }
 
-  expandItem(outdoorItem: outdoorDataElements): void {
+  expandItem(outdoorItem: outdoorDataElements, index: number): void {
 
     this.filteredEvents.forEach(item => {
       if (item !== outdoorItem) {
@@ -108,6 +113,14 @@ export class OutdoorsComponent implements OnInit {
     });
 
     outdoorItem.isExpanded = !outdoorItem.isExpanded;
+    setTimeout(() => this.scrollToItemInViewport(index), 0);
+  }
+
+  scrollToItemInViewport(index: number): void {
+    const itemElement = this.outdoorItems.toArray()[index].nativeElement;
+    const itemRect = itemElement.getBoundingClientRect();
+    const offsetTop = window.scrollY + itemRect.top - 84;
+    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
   }
 
   closeItem(outdoorItem: outdoorDataElements, event: Event): void {

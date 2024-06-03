@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform,Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Pipe, PipeTransform,Component, OnInit, Renderer2, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -47,6 +47,8 @@ export class FoodComponent implements OnInit {
   filteredData: foodDataElements[] = [];
 
   isFilterApplied = false;
+
+  @ViewChildren('foodItem') foodItems!: QueryList<ElementRef>;
 
   constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
 
@@ -101,7 +103,7 @@ export class FoodComponent implements OnInit {
     return `/assets/images/food/${image}.jpg`;
   }
 
-  expandItem(foodItem: foodDataElements): void {
+  expandItem(foodItem: foodDataElements, index: number): void {
     if (foodItem.isExpanded) {
       // Check if this is already expanded; do nothing or handle click logic
       console.log("clicked it");
@@ -116,7 +118,16 @@ export class FoodComponent implements OnInit {
   
       // Expand the clicked item
       foodItem.isExpanded = true;
+
+      setTimeout(() => this.scrollToItemInViewport(index), 0);
     }
+  }
+
+  scrollToItemInViewport(index: number): void {
+    const itemElement = this.foodItems.toArray()[index].nativeElement;
+    const itemRect = itemElement.getBoundingClientRect();
+    const offsetTop = window.scrollY + itemRect.top - 84;
+    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
   }
 
   closeItem(eventItem: foodDataElements, event: Event): void {

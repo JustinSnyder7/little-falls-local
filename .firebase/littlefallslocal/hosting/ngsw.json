@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1715376404971,
+  "timestamp": 1716985968323,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -14,10 +14,10 @@
         "/chunk-26APF66P.js",
         "/chunk-2KVICZET.js",
         "/index.html",
-        "/main-Z3IMLZXG.js",
+        "/main-NCUFI7Y2.js",
         "/manifest.webmanifest",
         "/polyfills-S3BTP7ME.js",
-        "/styles-QAUAEBBH.css"
+        "/styles-SYWC5NZH.css"
       ],
       "patterns": []
     },
@@ -81,8 +81,11 @@
         "/assets/images/coming-soon.jpg",
         "/assets/images/events/comedy-at-the-elks.jpg",
         "/assets/images/events/diamond-dawgs.jpg",
+        "/assets/images/events/donna-veeder.jpg",
+        "/assets/images/events/dubbonet.jpg",
         "/assets/images/events/farm-to-food-truck.jpg",
         "/assets/images/events/holy-family-parish.jpg",
+        "/assets/images/events/holy-family-parish2.jpg",
         "/assets/images/events/jake-lozo-band.jpg",
         "/assets/images/events/kingston-kane.jpg",
         "/assets/images/events/ko-grainger.jpg",
@@ -167,7 +170,7 @@
   "dataGroups": [],
   "hashTable": {
     "/assets/bg-bump.jpg": "8171240f92b405149a5b0844fee73bab5b6a5ad9",
-    "/assets/database/events.json": "69194a1656e0dce09459b6bd4d841dd7be962282",
+    "/assets/database/events.json": "4ba1b60c066c88395e40fabdcb49bf56159cc6f9",
     "/assets/database/food.json": "3c5b9a84604250b563441cb8acf7df3935191c0c",
     "/assets/database/outdoors.json": "31bc0b3784319c834e71d36f739df9c0ea16d972",
     "/assets/database/shopping.json": "0795a5c74f64779311f1e9fd481f7cfa50872f5b",
@@ -215,11 +218,14 @@
     "/assets/icons/trekking.svg": "7b9f4d9729b216210c32333031436427e98ebaaa",
     "/assets/icons/user-badge-check.svg": "35f5ca25564e9066f1a7cfb0f26e59fde4d95531",
     "/assets/icons/user.svg": "87bcdf587f30fa176e3908cf1952fbd19cc55b19",
-    "/assets/images/coming-soon.jpg": "1b04e8be5d9e2667a411eb018e9569c8247829bf",
+    "/assets/images/coming-soon.jpg": "35ada9f3e8b350c30d8547126205fcdd31de7fe9",
     "/assets/images/events/comedy-at-the-elks.jpg": "c89c3438527f3000eecbbb5ccddda781a36bb915",
     "/assets/images/events/diamond-dawgs.jpg": "6726fc995124155819e1fbe5747b959f8cdcdb25",
+    "/assets/images/events/donna-veeder.jpg": "49a81ad89e7f48623bfc9f157c0024a4ab3540bc",
+    "/assets/images/events/dubbonet.jpg": "3e4be7c217a94c4b516cc411577cc3754d145ac4",
     "/assets/images/events/farm-to-food-truck.jpg": "41732d07cff68f13dfeb38bf99d01530e221e313",
     "/assets/images/events/holy-family-parish.jpg": "119db144cc435404884ed4633c1b637960a25462",
+    "/assets/images/events/holy-family-parish2.jpg": "e7a779146928dd91a5b49f0b2c8419a840731767",
     "/assets/images/events/jake-lozo-band.jpg": "ba68f868db81c816b0710cff26ee7020699a531e",
     "/assets/images/events/kingston-kane.jpg": "99f43e781150a413166653c63ef67139ceb2d940",
     "/assets/images/events/ko-grainger.jpg": "d00b0b82ef1b1b456309e0d2b7e0982f1e8cbf2e",
@@ -297,13 +303,13 @@
     "/assets/stars-rating/half_star_icon.svg": "3436fcdb2e253d8a749d4fc0a024ab236aa0dd43",
     "/chunk-26APF66P.js": "e27aca197556bdaf430a73fa07a4198f7683e7db",
     "/chunk-2KVICZET.js": "62772f8a993b918608d8340f760c6effee89de3a",
-    "/index.html": "b65653e2ceaa7dd29234bfe9934ae517f2ebdd45",
-    "/main-Z3IMLZXG.js": "130970227b929c726ae11184b8fd1f2e6f2ed5cc",
+    "/index.html": "f26b92ffc9b815cd6dbb881b59d3ccfd8aeb1202",
+    "/main-NCUFI7Y2.js": "f9ae7af3de8479cedf10b64b56d68682ac11867e",
     "/manifest.webmanifest": "d78526ded8b50c2006ddeb03048db5cc437b7ccd",
     "/media/falls2-73PTFKCI.jpg": "532ce4c8c8c58f06bbfd8b06938b5fd9d0a8d611",
     "/media/lf-main-YOHNARFY.jpg": "325d8d7ec4172051097e5cb3484efe60c0ea9a4d",
     "/polyfills-S3BTP7ME.js": "893d641030c187f109c667de1b0a73a03095fa3b",
-    "/styles-QAUAEBBH.css": "67e0de4646891d53cbc1b7eb605c0749f3d1296e"
+    "/styles-SYWC5NZH.css": "a10c014cf954642895e64f5407e902f0ee576eda"
   },
   "navigationUrls": [
     {

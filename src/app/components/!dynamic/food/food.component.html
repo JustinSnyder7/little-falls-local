@@ -11,7 +11,7 @@
 </div>
 
 <div class="item-container">
-  <div *ngFor="let foodItem of filteredData" class="item-iter" [class.expanded]="foodItem.isExpanded" (click)="expandItem(foodItem)">
+  <div *ngFor="let foodItem of filteredData; let i = index" class="item-iter" #foodItem [class.expanded]="foodItem.isExpanded" (click)="expandItem(foodItem, i)">
     <div class="item-wrapper">
       <!-- Collapsed item view -->
       <div *ngIf="!foodItem.isExpanded">
@@ -46,7 +46,7 @@
       </span><br>
 
       <app-image-carousel *ngIf="foodItem.image.first; else noImageBlock" [images]="foodItem.image"></app-image-carousel>
-      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" width="95%" alt="image coming soon" loading="lazy"></ng-template>
+      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
 
       <div *ngIf="foodItem.description" class="item-description">{{ foodItem.description }}</div>
     </div>

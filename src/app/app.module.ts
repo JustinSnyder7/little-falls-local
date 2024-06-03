@@ -28,9 +28,8 @@ import { HeaderComponent } from './components/!primary/header/header.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { DesktopSplashComponent } from './components/!primary/desktop-splash/desktop-splash.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { GeolocationService } from './services/geolocation.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
 import { ImagePreloadService } from './services/image-preload.service';
 
 
@@ -77,7 +76,7 @@ function preloadImageFactory(imagePreloadService: ImagePreloadService) {
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [ DatePipe, 
+  providers: [ DatePipe, GeolocationService, 
     provideAnimationsAsync(), 
     {
       provide: APP_INITIALIZER,

@@ -1,6 +1,6 @@
 // src/app/events/events.component.ts
 
-import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
@@ -17,7 +17,7 @@ interface eventDataElements {
   cost: string;
   icon: string;
   image: string;
-  location: string;
+  locationAddress: string;
   locationName: string;
   description: string;
   url: string;
@@ -52,6 +52,8 @@ export class EventsComponent implements OnInit {
 
   isFilterApplied = false;
 
+  @ViewChildren('eventItem') eventItems!: QueryList<ElementRef>;
+
   constructor(
     private http: HttpClient,
     private meta: Meta,
@@ -72,6 +74,9 @@ export class EventsComponent implements OnInit {
     this.http.get<any>('/assets/database/events.json').subscribe(data => {
       this.eventData = data.eventItem.map((eventItem: any) => ({ ...eventItem, isExpanded: false }));
       this.eventData = this.filterPastEvents(data.eventItem);
+
+      this.eventData.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
+
       this.filteredEvents = this.eventData;
     });
   }
@@ -104,13 +109,22 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  expandItem(eventItem: eventDataElements): void {
-    this.filteredEvents.forEach(item => {
-      if (item !== eventItem) {
-        item.isExpanded = false;
+  expandItem(eventItem: eventDataElements, index: number): void {
+    this.filteredEvents.forEach(event => {
+      if (event !== eventItem) {
+        event.isExpanded = false;
       }
     });
     eventItem.isExpanded = !eventItem.isExpanded;
+    setTimeout(() => this.scrollToItemInViewport(index), 0);
+  }
+
+
+  scrollToItemInViewport(index: number): void {
+    const itemElement = this.eventItems.toArray()[index].nativeElement;
+    const itemRect = itemElement.getBoundingClientRect();
+    const offsetTop = window.scrollY + itemRect.top - 84;
+    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
   }
 
   closeItem(eventItem: eventDataElements, event: Event): void {

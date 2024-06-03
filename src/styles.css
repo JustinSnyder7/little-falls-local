@@ -58,8 +58,6 @@
     margin:0 auto;
     padding: 0;
     overflow: clip auto;
-
-    /* TODO: don't allow clients to select text, need to verify if this is a good idea or not, or if it should just be in specific areas. */
     user-select: none;
     -webkit-user-select: none;
   }
@@ -76,7 +74,7 @@
     border: 0px solid var(--secondary-color);
     background-color: transparent;
     top: 17px;
-    right: 9px;
+    right: 0;
     border-radius: 6px;
     margin: auto;
   }
@@ -176,13 +174,13 @@
   }
 
   .item-name {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     color: var(--highlight-text);
   }
 
   .item-name-expanded {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: var(--highlight-text);
   }
@@ -260,10 +258,6 @@
 } 
 
 .item-icon {
-  /* position: absolute;
-  top: 0;
-  right: 5px;
-  height: 80px; */
   display: flex;
   height: 80px;
   max-width: 100px;
@@ -296,7 +290,6 @@
 .static-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   margin: 10px;
   padding: 10px;
   text-align: left;
@@ -320,14 +313,3 @@ padding: 20px;
 }
 
 }
-
-/* html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
-
-
-/* This does effect just the app version of the website */
-/* @media (display-mode: standalone) {
-  body {
-    background-color: red;
-  }
-} */
