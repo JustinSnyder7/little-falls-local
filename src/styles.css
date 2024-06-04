@@ -154,6 +154,32 @@
     border: 1px solid var(--point25-alpha);
   }
 
+  .image-container img {
+    cursor: pointer;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9000;
+  }
+  
+  .overlay.active {
+    display: flex;
+  }
+  
+  .overlay img {
+    max-width: 95%;
+    max-height: 95%;
+  }
+
   .item-wrapper {
     display: flex;
     flex-direction: column;

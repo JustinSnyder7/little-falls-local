@@ -51,7 +51,7 @@
         <span *ngIf="eventItem.cost" class="item-cost">Admission: {{ eventItem.cost }}</span>
 
         <span *ngIf="eventItem.image; else noImageBlock">
-          <img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image" loading="lazy">
+          <img [src]="getImagePath(eventItem.image)" class="item-image-expanded" alt="Image" loading="lazy" (click)="openImage($event)">
         </span>
         <ng-template #noImageBlock>
           <img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy">

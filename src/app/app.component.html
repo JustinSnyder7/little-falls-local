@@ -11,3 +11,8 @@
 <div *ngIf="!isSmallScreen" class="splashContainer">
   <app-desktop-splash></app-desktop-splash>
 </div>
+
+<!-- image click fullscreen overlay -->
+<div [ngClass]="{'overlay': true, 'active': isOverlayActive}" (click)="closeOverlay()">
+  <img [src]="activeImage" *ngIf="isOverlayActive">
+</div>

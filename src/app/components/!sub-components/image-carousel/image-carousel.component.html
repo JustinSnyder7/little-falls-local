@@ -2,7 +2,7 @@
 <div class="image-carousel">
 
   <div class="primary-image-wrapper">
-  <img [src]="'/assets/images/food/' + currentImage + '.jpg'" alt="Featured Image"></div>
+  <img [src]="'/assets/images/food/' + currentImage + '.jpg'" alt="Featured Image" (click)="openImage($event)"></div>
 
   <div class="thumbnail-container">
     <img *ngFor="let image of thumbnailImages" 
@@ -16,4 +16,4 @@
 
  <!-- Image dimensions shall be 1024 by 768 -->
 
-<!-- TODO: need to figure out how to pass ALT argument foodPlaces.name -->
+<!-- TODO: need to eventually pass ALT argument from foodPlaces.name, can technically add it to the data and do it that way? -->

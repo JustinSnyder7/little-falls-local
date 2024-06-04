@@ -212,7 +212,7 @@
 
   router-outlet {
     display: flex;
-    align-self: left;
+    /* align-self: left; */
   }
 
   app-welcome {

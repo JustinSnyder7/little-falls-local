@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
+import { OverlayService } from '../../../services/overlay.service';
 
 // import { DistanceService } from 'app/services/distance.service';
 //  private distanceService: DistanceService
@@ -48,12 +49,19 @@ export class OutdoorsComponent implements OnInit {
   outdoorData: outdoorDataElements[] = [];
   filteredEvents: outdoorDataElements[] = [];
 
-  isFilterApplied = false;
+  currentImage: string = ''; // Currently displayed main image
+  isActive: boolean = false;
+  isFilterApplied: boolean = false;
 
   @ViewChildren('outdoorItem') outdoorItems!: QueryList<ElementRef>;
 
-  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef ) {
+  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef, private overlayService: OverlayService) {
     library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter);
+  }
+
+  openImage(event: any) {
+    const imageUrl = event.target.src;
+    this.overlayService.openOverlay(imageUrl);
   }
 
   ngOnInit(): void {
@@ -104,17 +112,36 @@ export class OutdoorsComponent implements OnInit {
     return `/assets/images/outdoors/${image}.jpg`;
   }
 
+  // expandItem(outdoorItem: outdoorDataElements, index: number): void {
+
+  //   this.filteredEvents.forEach(item => {
+  //     if (item !== outdoorItem) {
+  //       item.isExpanded = false;
+  //     }
+  //   });
+
+  //   outdoorItem.isExpanded = !outdoorItem.isExpanded;
+  //   setTimeout(() => this.scrollToItemInViewport(index), 0);
+  // }
+
   expandItem(outdoorItem: outdoorDataElements, index: number): void {
+    if (outdoorItem.isExpanded) {
+      // Check if this is already expanded; do nothing for now     
+    } else {
+      // Collapse any previously expanded item
+      this.outdoorData.forEach(item => {
+        if (item.isExpanded && item !== outdoorItem) {
+          item.isExpanded = false;
+        }
+      });
+  
+      // Expand the clicked item
+      outdoorItem.isExpanded = true;
 
-    this.filteredEvents.forEach(item => {
-      if (item !== outdoorItem) {
-        item.isExpanded = false;
-      }
-    });
-
-    outdoorItem.isExpanded = !outdoorItem.isExpanded;
-    setTimeout(() => this.scrollToItemInViewport(index), 0);
+      setTimeout(() => this.scrollToItemInViewport(index), 0);
+    }
   }
+
 
   scrollToItemInViewport(index: number): void {
     const itemElement = this.outdoorItems.toArray()[index].nativeElement;

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { OverlayService } from '../../../services/overlay.service';
 
 @Component({
   selector: 'app-image-carousel',
@@ -6,6 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./image-carousel.component.css']
 })
 export class ImageCarouselComponent {
+
+  constructor(private overlayService: OverlayService) { }
+
   @Input() images: any; // Input data containing image URLs
 
   currentImage: string = ''; // Currently displayed main image
@@ -26,6 +30,11 @@ export class ImageCarouselComponent {
     }
   }
 
+  openImage(event: any) {
+    const imageUrl = event.target.src;
+    this.overlayService.openOverlay(imageUrl);
+  }
+
   setCurrentImage(image: string): void {
     this.currentImage = image; // Set clicked thumbnail as main image
   }
@@ -34,4 +43,5 @@ export class ImageCarouselComponent {
   handleImageError(event: any): void {
     event.target.src = this.fallbackImageUrl; // Replace failed image with fallback URL
   }
+
 }

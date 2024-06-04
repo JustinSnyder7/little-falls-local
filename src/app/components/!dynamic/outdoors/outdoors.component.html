@@ -39,7 +39,7 @@
       </span>
       
       <span *ngIf="outdoorItem.image.first; else noImageBlock">
-        <img [src]="getImagePath(outdoorItem.image.first)" class="item-image-expanded" alt="Image" width="95%" loading="lazy">
+        <img [src]="getImagePath(outdoorItem.image.first)" class="item-image-expanded" alt="Image" loading="lazy" (click)="openImage($event)">
       </span>
       <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
 

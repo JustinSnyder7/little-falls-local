@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1716985968323,
+  "timestamp": 1717534564409,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,13 +11,13 @@
         "ignoreVary": true
       },
       "urls": [
-        "/chunk-26APF66P.js",
-        "/chunk-2KVICZET.js",
+        "/chunk-EEPSSU6Z.js",
+        "/chunk-EMPMW7DB.js",
         "/index.html",
-        "/main-NCUFI7Y2.js",
+        "/main-25IYHWOE.js",
         "/manifest.webmanifest",
         "/polyfills-S3BTP7ME.js",
-        "/styles-SYWC5NZH.css"
+        "/styles-WXHQHWR2.css"
       ],
       "patterns": []
     },
@@ -152,6 +152,7 @@
         "/assets/lf-main-746.jpg",
         "/assets/lf-main.jpg",
         "/assets/lflocal.png",
+        "/assets/little-falls-map.jpg",
         "/assets/splash/events.jpg",
         "/assets/splash/food.jpg",
         "/assets/splash/outdoors.jpg",
@@ -292,6 +293,7 @@
     "/assets/lf-main-746.jpg": "dd58f3ab45ba7575110b40e378b44b6c9d7d205a",
     "/assets/lf-main.jpg": "325d8d7ec4172051097e5cb3484efe60c0ea9a4d",
     "/assets/lflocal.png": "4ac90b9de3280387841e803859275f4f91b8594d",
+    "/assets/little-falls-map.jpg": "05c8232bf3e23935954ee396897cefb4fd61c384",
     "/assets/splash/events.jpg": "d5ed5b080d0cfb910a92b1310e134cee9742a1ce",
     "/assets/splash/food.jpg": "3bd2685b9886f455903991652ca97bf710c3cc3b",
     "/assets/splash/outdoors.jpg": "761e4a52b6371f5f60664f83f160e3e339de92c6",
@@ -301,15 +303,15 @@
     "/assets/stars-rating/empty_star_icon.svg": "6b0222dd5b3259fd94df948c219973b4f6b0169a",
     "/assets/stars-rating/full_star_icon.svg": "6d5d72750fc6ecd4b7415267423659b4ab9a49d9",
     "/assets/stars-rating/half_star_icon.svg": "3436fcdb2e253d8a749d4fc0a024ab236aa0dd43",
-    "/chunk-26APF66P.js": "e27aca197556bdaf430a73fa07a4198f7683e7db",
-    "/chunk-2KVICZET.js": "62772f8a993b918608d8340f760c6effee89de3a",
-    "/index.html": "f26b92ffc9b815cd6dbb881b59d3ccfd8aeb1202",
-    "/main-NCUFI7Y2.js": "f9ae7af3de8479cedf10b64b56d68682ac11867e",
+    "/chunk-EEPSSU6Z.js": "6ca36d1b80b5d04cbe341b50622428f5b6913baa",
+    "/chunk-EMPMW7DB.js": "818eead4fa9d37377ca6f27c4d0cb3f6531f4cb0",
+    "/index.html": "3e6eb5730a8c73f27bdf36043ea8f6ee40b6e142",
+    "/main-25IYHWOE.js": "ddfa19e2f014981f4709fe59bb9b2b8fc0609c67",
     "/manifest.webmanifest": "d78526ded8b50c2006ddeb03048db5cc437b7ccd",
     "/media/falls2-73PTFKCI.jpg": "532ce4c8c8c58f06bbfd8b06938b5fd9d0a8d611",
     "/media/lf-main-YOHNARFY.jpg": "325d8d7ec4172051097e5cb3484efe60c0ea9a4d",
     "/polyfills-S3BTP7ME.js": "893d641030c187f109c667de1b0a73a03095fa3b",
-    "/styles-SYWC5NZH.css": "a10c014cf954642895e64f5407e902f0ee576eda"
+    "/styles-WXHQHWR2.css": "b05e63a841d478257933a4c3a42419f2d4281c7f"
   },
   "navigationUrls": [
     {

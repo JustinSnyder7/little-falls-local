@@ -7,6 +7,8 @@ import { DatePipe } from '@angular/common';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFilter, faFilterCircleXmark, faLocationDot, faDownLeftAndUpRightToCenter, faWindowMinimize, faPhone } from '@fortawesome/free-solid-svg-icons';
 
+import { OverlayService } from '../../../services/overlay.service';
+
 // Define an interface for the type of event object
 interface eventDataElements {
   name: string;
@@ -60,9 +62,15 @@ export class EventsComponent implements OnInit {
     private datePipe: DatePipe,
     private library: FaIconLibrary,
     private renderer: Renderer2,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private overlayService: OverlayService
   ) {
     library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faWindowMinimize);
+  }
+
+  openImage(event: any) {
+    const imageUrl = event.target.src;
+    this.overlayService.openOverlay(imageUrl);
   }
 
   ngOnInit(): void {
@@ -109,16 +117,34 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  expandItem(eventItem: eventDataElements, index: number): void {
-    this.filteredEvents.forEach(event => {
-      if (event !== eventItem) {
-        event.isExpanded = false;
-      }
-    });
-    eventItem.isExpanded = !eventItem.isExpanded;
-    setTimeout(() => this.scrollToItemInViewport(index), 0);
-  }
+  // expandItem(eventItem: eventDataElements, index: number): void {
+  //   this.filteredEvents.forEach(event => {
+  //     if (event !== eventItem) {
+  //       event.isExpanded = false;
+  //     }
+  //   });
+  //   eventItem.isExpanded = !eventItem.isExpanded;
+  //   setTimeout(() => this.scrollToItemInViewport(index), 0);
+  // }
 
+
+  expandItem(eventItem: eventDataElements, index: number): void {
+    if (eventItem.isExpanded) {
+      // Check if this is already expanded; do nothing for now     
+    } else {
+      // Collapse any previously expanded item
+      this.eventData.forEach(item => {
+        if (item.isExpanded && item !== eventItem) {
+          item.isExpanded = false;
+        }
+      });
+  
+      // Expand the clicked item
+      eventItem.isExpanded = true;
+
+      setTimeout(() => this.scrollToItemInViewport(index), 0);
+    }
+  }
 
   scrollToItemInViewport(index: number): void {
     const itemElement = this.eventItems.toArray()[index].nativeElement;

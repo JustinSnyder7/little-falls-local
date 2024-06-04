@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { OverlayService } from '../../../services/overlay.service';
 
 // Define an interface for the type of event object
 interface foodDataElements {
@@ -46,11 +47,14 @@ export class FoodComponent implements OnInit {
   foodData: foodDataElements[] = [];
   filteredData: foodDataElements[] = [];
 
-  isFilterApplied = false;
+  isOverlayActive:boolean = false;
+  activeImage: string = '';
+
+  isFilterApplied: boolean = false;
 
   @ViewChildren('foodItem') foodItems!: QueryList<ElementRef>;
 
-  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef) {
+  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef, private overlayService: OverlayService) {
 
     library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone);
   }
@@ -68,6 +72,15 @@ export class FoodComponent implements OnInit {
       // Create version of list to apply additional filtering
       this.filteredData = this.foodData;
     });
+  }
+
+  closeOverlay() {
+    this.overlayService.closeOverlay();
+  }
+
+  openImage(event: any) {
+    const imageUrl = event.target.src;
+    this.overlayService.openOverlay(imageUrl);
   }
 
   filterByType(type: string): void {
@@ -105,9 +118,7 @@ export class FoodComponent implements OnInit {
 
   expandItem(foodItem: foodDataElements, index: number): void {
     if (foodItem.isExpanded) {
-      // Check if this is already expanded; do nothing or handle click logic
-      console.log("clicked it");
-      
+      // Check if this is already expanded; do nothing for now
     } else {
       // Collapse any previously expanded item
       this.foodData.forEach(item => {

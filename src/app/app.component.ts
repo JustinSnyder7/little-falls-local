@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ScrollCheckService } from './services/scroll-check.service';
 import { GeolocationService } from './services/geolocation.service';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { OverlayService } from './services/overlay.service';
 
 library.add(faTimes);
 
@@ -22,6 +23,9 @@ export class AppComponent implements OnInit {
   showFilters: boolean = false;
   isSmallScreen: boolean = false;
 
+  isOverlayActive: boolean = false;
+  activeImage: string = '';
+
   @HostListener('window:resize', ['$event'])
   onResize(event: UIEvent) {
     this.checkScreenSize();
@@ -32,7 +36,8 @@ export class AppComponent implements OnInit {
     private snackBar: MatSnackBar,
     private scrollCheckService: ScrollCheckService,
     private geolocationService: GeolocationService,
-    private swUpdate: SwUpdate
+    private swUpdate: SwUpdate,
+    private overlayService: OverlayService
   ) {
     this.checkScreenSize();
     this.getLocation();
@@ -99,10 +104,20 @@ export class AppComponent implements OnInit {
 
     // Scroll event listener
     window.addEventListener('scroll', () => this.scrollCheckService.trackScroll());
+
+    this.overlayService.overlayState$.subscribe(state => {
+      this.isOverlayActive = state.isActive;
+      this.activeImage = state.imageUrl;
+    });
+
   }
 
   isEventsPageActive(): boolean {
     return this.router.url.includes('/events');
+  }
+
+  closeOverlay() {
+    this.overlayService.closeOverlay();
   }
 }
 

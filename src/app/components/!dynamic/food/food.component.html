@@ -31,8 +31,6 @@
     <div *ngIf="foodItem.isExpanded">
       <div class="item-name-expanded">{{ foodItem.name }}</div>
 
-      <!-- <button class="minimizer" (click)="foodItem.isExpanded = false"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button> -->
-
       <button class="minimizer" (click)="closeItem(foodItem, $event)"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
 
       <span class="item-type">{{ foodItem.type }}</span> | 
@@ -52,5 +50,4 @@
     </div>
   </div>
   </div>
-  <!-- <p>&nbsp;</p><p>&nbsp;</p> -->
 </div>
