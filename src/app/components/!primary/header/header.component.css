@@ -7,6 +7,9 @@
     position: sticky;
     top: 0;
     background-color: var(--header-footer-bg);
+    background-image: linear-gradient(#009a00, #00b600);
+    /* background-image: linear-gradient(to bottom right, #009A00, grey); */
+    /* background-image: linear-gradient(#2c3531, #116466); badass but too dark */
     color: var(--highlight-text);
     padding: 5px;
     font-weight: bold;
@@ -22,17 +25,18 @@
   #menu {
     position: fixed;
     top: 0;
-    left: -270px;
-    width: 250px;
+    left: -279px;
+    width: 259px;
     height: 100%;
-    background-color: goldenrod;
+    background-color: grey;
     padding: 10px;
     transition: left 0.3s ease;
     z-index: 100;
   }
 
   #menu a {
-    color: black;
+    color: wheat;
+    text-align: center;
   }
   
   .menu-visible,
@@ -47,7 +51,7 @@
   }
   
   .menu-hidden {
-    left: -270px!important;
+    left: -279px!important;
   }
 
   .menu-item {
@@ -66,15 +70,15 @@
     margin: 0;
   }
 
-  .primary-links,
-  .primary-links a {
-    color: goldenrod;
+  .primary-links {
+    color: #64FA64;
     font-size: 14px;
-    text-decoration: none;
   }
 
   .primary-links a {
     color: var(--dark-text);
+    text-decoration: none;
+    font-size: 14px;
   }
 
   .front-splash-container {
@@ -82,7 +86,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .header-container {
     display: flex;
     justify-content: space-between;
@@ -90,6 +94,7 @@
     position: sticky;
     top: 0;
     background-color: var(--header-footer-bg);
+    background-image: linear-gradient(to bottom right, #00b600, #009a00);
     color: var(--highlight-text);
     padding: 5px;
     font-weight: bold;
@@ -147,9 +152,9 @@
     font-size: 24px;
     padding: 0;
     margin: 0;
-  }
+  } */
 
-  .primary-links,
+  /* .primary-links,
   .primary-links a {
     color: goldenrod;
     font-size: 14px;
@@ -158,12 +163,12 @@
 
   .primary-links a {
     color: var(--dark-text);
-  }
+  } */
 
-  .front-splash-container {
+  /* .front-splash-container {
     display: block;
     min-height: 50vh;
     max-height: calc(100vh - 100px);
     background-image: url(../../../../assets/lf-main.jpg);
   }
-}
+} */

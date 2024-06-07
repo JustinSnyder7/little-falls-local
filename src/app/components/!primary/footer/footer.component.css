@@ -5,7 +5,7 @@
     bottom: 0;
     font-size: 14px;
     color: var(--dark-text);
-    background-color: var(--header-footer-bg);
+    background-color: #00b600;
     border-top: 1px solid var(--point25-alpha);
     text-align: center;
     z-index: 100;

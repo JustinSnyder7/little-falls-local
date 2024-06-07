@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1717534564409,
+  "timestamp": 1717791527508,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,13 +11,13 @@
         "ignoreVary": true
       },
       "urls": [
-        "/chunk-EEPSSU6Z.js",
-        "/chunk-EMPMW7DB.js",
+        "/chunk-3HNRWSF6.js",
+        "/chunk-HGL5Q3WP.js",
         "/index.html",
-        "/main-25IYHWOE.js",
+        "/main-APU76A2W.js",
         "/manifest.webmanifest",
         "/polyfills-S3BTP7ME.js",
-        "/styles-WXHQHWR2.css"
+        "/styles-DZJAZW7M.css"
       ],
       "patterns": []
     },
@@ -79,6 +79,7 @@
         "/assets/icons/user-badge-check.svg",
         "/assets/icons/user.svg",
         "/assets/images/coming-soon.jpg",
+        "/assets/images/events/canal-celebration.jpg",
         "/assets/images/events/comedy-at-the-elks.jpg",
         "/assets/images/events/diamond-dawgs.jpg",
         "/assets/images/events/donna-veeder.jpg",
@@ -92,7 +93,10 @@
         "/assets/images/events/movie-night-ghostbusters.jpg",
         "/assets/images/events/pride-day.jpg",
         "/assets/images/events/renaissance-pub.jpg",
+        "/assets/images/events/sand-drags.jpg",
         "/assets/images/events/the-posers.jpg",
+        "/assets/images/events/the-posers2.jpg",
+        "/assets/images/events/violet-festival.jpg",
         "/assets/images/food/ann-st-restaurant-2.jpg",
         "/assets/images/food/ann-st-restaurant-3.jpg",
         "/assets/images/food/ann-st-restaurant-4.jpg",
@@ -120,6 +124,7 @@
         "/assets/images/food/fat-cats-4.jpg",
         "/assets/images/food/fat-cats-5.jpg",
         "/assets/images/food/fat-cats.jpg",
+        "/assets/images/food/renaissance-pub.jpg",
         "/assets/images/food/ruggieros-trattoria-2.jpg",
         "/assets/images/food/ruggieros-trattoria-3.jpg",
         "/assets/images/food/ruggieros-trattoria-4.jpg",
@@ -162,8 +167,7 @@
         "/assets/stars-rating/empty_star_icon.svg",
         "/assets/stars-rating/full_star_icon.svg",
         "/assets/stars-rating/half_star_icon.svg",
-        "/media/falls2-73PTFKCI.jpg",
-        "/media/lf-main-YOHNARFY.jpg"
+        "/media/falls2-73PTFKCI.jpg"
       ],
       "patterns": []
     }
@@ -171,8 +175,8 @@
   "dataGroups": [],
   "hashTable": {
     "/assets/bg-bump.jpg": "8171240f92b405149a5b0844fee73bab5b6a5ad9",
-    "/assets/database/events.json": "4ba1b60c066c88395e40fabdcb49bf56159cc6f9",
-    "/assets/database/food.json": "3c5b9a84604250b563441cb8acf7df3935191c0c",
+    "/assets/database/events.json": "d5459305f6a0afe5db1e7fb2f2e70d9b2b513245",
+    "/assets/database/food.json": "3c11f246239d65a0754a6c7336f4ac73147f2905",
     "/assets/database/outdoors.json": "31bc0b3784319c834e71d36f739df9c0ea16d972",
     "/assets/database/shopping.json": "0795a5c74f64779311f1e9fd481f7cfa50872f5b",
     "/assets/falls.jpg": "410541a0ca9a320770e9c1cbc051047388775348",
@@ -184,7 +188,7 @@
     "/assets/icons/coffee-cup.svg": "00d9c4b125800870ed883ea0ef271dcfdedb1a14",
     "/assets/icons/community.svg": "40c13932d3860037ae21b8dbe72b2f290be32d3f",
     "/assets/icons/cutlery.svg": "cfe09df0169feb8804018b13366ebda6adbade82",
-    "/assets/icons/favicon.png": "7a37c47f1c3aa6f1a3c0f4f4a0721acf90c6c3df",
+    "/assets/icons/favicon.png": "320ebf552f7784a039455e67bfee6aebe561a173",
     "/assets/icons/filter-alt.svg": "d3672836a74c291d23b437b12765e94620fe0a73",
     "/assets/icons/filter-solid.svg": "e9a6a4f6a95bb441152913b858961c05aaf92527",
     "/assets/icons/filter.svg": "d40abf116aed80eea79329f327e594096a08071f",
@@ -197,7 +201,7 @@
     "/assets/icons/leaderboard-star.svg": "e816f1f11be58fce95672fb4b18a70f9b2d2535e",
     "/assets/icons/leaf.svg": "c82edd8eb3a7e0941b632ea37e44ae2c4e8c103a",
     "/assets/icons/learning.svg": "f1336f87817f35d43df80d4c51da430b9fed94b1",
-    "/assets/icons/lflocal.png": "e8bcbfafbff4734234b53c6f65fa85933217c010",
+    "/assets/icons/lflocal.png": "a09974e7136f21f181e96ba34b852d725e826918",
     "/assets/icons/map-pin.svg": "f9c640b8addfd5e12dfee9cabb00bbf2dce4a20e",
     "/assets/icons/maskable_icon.png": "02c1aa26fe2292672c7bc6936ffd2e76bd7de0df",
     "/assets/icons/movie.svg": "3fe05239832f40124bb569265b2ea04d200f669d",
@@ -220,6 +224,7 @@
     "/assets/icons/user-badge-check.svg": "35f5ca25564e9066f1a7cfb0f26e59fde4d95531",
     "/assets/icons/user.svg": "87bcdf587f30fa176e3908cf1952fbd19cc55b19",
     "/assets/images/coming-soon.jpg": "35ada9f3e8b350c30d8547126205fcdd31de7fe9",
+    "/assets/images/events/canal-celebration.jpg": "dfc371b50c818b4a4b5488367b2de734c9aa56b6",
     "/assets/images/events/comedy-at-the-elks.jpg": "c89c3438527f3000eecbbb5ccddda781a36bb915",
     "/assets/images/events/diamond-dawgs.jpg": "6726fc995124155819e1fbe5747b959f8cdcdb25",
     "/assets/images/events/donna-veeder.jpg": "49a81ad89e7f48623bfc9f157c0024a4ab3540bc",
@@ -233,7 +238,10 @@
     "/assets/images/events/movie-night-ghostbusters.jpg": "443cb8470a8d965f3ea4d9854af0ef5274938c94",
     "/assets/images/events/pride-day.jpg": "54d966d022eba18f3ad92c4fc5431a6743a0f3ad",
     "/assets/images/events/renaissance-pub.jpg": "b20e99996994f7c7b5273784103a78e4a4badfe7",
+    "/assets/images/events/sand-drags.jpg": "fcff6adfaaba3d8f4dca293f35464eb2e20f1165",
     "/assets/images/events/the-posers.jpg": "7d6b55cb512bb0a9dcd255fd22d6c24ce73a8d77",
+    "/assets/images/events/the-posers2.jpg": "d4f1c7d90ac3b81720b750e1e0bab6dac97b6734",
+    "/assets/images/events/violet-festival.jpg": "eaa944450b375ff08eb8c0b0807adfbbcb7a774c",
     "/assets/images/food/ann-st-restaurant-2.jpg": "25671b9677074a27f37efd5a6587ceaff1ab8a75",
     "/assets/images/food/ann-st-restaurant-3.jpg": "26362bcb6a9bfe4c82267b82e46830e49eb53cb9",
     "/assets/images/food/ann-st-restaurant-4.jpg": "8f25f4615b11cf07afcbca34a73c7c51ac05a09a",
@@ -261,6 +269,7 @@
     "/assets/images/food/fat-cats-4.jpg": "b135ffdb0515ecb5fd6daca365f6bcb094ace21a",
     "/assets/images/food/fat-cats-5.jpg": "2457a78e42aee48c9feb6f29708c523fb7c54116",
     "/assets/images/food/fat-cats.jpg": "a3314cddcca111e5bd8fac628d41119aa44882f1",
+    "/assets/images/food/renaissance-pub.jpg": "d78af5ca42e8e6853e36264dcf36481355192ea1",
     "/assets/images/food/ruggieros-trattoria-2.jpg": "d53c27b36638cb2b3c1ae14564ef8d5510f5b9ad",
     "/assets/images/food/ruggieros-trattoria-3.jpg": "0ebde7edf494b6b17d159ac2196a1ffe298ab4e9",
     "/assets/images/food/ruggieros-trattoria-4.jpg": "e41cde87094f6064d1e6b601bf9412ef7e9c0115",
@@ -303,15 +312,14 @@
     "/assets/stars-rating/empty_star_icon.svg": "6b0222dd5b3259fd94df948c219973b4f6b0169a",
     "/assets/stars-rating/full_star_icon.svg": "6d5d72750fc6ecd4b7415267423659b4ab9a49d9",
     "/assets/stars-rating/half_star_icon.svg": "3436fcdb2e253d8a749d4fc0a024ab236aa0dd43",
-    "/chunk-EEPSSU6Z.js": "6ca36d1b80b5d04cbe341b50622428f5b6913baa",
-    "/chunk-EMPMW7DB.js": "818eead4fa9d37377ca6f27c4d0cb3f6531f4cb0",
-    "/index.html": "3e6eb5730a8c73f27bdf36043ea8f6ee40b6e142",
-    "/main-25IYHWOE.js": "ddfa19e2f014981f4709fe59bb9b2b8fc0609c67",
+    "/chunk-3HNRWSF6.js": "2c312b0dd4da6952a360264aba0dd1a1ec47ed71",
+    "/chunk-HGL5Q3WP.js": "e89bd2d30be52f3c26618d53fae4a8642d115c9d",
+    "/index.html": "a7e37e7cdffcdbce369085b9b6c2c6042fca7fe2",
+    "/main-APU76A2W.js": "3cc3cd7de4ac60554460aac5396e946b5313b02b",
     "/manifest.webmanifest": "d78526ded8b50c2006ddeb03048db5cc437b7ccd",
     "/media/falls2-73PTFKCI.jpg": "532ce4c8c8c58f06bbfd8b06938b5fd9d0a8d611",
-    "/media/lf-main-YOHNARFY.jpg": "325d8d7ec4172051097e5cb3484efe60c0ea9a4d",
     "/polyfills-S3BTP7ME.js": "893d641030c187f109c667de1b0a73a03095fa3b",
-    "/styles-WXHQHWR2.css": "b05e63a841d478257933a4c3a42419f2d4281c7f"
+    "/styles-DZJAZW7M.css": "9398945e89b5229a9aa9a3ad2994662af8e02dd9"
   },
   "navigationUrls": [
     {

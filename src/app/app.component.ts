@@ -1,5 +1,5 @@
 
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -18,6 +18,8 @@ library.add(faTimes);
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  showWidget: boolean = false;
+
   title = 'LittleFallsLocal.com';
 
   showFilters: boolean = false;
@@ -37,7 +39,8 @@ export class AppComponent implements OnInit {
     private scrollCheckService: ScrollCheckService,
     private geolocationService: GeolocationService,
     private swUpdate: SwUpdate,
-    private overlayService: OverlayService
+    private overlayService: OverlayService,
+    private renderer: Renderer2
   ) {
     this.checkScreenSize();
     this.getLocation();
@@ -57,11 +60,27 @@ export class AppComponent implements OnInit {
     );
   }
 
+  // @HostListener('window:scroll', ['$event'])
+  // onScroll(event: Event): void {
+  //   this.scrollCheckService.trackScroll();
+  //   console.log('scroll detected');
+  // }
+
   checkScreenSize() {
     this.isSmallScreen = window.innerWidth < 1024;
   }
 
   ngOnInit(): void {
+    this.scrollCheckService.widgetShown().subscribe((shown) => {
+      if (shown) {
+        console.log('maybe scroll detected');
+        this.showWidget = true;
+        // document.addEventListener('DOMContentLoaded', () => {
+        //   this.loadBuyMeACoffeeWidget();
+        // });
+      }
+    });
+
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -91,7 +110,7 @@ export class AppComponent implements OnInit {
         filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY')
       ).subscribe(() => {
         const snackBarRef = this.snackBar.open('A new version is available', 'Reload', {
-          duration: 6000,
+          duration: 7000,
         });
 
         snackBarRef.onAction().subscribe(() => {
@@ -102,15 +121,52 @@ export class AppComponent implements OnInit {
       this.swUpdate.checkForUpdate();
     }
 
-    // Scroll event listener
-    window.addEventListener('scroll', () => this.scrollCheckService.trackScroll());
-
     this.overlayService.overlayState$.subscribe(state => {
       this.isOverlayActive = state.isActive;
       this.activeImage = state.imageUrl;
     });
-
   }
+
+  // loadBuyMeACoffeeWidget(): void {
+  //   const existingScript = document.querySelector('script[data-name="BMC-Widget"]');
+  //   if (existingScript) {
+  //     existingScript.remove();
+  //   }
+  
+  //   const script = document.createElement('script');
+  //   script.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
+  //   script.setAttribute('data-name', 'BMC-Widget');
+  //   script.setAttribute('data-cfasync', 'false');
+  //   script.setAttribute('data-id', 'littlefallslocal');
+  //   script.setAttribute('data-description', 'Support me on Buy me a coffee!');
+  //   script.setAttribute('data-message', 'Want to support what we do? Buy us a coffee!');
+  //   script.setAttribute('data-color', '#FF813F');
+  //   script.setAttribute('data-position', 'Right');
+  //   script.setAttribute('data-x_margin', '18');
+  //   script.setAttribute('data-y_margin', '18');
+  
+  //   script.onload = () => {
+  //     console.log('Buy Me a Coffee widget script loaded successfully.');
+  //     const button = document.getElementById('bmc-wbtn');
+  //     const iframe = document.getElementById('bmc-iframe');
+  //     if (button) {
+  //       console.log('Widget button element created successfully:', button);
+  //     } else {
+  //       console.error('Failed to create widget button element.');
+  //     }
+  //     if (iframe) {
+  //       console.log('Widget iframe element created successfully:', iframe);
+  //     } else {
+  //       console.error('Failed to create widget iframe element.');
+  //     }
+  //   };
+  
+  //   script.onerror = (error) => {
+  //     console.error('Error loading Buy Me a Coffee widget script:', error);
+  //   };
+  
+  //   document.body.appendChild(script);
+  // }
 
   isEventsPageActive(): boolean {
     return this.router.url.includes('/events');
@@ -120,4 +176,3 @@ export class AppComponent implements OnInit {
     this.overlayService.closeOverlay();
   }
 }
-

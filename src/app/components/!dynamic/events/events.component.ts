@@ -1,15 +1,13 @@
-// src/app/events/events.component.ts
 
 import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter, faFilterCircleXmark, faLocationDot, faDownLeftAndUpRightToCenter, faWindowMinimize, faPhone } from '@fortawesome/free-solid-svg-icons';
-
+import { faFilter, faFilterCircleXmark, faLocationDot, faDownLeftAndUpRightToCenter, faWindowMinimize, faPhone, faLink, faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { OverlayService } from '../../../services/overlay.service';
 
-// Define an interface for the type of event object
+// Define the interface for the data types
 interface eventDataElements {
   name: string;
   startDate: string;
@@ -17,13 +15,15 @@ interface eventDataElements {
   startTime: string;
   endTime: string;
   cost: string;
-  icon: string;
+  uniqueID: string;
   image: string;
-  locationAddress: string;
   locationName: string;
+  locationAddress: string;
+  locationCity: string;
   description: string;
   url: string;
   type: string;
+  showURL: boolean;
   highlight: boolean;
   isExpanded: boolean;
   oneOff: boolean;
@@ -51,7 +51,6 @@ export class TruncatePipe implements PipeTransform {
 export class EventsComponent implements OnInit {
   eventData: eventDataElements[] = [];
   filteredEvents: eventDataElements[] = [];
-
   isFilterApplied = false;
 
   @ViewChildren('eventItem') eventItems!: QueryList<ElementRef>;
@@ -65,7 +64,7 @@ export class EventsComponent implements OnInit {
     private elementRef: ElementRef,
     private overlayService: OverlayService
   ) {
-    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faWindowMinimize);
+    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faWindowMinimize, faLink, faExternalLink);
   }
 
   openImage(event: any) {
@@ -75,18 +74,62 @@ export class EventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchEventData();
-    this.meta.updateTag({ name: 'description', content: 'Explore our community&#39;s heartbeat with concerts, farmers markets, and more on our events page. Stay in the loop with what&#39;s happening in Little Falls and nearby, and experience the lively culture and spirit of our town.' });
+    this.meta.updateTag({ 
+      name: 'description', 
+      content: 'Explore our community&#39;s heartbeat with concerts, farmers markets, and more on our events page. Stay in the loop with what&#39;s happening in Little Falls and nearby, and experience the lively culture and spirit of our town.' });
   }
 
   fetchEventData(): void {
     this.http.get<any>('/assets/database/events.json').subscribe(data => {
       this.eventData = data.eventItem.map((eventItem: any) => ({ ...eventItem, isExpanded: false }));
-      this.eventData = this.filterPastEvents(data.eventItem);
-
+      this.eventData = this.filterPastEvents(this.eventData);
+  
+      // Sort by date
       this.eventData.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
-
-      this.filteredEvents = this.eventData;
+  
+      // Find and remove the item with uniqueID 'view-all-events'
+      const viewAllEventsIndex = this.eventData.findIndex(item => item.uniqueID === 'view-all-events');
+      let viewAllEventsItem;
+      if (viewAllEventsIndex !== -1) {
+        viewAllEventsItem = this.eventData.splice(viewAllEventsIndex, 1)[0];
+      }
+  
+      // Insert the item at the 10th position (index 9)
+      if (viewAllEventsItem) {
+        const insertIndex = Math.min(13, this.eventData.length); // Ensure the index is within bounds
+        this.eventData.splice(insertIndex, 0, viewAllEventsItem);
+      }
+  
+      // Apply the filtering logic
+      this.filteredEvents = this.limitEntriesPerUniqueID(this.eventData, 5);
     });
+  }
+
+  limitEntriesPerUniqueID(events: eventDataElements[], maxEntries: number): eventDataElements[] {
+    const eventTypeMap: { [key: string]: number } = {};
+    const limitedEvents: eventDataElements[] = [];
+  
+    events.forEach(event => {
+      if (!eventTypeMap[event.uniqueID]) {
+        eventTypeMap[event.uniqueID] = 0;
+      }
+  
+      if (eventTypeMap[event.uniqueID] < maxEntries) {
+        eventTypeMap[event.uniqueID]++;
+        limitedEvents.push(event);
+      }
+    });
+  
+    return limitedEvents;
+  }
+
+  showAllEvents(): void {
+    this.filteredEvents = this.eventData;
+    this.isFilterApplied = false;
+    const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
+    if (iconElement) {
+      this.renderer.setStyle(iconElement, 'display', 'none');
+    }
   }
 
   filterPastEvents(eventItem: any[]): any[] {
@@ -109,24 +152,16 @@ export class EventsComponent implements OnInit {
   }
 
   resetFilter(): void {
-    this.filteredEvents = this.eventData;
+    // Remove the item with uniqueID 'view-all-events' from the list
+    this.filteredEvents = this.eventData.filter(item => item.uniqueID !== 'view-all-events');
     this.isFilterApplied = false;
+    
+    // Hide the clear filter text/icon if present
     const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
     if (iconElement) {
       this.renderer.setStyle(iconElement, 'display', 'none');
     }
   }
-
-  // expandItem(eventItem: eventDataElements, index: number): void {
-  //   this.filteredEvents.forEach(event => {
-  //     if (event !== eventItem) {
-  //       event.isExpanded = false;
-  //     }
-  //   });
-  //   eventItem.isExpanded = !eventItem.isExpanded;
-  //   setTimeout(() => this.scrollToItemInViewport(index), 0);
-  // }
-
 
   expandItem(eventItem: eventDataElements, index: number): void {
     if (eventItem.isExpanded) {
@@ -205,9 +240,18 @@ export class EventsComponent implements OnInit {
     return formattedDateRange.toUpperCase();
   }
 
-  formatEventLocationName(eventLocationName: string): string {
+  formatEventLocationName(eventLocationName: string, eventLocationCity: string): string {
     const sanitizedName = eventLocationName.replace(/[^\w\s]/g, '');
-    const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';
+    const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+' + eventLocationCity + '+NY';
     return formattedName;
+  }
+
+  formatDisplayURL(eventURL: string): string {
+    const formattedURL = eventURL.replace(/https:\/\/www./, '').toLowerCase();
+    return formattedURL;
+  }
+
+  toggleDescription(eventItem: any) {
+    eventItem.isDescriptionExpanded = !eventItem.isDescriptionExpanded;
   }
 }

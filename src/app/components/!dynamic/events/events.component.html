@@ -32,6 +32,11 @@
           <span *ngIf="!eventItem.image" class="item-location">{{ eventItem.locationAddress | truncate: 26 }}</span><br>
         </div>
       </div>
+
+      <!-- TODO: create "read more" functionality for long responses -->
+      <!-- TODO: Create a button that says "show more of these events" and use that for similiar sports events, maybe only show 4 or 5 initially and filter them out until the "item" button is clicked to show them all -->
+      <!-- TODO: need to remove the filter box when filters are cleared -->
+      <!-- TODO: need to dynamically set filter behind the 10th item or so -->
       
       <!-- Expanded item view -->
       <div class="item-wrapper-expanded" *ngIf="eventItem.isExpanded">
@@ -61,25 +66,37 @@
           <span *ngIf="eventItem.locationName">{{ eventItem.locationName }}<br></span>
           <span *ngIf="eventItem.locationAddress">
             <fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;
-            <a [href]="formatEventLocationName(eventItem.locationAddress)" target="_blank">{{ eventItem.locationAddress }}</a><br>
+            <a [href]="formatEventLocationName(eventItem.locationAddress, eventItem.locationCity)" target="_blank">{{ eventItem.locationAddress }}</a>
+            <span *ngIf="eventItem.locationCity"> in {{ eventItem.locationCity }}</span><br>
           </span>
         </span>
 
+        <div *ngIf="eventItem.showURL" class="item-url"><fa-icon [icon]="'link'" class='fa-xs'></fa-icon>&nbsp; 
+          <a href="{{eventItem.url}}" target="_blank">{{ formatDisplayURL(eventItem.url) | truncate: 28 }}</a></div>
+
         <div *ngIf="eventItem.description" class="item-description">{{eventItem.name}}. {{ eventItem.description }}</div>
-        
-        <!-- Close button -->
-        <!-- <button class="close-button" (click)="closeItem(eventItem, $event)">Close</button> -->
       </div>
       
     </div>
 
-
     <ng-template #oneOff>
-      <a routerLink="/submit-event" style="text-decoration: none;"><div class="one-off-wrapper">
-      <img src="../../../../assets/icons/community.svg" alt="Icon" height="32" width="32" loading="lazy">
 
-      <span class="item-name">{{ eventItem.name }}</span>
-      <span class="item-location" style="font-size: 16px; color: #000;">{{ eventItem.locationAddress }}</span></div></a>
+      <span *ngIf="eventItem.uniqueID === 'one-off'">
+        <a routerLink="/submit-event" style="text-decoration: none;"><div class="one-off-wrapper">
+        <img src="../../../../assets/icons/community.svg" alt="Icon" height="32" width="32" loading="lazy">
+
+        <span class="item-name">{{ eventItem.name }}</span>
+        <span class="item-location" style="font-size: 16px; color: #000;">{{ eventItem.locationAddress }}</span></div></a>
+      </span>
+
+      <span *ngIf="eventItem.uniqueID === 'view-all-events'" (click)="resetFilter();" style="text-decoration: none;">
+        <div class="view-all-events-wrapper">
+        <img src="../../../../assets/icons/filter.svg" alt="Icon" height="32" width="32" loading="lazy">
+
+        <span class="item-name">{{ eventItem.name }}</span>
+        <span class="item-location" style="font-size: 16px; color: #000;">{{ eventItem.locationAddress }}</span></div>
+      </span>
+
     </ng-template>
 
   </div>
