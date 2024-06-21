@@ -4,6 +4,7 @@ import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
 import { OverlayService } from '../../../services/overlay.service';
+import { SourcePage } from '../../!sub-components/image-carousel/image-carousel.component';
 
 // import { DistanceService } from 'app/services/distance.service';
 //  private distanceService: DistanceService
@@ -11,14 +12,17 @@ import { OverlayService } from '../../../services/overlay.service';
 // Define an interface for the type of event object
 interface outdoorDataElements {
   name: string;
-  location: string;
+  locationAddress: string;
+  locationCity: string;
   rating: number;
   hours: string;
+  phoneNumber: string;
   description: string;
   icon: string;
   image: any;
   url: string;
   type: string;
+  referenceID: string;
   highlighted: boolean;
   isExpanded: boolean;
 }
@@ -46,6 +50,9 @@ export class TruncatePipe implements PipeTransform {
 })
 
 export class OutdoorsComponent implements OnInit {
+
+  SourcePage = SourcePage;
+
   outdoorData: outdoorDataElements[] = [];
   filteredEvents: outdoorDataElements[] = [];
 
@@ -53,7 +60,7 @@ export class OutdoorsComponent implements OnInit {
   isActive: boolean = false;
   isFilterApplied: boolean = false;
 
-  @ViewChildren('outdoorItem') outdoorItems!: QueryList<ElementRef>;
+  @ViewChildren('item') items!: QueryList<ElementRef>;
 
   constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef, private overlayService: OverlayService) {
     library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter);
@@ -72,7 +79,7 @@ export class OutdoorsComponent implements OnInit {
 
   fetchOutdoorData(): void {
     this.http.get<any>('/assets/database/outdoors.json').subscribe(data => {
-      this.outdoorData = data.outdoorItem.map((outdoorItem: any) => ({ ...outdoorItem, isExpanded: false }));
+      this.outdoorData = data.item.map((item: any) => ({ ...item, isExpanded: false }));
 
       // Create version of list to apply additional filtering
       this.filteredEvents = this.outdoorData;
@@ -112,31 +119,31 @@ export class OutdoorsComponent implements OnInit {
     return `/assets/images/outdoors/${image}.jpg`;
   }
 
-  // expandItem(outdoorItem: outdoorDataElements, index: number): void {
+  // expandItem(item: outdoorDataElements, index: number): void {
 
   //   this.filteredEvents.forEach(item => {
-  //     if (item !== outdoorItem) {
+  //     if (item !== item) {
   //       item.isExpanded = false;
   //     }
   //   });
 
-  //   outdoorItem.isExpanded = !outdoorItem.isExpanded;
+  //   item.isExpanded = !item.isExpanded;
   //   setTimeout(() => this.scrollToItemInViewport(index), 0);
   // }
 
-  expandItem(outdoorItem: outdoorDataElements, index: number): void {
-    if (outdoorItem.isExpanded) {
+  expandItem(item: outdoorDataElements, index: number): void {
+    if (item.isExpanded) {
       // Check if this is already expanded; do nothing for now     
     } else {
       // Collapse any previously expanded item
       this.outdoorData.forEach(item => {
-        if (item.isExpanded && item !== outdoorItem) {
+        if (item.isExpanded && item !== item) {
           item.isExpanded = false;
         }
       });
   
       // Expand the clicked item
-      outdoorItem.isExpanded = true;
+      item.isExpanded = true;
 
       setTimeout(() => this.scrollToItemInViewport(index), 0);
     }
@@ -144,23 +151,23 @@ export class OutdoorsComponent implements OnInit {
 
 
   scrollToItemInViewport(index: number): void {
-    const itemElement = this.outdoorItems.toArray()[index].nativeElement;
+    const itemElement = this.items.toArray()[index].nativeElement;
     const itemRect = itemElement.getBoundingClientRect();
     const offsetTop = window.scrollY + itemRect.top - 84;
     window.scrollTo({ top: offsetTop, behavior: 'smooth' });
   }
 
-  closeItem(outdoorItem: outdoorDataElements, event: Event): void {
+  closeItem(item: outdoorDataElements, event: Event): void {
     event.stopPropagation(); // Stop event propagation
-    outdoorItem.isExpanded = false;
+    item.isExpanded = false;
   }
 
-  formatEventLocationName(eventLocationName: string): string {
+  formatEventLocationName(eventLocationName: string, eventLocationCity: string): string {
     // Remove punctuation using a regular expression
     const sanitizedName = eventLocationName.replace(/[^\w\s]/g, '');
     
     // Replace spaces with '+' signs and convert to lowercase
-    const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';
+    const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+' + eventLocationCity + '+NY';
   
     return formattedName;
   }

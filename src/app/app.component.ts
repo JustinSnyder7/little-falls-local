@@ -75,9 +75,6 @@ export class AppComponent implements OnInit {
       if (shown) {
         console.log('maybe scroll detected');
         this.showWidget = true;
-        // document.addEventListener('DOMContentLoaded', () => {
-        //   this.loadBuyMeACoffeeWidget();
-        // });
       }
     });
 

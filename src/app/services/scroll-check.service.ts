@@ -14,7 +14,7 @@ export class ScrollCheckService {
 
   private initWidgetTimer(): void {
     // Show the widget after a 1-minute delay
-    timer(35000).subscribe(() => {
+    timer(20000).subscribe(() => {
       const bmcMessageDiv = document.querySelector('#bmc-wbtn + div');
         if (bmcMessageDiv) {
           bmcMessageDiv.classList.add('show');
@@ -26,17 +26,17 @@ export class ScrollCheckService {
         }  
 
       this.widgetShownSubject.next(true);
-      console.log('showing widget text after 15 second timer')
+      console.log('showing widget text after 20 second timer')
     });
 
-    timer(42000).subscribe(() => {
+    timer(35000).subscribe(() => {
       const bmcMessageDiv = document.querySelector('#bmc-wbtn + div');
         if (bmcMessageDiv) {
           bmcMessageDiv.classList.add('hide');
         }
 
       this.widgetShownSubject.next(true);
-      console.log('hiding widget text after 20 past first timer')
+      console.log('hiding widget text after 15 past first timer')
     });
   }
 

@@ -4,10 +4,11 @@ import { Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter, faFilterCircleXmark, faLocationDot, faDownLeftAndUpRightToCenter, faWindowMinimize, faPhone, faLink, faExternalLink } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faFilterCircleXmark, faLocationDot, faDownLeftAndUpRightToCenter, faWindowMinimize, faPhone, faLink, faExternalLink, faSquareShareNodes } from '@fortawesome/free-solid-svg-icons';
 import { OverlayService } from '../../../services/overlay.service';
+import { SourcePage } from '../../!sub-components/image-carousel/image-carousel.component';
 
-// Define the interface for the data types
+// Define the interface for event data
 interface eventDataElements {
   name: string;
   startDate: string;
@@ -16,7 +17,7 @@ interface eventDataElements {
   endTime: string;
   cost: string;
   uniqueID: string;
-  image: string;
+  image: any;
   locationName: string;
   locationAddress: string;
   locationCity: string;
@@ -49,11 +50,14 @@ export class TruncatePipe implements PipeTransform {
   styleUrls: ['./events.component.css'],
 })
 export class EventsComponent implements OnInit {
+
+  SourcePage = SourcePage;
+
   eventData: eventDataElements[] = [];
   filteredEvents: eventDataElements[] = [];
   isFilterApplied = false;
 
-  @ViewChildren('eventItem') eventItems!: QueryList<ElementRef>;
+  @ViewChildren('item') items!: QueryList<ElementRef>;
 
   constructor(
     private http: HttpClient,
@@ -64,8 +68,9 @@ export class EventsComponent implements OnInit {
     private elementRef: ElementRef,
     private overlayService: OverlayService
   ) {
-    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faWindowMinimize, faLink, faExternalLink);
+    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faWindowMinimize, faLink, faExternalLink, faSquareShareNodes);
   }
+
 
   openImage(event: any) {
     const imageUrl = event.target.src;
@@ -79,9 +84,23 @@ export class EventsComponent implements OnInit {
       content: 'Explore our community&#39;s heartbeat with concerts, farmers markets, and more on our events page. Stay in the loop with what&#39;s happening in Little Falls and nearby, and experience the lively culture and spirit of our town.' });
   }
 
+  share(item: any) {
+    const shareText = 'Check this out!';
+    if ('share' in navigator) {
+      navigator["share"]({
+        title: 'Little Falls Events',
+        text: shareText,
+        url: window.location.href,
+      }).then( () => console.log('Successful share') ).catch( () => console.log('error sharing') );
+    } else {
+      const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+      location.href = shareURL;
+    }
+  }
+
   fetchEventData(): void {
     this.http.get<any>('/assets/database/events.json').subscribe(data => {
-      this.eventData = data.eventItem.map((eventItem: any) => ({ ...eventItem, isExpanded: false }));
+      this.eventData = data.item.map((item: any) => ({ ...item, isExpanded: false }));
       this.eventData = this.filterPastEvents(this.eventData);
   
       // Sort by date
@@ -132,12 +151,12 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  filterPastEvents(eventItem: any[]): any[] {
+  filterPastEvents(item: any[]): any[] {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
-    return eventItem.filter(eventItem => {
-      const eventStartDate = new Date(eventItem.startDate);
-      const eventEndDate = new Date(eventItem.endDate);
+    return item.filter(item => {
+      const eventStartDate = new Date(item.startDate);
+      const eventEndDate = new Date(item.endDate);
       return eventStartDate > yesterday || eventEndDate > yesterday;
     });
   }
@@ -163,34 +182,34 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  expandItem(eventItem: eventDataElements, index: number): void {
-    if (eventItem.isExpanded) {
+  expandItem(item: eventDataElements, index: number): void {
+    if (item.isExpanded) {
       // Check if this is already expanded; do nothing for now     
     } else {
       // Collapse any previously expanded item
       this.eventData.forEach(item => {
-        if (item.isExpanded && item !== eventItem) {
+        if (item.isExpanded && item !== item) {
           item.isExpanded = false;
         }
       });
   
       // Expand the clicked item
-      eventItem.isExpanded = true;
+      item.isExpanded = true;
 
       setTimeout(() => this.scrollToItemInViewport(index), 0);
     }
   }
 
   scrollToItemInViewport(index: number): void {
-    const itemElement = this.eventItems.toArray()[index].nativeElement;
+    const itemElement = this.items.toArray()[index].nativeElement;
     const itemRect = itemElement.getBoundingClientRect();
     const offsetTop = window.scrollY + itemRect.top - 84;
     window.scrollTo({ top: offsetTop, behavior: 'smooth' });
   }
 
-  closeItem(eventItem: eventDataElements, event: Event): void {
+  closeItem(item: eventDataElements, event: Event): void {
     event.stopPropagation(); // Stop event propagation
-    eventItem.isExpanded = false;
+    item.isExpanded = false;
   }
 
   getIconPath(icon: string): string {
@@ -251,7 +270,7 @@ export class EventsComponent implements OnInit {
     return formattedURL;
   }
 
-  toggleDescription(eventItem: any) {
-    eventItem.isDescriptionExpanded = !eventItem.isDescriptionExpanded;
+  toggleDescription(item: any) {
+    item.isDescriptionExpanded = !item.isDescriptionExpanded;
   }
 }

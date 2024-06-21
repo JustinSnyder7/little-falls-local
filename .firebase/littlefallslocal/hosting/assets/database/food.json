@@ -1,5 +1,5 @@
 {
-  "foodItem": [
+  "item": [
     {
       "name": "El Tren De Villa",
       "type": "Mexican",
@@ -16,6 +16,7 @@
         "fourth": "el-tren-de-villa-4",
         "fifth": "el-tren-de-villa-5" }, 
       "url": "",
+      "referenceID": "el-tren-de-villa",
       "highlight": false,
       "rating": 4.5,
       "isExpanded": false
@@ -36,6 +37,7 @@
         "fourth": "crazy-ottos-4",
         "fifth": "crazy-ottos-5" },
       "url": "",
+      "referenceID": "crazy-ottos",
       "highlight": false,
       "rating": 4.6,
       "isExpanded": false
@@ -56,6 +58,7 @@
         "fourth": "ann-st-restaurant-4",
         "fifth": "ann-st-restaurant-5" },
       "url": "",
+      "referenceID": "ann-st-restaurant",
       "highlight": false,
       "rating": 4.6,
       "isExpanded": false
@@ -76,6 +79,7 @@
         "fourth": "",
         "fifth": "" },
       "url": "",
+      "referenceID": "canal-side-inn",
       "highlight": false,
       "rating": 4.5,
       "isExpanded": false
@@ -96,6 +100,7 @@
         "fourth": "",
         "fifth": "" },
       "url": "",
+      "referenceID": "eds-pizza",
       "highlight": false,
       "rating": 4.5,
       "isExpanded": false
@@ -116,6 +121,7 @@
         "fourth": "",
         "fifth": "" }, 
       "url": "",
+      "referenceID": "renaissance-pub",
       "highlight": false,
       "rating": 4.5,
       "isExpanded": false
@@ -136,6 +142,7 @@
         "fourth": "fat-cats-4",
         "fifth": "fat-cats-5" },
       "url": "",
+      "referenceID": "fat-cats",
       "highlight": false,
       "rating": 4.6,
       "isExpanded": false
@@ -156,6 +163,7 @@
         "fourth": "beardslee-castle-4",
         "fifth": "beardslee-castle-5" }, 
       "url": "http://beardsleecastle.com/",
+      "referenceID": "beardslee-castle",
       "highlight": false,
       "rating": 4.6,
       "isExpanded": false
@@ -176,6 +184,7 @@
         "fourth": "ruggieros-trattoria-4",
         "fifth": "ruggieros-trattoria-5" },
       "url": "",
+      "referenceID": "ruggieros-trattoria",
       "highlight": false,
       "rating": 4.3,
       "isExpanded": false
@@ -196,6 +205,7 @@
         "fourth": "yettys-pizza-4",
         "fifth": "yettys-pizza-5" },
       "url": "https://www.yettys.com",
+      "referenceID": "yettys-pizza",
       "highlight": false,
       "rating": 4.2,
       "isExpanded": false
@@ -216,6 +226,7 @@
         "fourth": "sorrento-pizzeria-4",
         "fifth": "sorrento-pizzeria-5" },
       "url": "",
+      "referenceID": "sorrento-pizzeria",
       "highlight": false,
       "rating": 4.2,
       "isExpanded": false
@@ -236,6 +247,7 @@
         "fourth": "tokyo-sushi-4",
         "fifth": "tokyo-sushi-5" },
       "url": "https://tokyosushinytogo.com/",
+      "referenceID": "tokyo-sushi",
       "rating": 4.5,
       "highlight": false,
       "isExpanded": false

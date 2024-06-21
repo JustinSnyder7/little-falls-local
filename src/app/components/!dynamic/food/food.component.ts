@@ -4,6 +4,7 @@ import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { OverlayService } from '../../../services/overlay.service';
+import { SourcePage } from '../../!sub-components/image-carousel/image-carousel.component';
 
 // Define an interface for the type of event object
 interface foodDataElements {
@@ -44,6 +45,9 @@ export class TruncatePipe implements PipeTransform {
 })
 
 export class FoodComponent implements OnInit {
+
+  SourcePage = SourcePage;
+
   foodData: foodDataElements[] = [];
   filteredData: foodDataElements[] = [];
 
@@ -52,7 +56,7 @@ export class FoodComponent implements OnInit {
 
   isFilterApplied: boolean = false;
 
-  @ViewChildren('foodItem') foodItems!: QueryList<ElementRef>;
+  @ViewChildren('item') items!: QueryList<ElementRef>;
 
   constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef, private overlayService: OverlayService) {
 
@@ -67,7 +71,7 @@ export class FoodComponent implements OnInit {
 
   fetchFoodData(): void {
     this.http.get<any>('/assets/database/food.json').subscribe(data => {
-      this.foodData = data.foodItem.map((foodItem: any) => ({ ...foodItem, isExpanded: false }));
+      this.foodData = data.item.map((item: any) => ({ ...item, isExpanded: false }));
 
       // Create version of list to apply additional filtering
       this.filteredData = this.foodData;
@@ -116,26 +120,26 @@ export class FoodComponent implements OnInit {
     return `/assets/images/food/${image}.jpg`;
   }
 
-  expandItem(foodItem: foodDataElements, index: number): void {
-    if (foodItem.isExpanded) {
+  expandItem(item: foodDataElements, index: number): void {
+    if (item.isExpanded) {
       // Check if this is already expanded; do nothing for now
     } else {
       // Collapse any previously expanded item
       this.foodData.forEach(item => {
-        if (item.isExpanded && item !== foodItem) {
+        if (item.isExpanded && item !== item) {
           item.isExpanded = false;
         }
       });
   
       // Expand the clicked item
-      foodItem.isExpanded = true;
+      item.isExpanded = true;
 
       setTimeout(() => this.scrollToItemInViewport(index), 0);
     }
   }
 
   scrollToItemInViewport(index: number): void {
-    const itemElement = this.foodItems.toArray()[index].nativeElement;
+    const itemElement = this.items.toArray()[index].nativeElement;
     const itemRect = itemElement.getBoundingClientRect();
     const offsetTop = window.scrollY + itemRect.top - 84;
     window.scrollTo({ top: offsetTop, behavior: 'smooth' });
@@ -146,9 +150,9 @@ export class FoodComponent implements OnInit {
     eventItem.isExpanded = false;
   }
 
-  formatRestaurantName(foodItemName: string): string {
+  formatRestaurantName(itemName: string): string {
     // Remove punctuation using a regular expression
-    const sanitizedName = foodItemName.replace(/[^\w\s]/g, '');
+    const sanitizedName = itemName.replace(/[^\w\s]/g, '');
     
     // Replace spaces with '+' signs and convert to lowercase
     const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';

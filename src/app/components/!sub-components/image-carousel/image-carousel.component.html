@@ -1,12 +1,14 @@
 
 <div class="image-carousel">
 
+  <!-- /food/ -->
+
   <div class="primary-image-wrapper">
-  <img [src]="'/assets/images/food/' + currentImage + '.jpg'" alt="Featured Image" (click)="openImage($event)"></div>
+  <img [src]="'/assets/images/' + prefix + currentImage + '.jpg'" alt="Featured Image" (click)="openImage($event)"></div>
 
   <div class="thumbnail-container">
     <img *ngFor="let image of thumbnailImages" 
-         [src]="'/assets/images/food/' + image + '.jpg'" 
+         [src]="'/assets/images/' + prefix + image + '.jpg'" 
          (click)="setCurrentImage(image)" 
          [class.selected]="image === currentImage"
          (error)="handleImageError($event)">

@@ -10,9 +10,11 @@
     text-align: center;
     z-index: 100;
     padding: 5px 0px;
-    margin: 0;
+    margin: 0 auto;
     width: 100%;
     max-width: 1500px;
+    height: 38px;
+    align-content: center;
   }
 
   .copyright {

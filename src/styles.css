@@ -49,12 +49,13 @@
 
   #bmc-wbtn {
     background-color: var(--buy-me-coffee-color)!important;
-    top: 27px!important;
-    right: 58px!important;
+    top: 25px!important;
+    right: 54px!important;
     text-shadow: rgb(0, 0, 0) 0px 0px 2px!important;
-    opacity: 1;
-    height: 10px!important;
-    width: 8px!important;
+    opacity: 1!important;
+    border-radius: 0px!important;
+    height: 12px!important;
+    width: 15px!important;
     z-index: 1000!important;
   }
 
@@ -69,7 +70,7 @@
     text-align: center !important;
     color: var(--buy-me-coffee-color) !important;
     background-color: white !important;
-    border: 2px solid white !important;
+    border: 1px solid var(--buy-me-coffee-color)!important;
     border-radius: 9px 0px 9px 0px !important;
     line-height: 1.5 !important;
     transform-origin: 0 0 !important;
@@ -83,13 +84,13 @@
     width: 90% !important;
     left: 15px !important;
     right: 15px !important;
-    bottom: 40px !important;
+    bottom: 55px !important;
     opacity: 0 !important;
     transition: opacity 1s ease-in-out, visibility 1s ease-in-out !important;
 }
 
   #bmc-wbtn + div.show {
-    opacity: 1 !important;
+    opacity: 0.95 !important;
     visibility: visible !important;
   }
 
@@ -153,7 +154,7 @@
 
   .item-container {
     margin: 0px 1px 28px 5px;
-    padding: 24px 5px 5px 5px;
+    padding: 24px 5px 32px 5px;
     overflow-y: scroll;
     align-content: center;
     position: relative;
@@ -364,6 +365,12 @@
   font-weight: normal;
 }
 
+.item-phoneNumber a {
+  color: var(--text-color-dark);
+  font-size: 16px;
+  font-weight: normal;
+}
+
 .item-url a {
   color: var(--text-color-dark);
   font-size: 18px;
@@ -379,11 +386,12 @@
   display: flex;
   flex-direction: column;
   margin: 10px;
+  margin-bottom: 55px;
   padding: 10px;
   text-align: left;
   color: #fff;
   background-color: gray; 
-  min-height: calc(100vh - 130px);
+  min-height: calc(100vh - 150px);
   border-radius: 0px 15px 0px 15px;
 }
 

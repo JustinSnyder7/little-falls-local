@@ -11,39 +11,49 @@
 </div>
 
 <div class="item-container">
-  <div *ngFor="let outdoorItem of filteredEvents; let i = index" class="item-iter" #outdoorItem [class.expanded]="outdoorItem.isExpanded" (click)="expandItem(outdoorItem, i)">
-    <div class="item-wrapper">
-      <!-- Collapsed item view -->
-      <div *ngIf="!outdoorItem.isExpanded">
+  <div *ngFor="let item of filteredEvents; let i = index" class="item-iter" #item [class.expanded]="item.isExpanded" (click)="expandItem(item, i)">
 
-      <div class="item-image-wrapper" *ngIf="outdoorItem.image.first"><img [src]="getImagePath(outdoorItem.image.first)" class="item-image" alt="Image" loading="lazy"></div>
+<!-- Collapsed item view -->
+  <div class="item-wrapper">
+    <div *ngIf="!item.isExpanded">
 
-      <span *ngIf="outdoorItem.image.first" class="item-name">{{ outdoorItem.name | truncate: 19 }}</span>
-      <span *ngIf="!outdoorItem.image.first" class="item-name">{{ outdoorItem.name | truncate: 24 }}</span><br>
+    <div class="item-image-wrapper" *ngIf="item.image.first"><img [src]="getImagePath(item.image.first)" class="item-image" alt="Image" loading="lazy"></div>
 
-      <span class="item-rating">{{ outdoorItem.rating }} stars <app-rating [rating]="outdoorItem.rating"></app-rating></span><br>
-      <span class="item-location">{{ outdoorItem.location }}</span>
-      </div>
+    <span *ngIf="item.image.first" class="item-name">{{ item.name | truncate: 19 }}<br></span>
+    <span *ngIf="!item.image.first" class="item-name">{{ item.name | truncate: 24 }}<br></span>
+
+    <span *ngIf="item.rating" class="item-rating">{{ item.rating }} stars <app-rating [rating]="item.rating"></app-rating><br></span>
+    <span *ngIf="item.locationAddress" class="item-location">{{ item.locationAddress }}</span>
     </div>
+  </div>
   
 <!-- Expanded item view -->
-  <div class="item-wrapper-expanded" *ngIf="outdoorItem.isExpanded">
-    <div *ngIf="outdoorItem.isExpanded">
-      <div class="item-name-expanded">{{ outdoorItem.name }}</div>
+  <div class="item-wrapper-expanded" *ngIf="item.isExpanded">
+    <div *ngIf="item.isExpanded">
+      <div class="item-name-expanded">{{ item.name }}</div>
 
-      <button class="minimizer" (click)="closeItem(outdoorItem, $event)"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
+      <button class="minimizer" (click)="closeItem(item, $event)"><fa-icon icon="down-left-and-up-right-to-center" class="fa-lg"></fa-icon></button>
 
-      <span class="item-rating">{{ outdoorItem.rating }} stars <app-rating [rating]="outdoorItem.rating"></app-rating></span><br>
+      <span class="item-rating">{{ item.rating }} stars <app-rating [rating]="item.rating"></app-rating></span><br>
       <span class="item-location">
-        <span *ngIf="outdoorItem.location"><fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;<a [href]="formatEventLocationName(outdoorItem.location)" target="_blank">{{ outdoorItem.location }}</a></span>
+        <span *ngIf="item.locationAddress"><fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;<a [href]="formatEventLocationName(item.locationAddress, item.locationCity)" target="_blank">{{ item.locationAddress }}</a><br></span>
+      </span>
+
+      <span class="item-phoneNumber">
+        <span *ngIf="item.phoneNumber"><fa-icon [icon]="'phone'" class='fa-xs'></fa-icon>&nbsp;<a [href]="'tel:' + item.phoneNumber">{{ item.phoneNumber }}</a></span>
       </span>
       
-      <span *ngIf="outdoorItem.image.first; else noImageBlock">
-        <img [src]="getImagePath(outdoorItem.image.first)" class="item-image-expanded" alt="Image" loading="lazy" (click)="openImage($event)">
-      </span>
+      <app-image-carousel *ngIf="item.image.second; else singleImageBlock" [images]="item.image" [sourcePage]="SourcePage.Outdoors"></app-image-carousel>
+
+      <ng-template #singleImageBlock>
+        <span *ngIf="item.image.first; else noImageBlock">
+        <img [src]="getImagePath(item.image.first)" class="item-image-expanded" alt="Image" loading="lazy" (click)="openImage($event)"></span>
+      </ng-template>
+
+      
       <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
 
-      <div *ngIf="outdoorItem.description" class="item-description">{{ outdoorItem.description }}</div>
+      <div *ngIf="item.description" class="item-description">{{ item.description }}</div>
     </div>
   </div>
   </div>

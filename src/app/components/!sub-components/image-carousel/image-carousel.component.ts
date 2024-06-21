@@ -1,6 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { OverlayService } from '../../../services/overlay.service';
 
+export enum SourcePage {
+  Events = 'events',
+  Food = 'food',
+  Outdoors = 'outdoors'
+}
+
 @Component({
   selector: 'app-image-carousel',
   templateUrl: './image-carousel.component.html',
@@ -10,13 +16,38 @@ export class ImageCarouselComponent {
 
   constructor(private overlayService: OverlayService) { }
 
+  @Input() sourcePage: string = 'default';
+
   @Input() images: any; // Input data containing image URLs
+
+  prefix: string = 'food/';
 
   currentImage: string = ''; // Currently displayed main image
   thumbnailImages: string[] = []; // Array of thumbnail image URLs
   fallbackImageUrl: string = '/assets/images/mesh.png'; // Fallback image URL
 
   ngOnInit(): void {
+
+    console.log('Carousel source page:', this.sourcePage);
+
+    switch (this.sourcePage) {
+      case 'events':
+        this.prefix = 'events/';
+        console.log ('Carousel prefix:', this.prefix);
+        break;
+      case 'food':
+        this.prefix = 'food/';
+        console.log ('Carousel prefix:', this.prefix);
+        break;
+      case 'outdoors':
+        this.prefix = 'outdoors/';
+        console.log ('Carousel prefix:', this.prefix);
+        break;
+      default:
+          console.log('Invalid source page: ', this.sourcePage);
+        break;
+    }
+
     if (this.images) {
       // Initialize main image and thumbnail images
       this.currentImage = this.images.first;
