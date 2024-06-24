@@ -4,9 +4,10 @@ import { Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter, faFilterCircleXmark, faLocationDot, faDownLeftAndUpRightToCenter, faWindowMinimize, faPhone, faLink, faExternalLink, faSquareShareNodes } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faFilterCircleXmark, faLocationDot, faDownLeftAndUpRightToCenter, faWindowMinimize, faPhone, faLink, faExternalLink, faShareNodes, faShare } from '@fortawesome/free-solid-svg-icons';
 import { OverlayService } from '../../../services/overlay.service';
 import { SourcePage } from '../../!sub-components/image-carousel/image-carousel.component';
+import { OsDetectionService } from '../../../services/os-detection.service';
 
 // Define the interface for event data
 interface eventDataElements {
@@ -57,6 +58,10 @@ export class EventsComponent implements OnInit {
   filteredEvents: eventDataElements[] = [];
   isFilterApplied = false;
 
+  uniqueEventTypes: string[] = [];
+
+  osType: string = 'unknown';
+
   @ViewChildren('item') items!: QueryList<ElementRef>;
 
   constructor(
@@ -66,9 +71,11 @@ export class EventsComponent implements OnInit {
     private library: FaIconLibrary,
     private renderer: Renderer2,
     private elementRef: ElementRef,
-    private overlayService: OverlayService
+    private overlayService: OverlayService,
+    private osDetectionService: OsDetectionService
+
   ) {
-    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faWindowMinimize, faLink, faExternalLink, faSquareShareNodes);
+    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faWindowMinimize, faLink, faExternalLink, faShareNodes, faShare );
   }
 
 
@@ -78,10 +85,13 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchEventData();
+    this.fetchData();
+
     this.meta.updateTag({ 
       name: 'description', 
       content: 'Explore our community&#39;s heartbeat with concerts, farmers markets, and more on our events page. Stay in the loop with what&#39;s happening in Little Falls and nearby, and experience the lively culture and spirit of our town.' });
+
+    this.detectOS();
   }
 
   share(item: any) {
@@ -98,7 +108,7 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  fetchEventData(): void {
+  fetchData(): void {
     this.http.get<any>('/assets/database/events.json').subscribe(data => {
       this.eventData = data.item.map((item: any) => ({ ...item, isExpanded: false }));
       this.eventData = this.filterPastEvents(this.eventData);
@@ -121,7 +131,17 @@ export class EventsComponent implements OnInit {
   
       // Apply the filtering logic
       this.filteredEvents = this.limitEntriesPerUniqueID(this.eventData, 5);
+      
+      this.extractUniqueEventTypes();
     });
+  }
+
+  extractUniqueEventTypes() {
+    const allEventTypes = this.eventData.map(event => event.type);
+    const flattenedTypes = allEventTypes.flatMap(type => type.split(' '));
+    this.uniqueEventTypes = [...new Set(flattenedTypes)];
+    this.uniqueEventTypes.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+    console.log(this.uniqueEventTypes);
   }
 
   limitEntriesPerUniqueID(events: eventDataElements[], maxEntries: number): eventDataElements[] {
@@ -161,13 +181,20 @@ export class EventsComponent implements OnInit {
     });
   }
 
-  filterByType(type: string): void {
-    this.filteredEvents = this.eventData.filter(event => event.type === type);
+  filterByType(filterKeywords: string): void {
+    const keywords = filterKeywords.split(' ');
+
+    this.filteredEvents = this.eventData.filter(event => {
+      const eventTypeLower = event.type.toLowerCase();
+      return keywords.some(keyword => eventTypeLower.includes(keyword.toLowerCase()));
+    });
+  
     this.isFilterApplied = true;
+  
     const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
-    if (iconElement) {
-      this.renderer.setStyle(iconElement, 'display', 'inline');
-    }
+      if (iconElement) {
+        this.renderer.setStyle(iconElement, 'display', 'inline');
+      }
   }
 
   resetFilter(): void {
@@ -187,10 +214,10 @@ export class EventsComponent implements OnInit {
       // Check if this is already expanded; do nothing for now     
     } else {
       // Collapse any previously expanded item
-      this.eventData.forEach(item => {
-        if (item.isExpanded && item !== item) {
-          item.isExpanded = false;
-        }
+      this.eventData.forEach(event => {
+        // if (event.isExpanded && event !== event) {
+          event.isExpanded = false;
+        // }
       });
   
       // Expand the clicked item
@@ -217,7 +244,7 @@ export class EventsComponent implements OnInit {
   }
 
   getImagePath(icon: string): string {
-    return `/assets/images/events/${icon}.jpg`;
+    return `/assets/images/events/${icon}.webp`;
   }
 
   formatDate(dateString: string): string {
@@ -272,5 +299,10 @@ export class EventsComponent implements OnInit {
 
   toggleDescription(item: any) {
     item.isDescriptionExpanded = !item.isDescriptionExpanded;
+  }
+
+  detectOS(): void {
+    this.osType = this.osDetectionService.getMobileOperatingSystem();
+    // console.log('From app component, detected OS:', this.osType);
   }
 }

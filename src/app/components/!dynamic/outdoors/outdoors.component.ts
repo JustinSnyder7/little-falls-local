@@ -2,9 +2,10 @@ import { Pipe, PipeTransform, Component, OnInit, Renderer2, ElementRef, ViewChil
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faShareNodes, faShare } from '@fortawesome/free-solid-svg-icons';
 import { OverlayService } from '../../../services/overlay.service';
 import { SourcePage } from '../../!sub-components/image-carousel/image-carousel.component';
+import { OsDetectionService } from '../../../services/os-detection.service';
 
 // import { DistanceService } from 'app/services/distance.service';
 //  private distanceService: DistanceService
@@ -60,10 +61,23 @@ export class OutdoorsComponent implements OnInit {
   isActive: boolean = false;
   isFilterApplied: boolean = false;
 
+  uniqueOutdoorTypes: string[] = [];
+
+  osType: string = 'unknown';
+
   @ViewChildren('item') items!: QueryList<ElementRef>;
 
-  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef, private overlayService: OverlayService) {
-    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter);
+  constructor(
+    private http: HttpClient, 
+    private meta: Meta, 
+    private library: FaIconLibrary, 
+    private renderer: Renderer2, 
+    private elementRef: ElementRef, 
+    private overlayService: OverlayService,
+    private osDetectionService: OsDetectionService
+  
+  ) {
+    library.addIcons(faFilter, faFilterCircleXmark, faLocationDot, faPhone, faDownLeftAndUpRightToCenter, faShareNodes, faShare);
   }
 
   openImage(event: any) {
@@ -72,38 +86,65 @@ export class OutdoorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchOutdoorData();
+    this.fetchData();
 
     this.meta.updateTag({ name: 'description', content: 'Embrace the great outdoors in Little Falls and beyond! Uncover serene parks, scenic trails, and exciting outdoor adventures for all ages. Find your next nature escape and immerse yourself in the beauty of our surroundings.' });
+
+    this.detectOS();
   }
 
-  fetchOutdoorData(): void {
+  share(item: any) {
+    const shareText = 'Check this out!';
+    if ('share' in navigator) {
+      navigator["share"]({
+        title: 'Little Falls Events',
+        text: shareText,
+        url: window.location.href,
+      }).then( () => console.log('Successful share') ).catch( () => console.log('error sharing') );
+    } else {
+      const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+      location.href = shareURL;
+    }
+  }
+
+  fetchData(): void {
     this.http.get<any>('/assets/database/outdoors.json').subscribe(data => {
       this.outdoorData = data.item.map((item: any) => ({ ...item, isExpanded: false }));
 
       // Create version of list to apply additional filtering
       this.filteredEvents = this.outdoorData;
+
+      this.extractUniqueEventTypes();
     });
   }
 
-  filterByType(type: string): void {
-    this.filteredEvents = this.outdoorData.filter(event => event.type === type);
+  extractUniqueEventTypes() {
+    const allEventTypes = this.outdoorData.map(event => event.type);
+    const flattenedTypes = allEventTypes.flatMap(type => type.split(' '));
+    this.uniqueOutdoorTypes = [...new Set(flattenedTypes)];
+    this.uniqueOutdoorTypes.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+  }
+
+  filterByType(filterKeywords: string): void {
+    const keywords = filterKeywords.split(' ');
+
+    this.filteredEvents = this.outdoorData.filter(event => {
+      const eventTypeLower = event.type.toLowerCase();
+      return keywords.some(keyword => eventTypeLower.includes(keyword.toLowerCase()));
+    });
+
     this.isFilterApplied = true;
 
-    // Toggle on reset button
     const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
-
-    if (iconElement) {
-      this.renderer.setStyle(iconElement, 'display', 'inline');
-    }
-
+      if (iconElement) {
+        this.renderer.setStyle(iconElement, 'display', 'inline');
+      }
   }
   
   resetFilter(): void {
     this.filteredEvents = this.outdoorData; // Reset to show all events
     this.isFilterApplied = false;
 
-    // Toggle off reset button
     const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
@@ -119,27 +160,15 @@ export class OutdoorsComponent implements OnInit {
     return `/assets/images/outdoors/${image}.jpg`;
   }
 
-  // expandItem(item: outdoorDataElements, index: number): void {
-
-  //   this.filteredEvents.forEach(item => {
-  //     if (item !== item) {
-  //       item.isExpanded = false;
-  //     }
-  //   });
-
-  //   item.isExpanded = !item.isExpanded;
-  //   setTimeout(() => this.scrollToItemInViewport(index), 0);
-  // }
-
   expandItem(item: outdoorDataElements, index: number): void {
     if (item.isExpanded) {
       // Check if this is already expanded; do nothing for now     
     } else {
       // Collapse any previously expanded item
-      this.outdoorData.forEach(item => {
-        if (item.isExpanded && item !== item) {
-          item.isExpanded = false;
-        }
+      this.outdoorData.forEach(event => {
+        // if (item.isExpanded && item !== item) {
+          event.isExpanded = false;
+        // }
       });
   
       // Expand the clicked item
@@ -170,5 +199,10 @@ export class OutdoorsComponent implements OnInit {
     const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+' + eventLocationCity + '+NY';
   
     return formattedName;
+  }
+
+  detectOS(): void {
+    this.osType = this.osDetectionService.getMobileOperatingSystem();
+    // console.log('From app component, detected OS:', this.osType);
   }
 }

@@ -1,14 +1,18 @@
 
 <div class="filters-container">
-  <a (click)="filterByType('Sports');" style="cursor: pointer;">Sports</a><span class="divider"> | </span>
-  <a (click)="filterByType('Festival');" style="cursor: pointer;">Festivals</a><span class="divider"> | </span>
-  <a (click)="filterByType('Music');" style="cursor: pointer;">Music</a><span class="divider"> | </span>
-  <a (click)="filterByType('Family');" style="cursor: pointer;">Family</a><span class="divider"> | </span>
-  <a (click)="filterByType('Food');" style="cursor: pointer;">Food</a>
 
   <span class="filterIconContainer">
-    <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText"><fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;clear</a>
+    <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText">&nbsp;<fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;&nbsp;&nbsp;</a>
   </span>
+
+  <ng-container *ngFor="let type of uniqueEventTypes; let last = last">
+    <ng-container *ngIf="type">
+      <button (click)="filterByType(type);" style="cursor: pointer;">{{ type }}</button>
+      <span *ngIf="!last" class="divider">&nbsp;</span>
+    </ng-container>
+  </ng-container>
+
+  
 </div>
 <div class="item-container">
   <div *ngFor="let item of filteredEvents; let i = index" class="item-iter" #item [class.expanded]="item.isExpanded" (click)="expandItem(item, i)">
@@ -35,8 +39,8 @@
 
       <!-- TODO: create "read more" functionality for long responses -->
       <!-- TODO: need to reconsider using an "image coming soon" logic to perhaps not doing this and just omitting it -->
-      <!-- TODO: need to dynamically decide between iPhone and Android for share button, use flag indicating which to use -->
       <!-- TODO: need to consider when is the best time to request location services, warned against doing it on page load -->
+      <!-- TODO: need to convert images to webp format -->
       
       <!-- Expanded item view -->
       <div class="item-wrapper-expanded" *ngIf="item.isExpanded">
@@ -63,7 +67,7 @@
         </ng-template>
 
         <ng-template #noImageBlock>
-          <img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy">
+          <img src="../../assets/images/coming-soon.webp" class="item-image-expanded" alt="image coming soon" loading="lazy">
         </ng-template>
 
         <span class="item-location">
@@ -80,7 +84,7 @@
 
         <div *ngIf="item.description" class="item-description">{{item.name}}. {{ item.description }}</div>
 
-        <fa-icon [icon]="'square-share-nodes'" class='fa-lg' (click)="share(item)"></fa-icon>
+        <fa-icon [icon]="osType === 'Android' ? 'share-nodes' : 'share'" class='fa-lg' (click)="share(item)"></fa-icon>
 
       </div>
       

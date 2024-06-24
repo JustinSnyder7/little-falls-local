@@ -9,6 +9,7 @@ import { ScrollCheckService } from './services/scroll-check.service';
 import { GeolocationService } from './services/geolocation.service';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { OverlayService } from './services/overlay.service';
+import { OsDetectionService } from './services/os-detection.service';
 
 library.add(faTimes);
 
@@ -28,6 +29,8 @@ export class AppComponent implements OnInit {
   isOverlayActive: boolean = false;
   activeImage: string = '';
 
+  osType: string = 'unknown';
+
   @HostListener('window:resize', ['$event'])
   onResize(event: UIEvent) {
     this.checkScreenSize();
@@ -40,6 +43,7 @@ export class AppComponent implements OnInit {
     private geolocationService: GeolocationService,
     private swUpdate: SwUpdate,
     private overlayService: OverlayService,
+    private osDetectionService: OsDetectionService,
     private renderer: Renderer2
   ) {
     this.checkScreenSize();
@@ -60,12 +64,6 @@ export class AppComponent implements OnInit {
     );
   }
 
-  // @HostListener('window:scroll', ['$event'])
-  // onScroll(event: Event): void {
-  //   this.scrollCheckService.trackScroll();
-  //   console.log('scroll detected');
-  // }
-
   checkScreenSize() {
     this.isSmallScreen = window.innerWidth < 1024;
   }
@@ -73,10 +71,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.scrollCheckService.widgetShown().subscribe((shown) => {
       if (shown) {
-        console.log('maybe scroll detected');
         this.showWidget = true;
       }
     });
+
+    this.detectOS();
 
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
@@ -122,54 +121,20 @@ export class AppComponent implements OnInit {
       this.isOverlayActive = state.isActive;
       this.activeImage = state.imageUrl;
     });
+
   }
 
-  // loadBuyMeACoffeeWidget(): void {
-  //   const existingScript = document.querySelector('script[data-name="BMC-Widget"]');
-  //   if (existingScript) {
-  //     existingScript.remove();
-  //   }
   
-  //   const script = document.createElement('script');
-  //   script.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
-  //   script.setAttribute('data-name', 'BMC-Widget');
-  //   script.setAttribute('data-cfasync', 'false');
-  //   script.setAttribute('data-id', 'littlefallslocal');
-  //   script.setAttribute('data-description', 'Support me on Buy me a coffee!');
-  //   script.setAttribute('data-message', 'Want to support what we do? Buy us a coffee!');
-  //   script.setAttribute('data-color', '#FF813F');
-  //   script.setAttribute('data-position', 'Right');
-  //   script.setAttribute('data-x_margin', '18');
-  //   script.setAttribute('data-y_margin', '18');
-  
-  //   script.onload = () => {
-  //     console.log('Buy Me a Coffee widget script loaded successfully.');
-  //     const button = document.getElementById('bmc-wbtn');
-  //     const iframe = document.getElementById('bmc-iframe');
-  //     if (button) {
-  //       console.log('Widget button element created successfully:', button);
-  //     } else {
-  //       console.error('Failed to create widget button element.');
-  //     }
-  //     if (iframe) {
-  //       console.log('Widget iframe element created successfully:', iframe);
-  //     } else {
-  //       console.error('Failed to create widget iframe element.');
-  //     }
-  //   };
-  
-  //   script.onerror = (error) => {
-  //     console.error('Error loading Buy Me a Coffee widget script:', error);
-  //   };
-  
-  //   document.body.appendChild(script);
-  // }
-
   isEventsPageActive(): boolean {
     return this.router.url.includes('/events');
   }
 
   closeOverlay() {
     this.overlayService.closeOverlay();
+  }
+
+  detectOS(): void {
+    this.osType = this.osDetectionService.getMobileOperatingSystem();
+    // console.log('From app component, detected OS:', this.osType);
   }
 }

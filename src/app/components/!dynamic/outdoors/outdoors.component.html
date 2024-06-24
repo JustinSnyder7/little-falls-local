@@ -1,13 +1,17 @@
 
 <div class="filters-container">
-  <a (click)="filterByType('Park');" style="cursor: pointer;">Parks</a><span class="divider"> | </span>
-  <a (click)="filterByType('Activity');" style="cursor: pointer;">Activities</a><span class="divider"> | </span>
-  <a (click)="filterByType('Playground');" style="cursor: pointer;">Playgrounds</a><span class="divider"> | </span>
-  <a (click)="filterByType('Trail');" style="cursor: pointer;">Trails</a>
-  
+
   <span class="filterIconContainer">
-    <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText"><fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;clear</a>
+    <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText">&nbsp;<fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;&nbsp;&nbsp;</a>
   </span>
+
+  <ng-container *ngFor="let type of uniqueOutdoorTypes; let last = last">
+    <ng-container *ngIf="type">
+      <button (click)="filterByType(type);" style="cursor: pointer;">{{ type }}</button>
+      <span *ngIf="!last" class="divider">&nbsp;</span>
+    </ng-container>
+  </ng-container>
+  
 </div>
 
 <div class="item-container">
@@ -51,7 +55,7 @@
       </ng-template>
 
       
-      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
+      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.webp" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
 
       <div *ngIf="item.description" class="item-description">{{ item.description }}</div>
     </div>

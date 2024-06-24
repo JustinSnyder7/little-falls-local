@@ -6,8 +6,6 @@
         <span class="primary-links"><a routerLink="/events">EVENTS</a> &#11049; <a routerLink="/food">RESTAURANTS</a> &#11049; <a routerLink="/outdoors">OUTDOORS</a></span>
     </div>
 
-    <!-- diamond dillyo &#11049; -->
-
     <div class="nav-container" (click)="toggleMenu()"><fa-icon [icon]="'bars'" class='fa-xl' style="color: black;"></fa-icon></div>
 
     <div id="menu" class="menu-hidden" [ngClass]="{'menu-visible': isMenuVisible, 'menu-hidden': !isMenuVisible}" (click)="toggleMenu()">
@@ -17,7 +15,3 @@
     </div>
 
 </div>
-
-<!-- <div class="front-splash-container">
-    <p>&nbsp;</p>
-</div> -->

@@ -26,7 +26,6 @@ export class ScrollCheckService {
         }  
 
       this.widgetShownSubject.next(true);
-      console.log('showing widget text after 20 second timer')
     });
 
     timer(35000).subscribe(() => {
@@ -36,7 +35,6 @@ export class ScrollCheckService {
         }
 
       this.widgetShownSubject.next(true);
-      console.log('hiding widget text after 15 past first timer')
     });
   }
 

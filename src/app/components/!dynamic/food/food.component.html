@@ -1,13 +1,17 @@
 
 <div class="filters-container">
-  <a (click)="filterByType('American');" style="cursor: pointer;">American</a><span class="divider"> | </span>
-  <a (click)="filterByType('Italian');" style="cursor: pointer;">Italian</a><span class="divider"> | </span>
-  <a (click)="filterByType('Mexican');" style="cursor: pointer;">Mexican</a><span class="divider"> | </span>
-  <a (click)="filterByType('Bar');" style="cursor: pointer;">Bars</a>
-    
+
   <span class="filterIconContainer">
-    <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText"><fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;clear</a>
+    <a (click)="resetFilter();" style="cursor: pointer;" id="clearFilterText">&nbsp;<fa-icon [icon]="isFilterApplied ? 'filter-circle-xmark' : 'filter'" class="fa-xs"></fa-icon>&nbsp;&nbsp;&nbsp;</a>
   </span>
+
+  <ng-container *ngFor="let type of uniqueFoodTypes; let last = last">
+    <ng-container *ngIf="type">
+      <button (click)="filterByType(type);" style="cursor: pointer;">{{ type }}</button>
+      <span *ngIf="!last" class="divider">&nbsp;</span>
+    </ng-container>
+  </ng-container>
+    
 </div>
 
 <div class="item-container">
@@ -43,7 +47,7 @@
           <fa-icon [icon]="'location-dot'" class='fa-xs'></fa-icon>&nbsp;<a [href]="formatRestaurantName(item.name)" target="_blank">{{ item.location }}</a></span>
       </span><br>
 
-
+      <!-- TODO: need to allow for two word names for item.type - like "Fine Dining" -->
 
       <app-image-carousel *ngIf="item.image.second; else singleImageBlock" [images]="item.image" [sourcePage]="SourcePage.Food"></app-image-carousel>
 
@@ -51,7 +55,7 @@
         <span *ngIf="item.image.first; else noImageBlock">
         <img [src]="getImagePath(item.image.first)" class="item-image-expanded" alt="Image" loading="lazy" (click)="openImage($event)"></span></ng-template>
 
-      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.jpg" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
+      <ng-template #noImageBlock><img src="../../assets/images/coming-soon.webp" class="item-image-expanded" alt="image coming soon" loading="lazy"></ng-template>
 
       <div *ngIf="item.description" class="item-description">{{ item.description }}</div>
     </div>

@@ -28,20 +28,15 @@ export class ImageCarouselComponent {
 
   ngOnInit(): void {
 
-    console.log('Carousel source page:', this.sourcePage);
-
     switch (this.sourcePage) {
       case 'events':
         this.prefix = 'events/';
-        console.log ('Carousel prefix:', this.prefix);
         break;
       case 'food':
         this.prefix = 'food/';
-        console.log ('Carousel prefix:', this.prefix);
         break;
       case 'outdoors':
         this.prefix = 'outdoors/';
-        console.log ('Carousel prefix:', this.prefix);
         break;
       default:
           console.log('Invalid source page: ', this.sourcePage);

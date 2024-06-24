@@ -2,9 +2,10 @@ import { Pipe, PipeTransform,Component, OnInit, Renderer2, ElementRef, ViewChild
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone, faShareNodes, faShare } from '@fortawesome/free-solid-svg-icons';
 import { OverlayService } from '../../../services/overlay.service';
 import { SourcePage } from '../../!sub-components/image-carousel/image-carousel.component';
+import { OsDetectionService } from '../../../services/os-detection.service';
 
 // Define an interface for the type of event object
 interface foodDataElements {
@@ -18,6 +19,7 @@ interface foodDataElements {
   image: any;
   url: string;
   rating: number;
+  referenceID: string;
   highlight: boolean;
   isExpanded: boolean;
 }
@@ -50,32 +52,70 @@ export class FoodComponent implements OnInit {
 
   foodData: foodDataElements[] = [];
   filteredData: foodDataElements[] = [];
+  isFilterApplied: boolean = false;
 
   isOverlayActive:boolean = false;
   activeImage: string = '';
 
-  isFilterApplied: boolean = false;
+  uniqueFoodTypes: string[] = [];
+
+  osType: string = 'unknown';
 
   @ViewChildren('item') items!: QueryList<ElementRef>;
 
-  constructor(private http: HttpClient, private meta: Meta, private library: FaIconLibrary, private renderer: Renderer2, private elementRef: ElementRef, private overlayService: OverlayService) {
+  constructor(
+    private http: HttpClient, 
+    private meta: Meta, 
+    private library: FaIconLibrary, 
+    private renderer: Renderer2, 
+    private elementRef: ElementRef, 
+    private overlayService: OverlayService,
+    private osDetectionService: OsDetectionService
+  
+  ) {
 
-    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone);
+    library.addIcons(faWindowMinimize, faDownLeftAndUpRightToCenter, faFilter, faFilterCircleXmark, faLocationDot, faPhone, faShareNodes, faShare);
   }
 
   ngOnInit(): void {
-    this.fetchFoodData();
+    this.fetchData();
 
     this.meta.updateTag({ name: 'description', content: 'Explore some of the best restaurants Little Falls, and the surrounding area, has to offer! There are plent of excellent choices, if you know where to look.' });
+
+    this.detectOS();
   }
 
-  fetchFoodData(): void {
+  share(item: any) {
+    const shareText = 'Check this out!';
+    if ('share' in navigator) {
+      navigator["share"]({
+        title: 'Little Falls Events',
+        text: shareText,
+        url: window.location.href,
+      }).then( () => console.log('Successful share') ).catch( () => console.log('error sharing') );
+    } else {
+      const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+      location.href = shareURL;
+    }
+  }
+
+  fetchData(): void {
     this.http.get<any>('/assets/database/food.json').subscribe(data => {
       this.foodData = data.item.map((item: any) => ({ ...item, isExpanded: false }));
 
       // Create version of list to apply additional filtering
       this.filteredData = this.foodData;
+
+      this.extractUniqueFoodTypes();
     });
+  }
+
+  extractUniqueFoodTypes() {
+    const allFoodTypes = this.foodData.map(food => food.type);
+    const flattenedTypes = allFoodTypes.flatMap(type => type.split(' '));
+    this.uniqueFoodTypes = [...new Set(flattenedTypes)];
+    this.uniqueFoodTypes.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+    console.log(this.uniqueFoodTypes);
   }
 
   closeOverlay() {
@@ -87,12 +127,18 @@ export class FoodComponent implements OnInit {
     this.overlayService.openOverlay(imageUrl);
   }
 
-  filterByType(type: string): void {
-    this.filteredData = this.foodData.filter(event => event.type === type);
+  filterByType(filterKeywords: string): void {
+    const keywords = filterKeywords.split(' ');
+
+    
+
+    this.filteredData = this.foodData.filter(event => {
+      const eventTypeLower = event.type.toLowerCase();
+      return keywords.some(keyword => eventTypeLower.includes(keyword.toLowerCase()));
+    });
 
     this.isFilterApplied = true;
 
-    // Toggle on reset button
     const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
@@ -104,7 +150,6 @@ export class FoodComponent implements OnInit {
     this.filteredData = this.foodData; // Reset to show all events
     this.isFilterApplied = false;
 
-    // Toggle off reset button
     const iconElement = this.elementRef.nativeElement.querySelector('#clearFilterText');
 
     if (iconElement) {
@@ -125,10 +170,10 @@ export class FoodComponent implements OnInit {
       // Check if this is already expanded; do nothing for now
     } else {
       // Collapse any previously expanded item
-      this.foodData.forEach(item => {
-        if (item.isExpanded && item !== item) {
-          item.isExpanded = false;
-        }
+      this.foodData.forEach(event => {
+        // if (item.isExpanded && item !== item) {
+          event.isExpanded = false;
+        // }
       });
   
       // Expand the clicked item
@@ -158,5 +203,28 @@ export class FoodComponent implements OnInit {
     const formattedName = 'https://www.google.com/maps/search/?api=1&query=' + sanitizedName.replace(/\s+/g, '+').toLowerCase() + '+little+falls+NY';
   
     return formattedName;
+  }
+
+  detectOS(): void {
+    this.osType = this.osDetectionService.getMobileOperatingSystem();
+    // console.log('From app component, detected OS:', this.osType);
+  }
+
+  limitEntriesPerUniqueID(events: foodDataElements[], maxEntries: number): foodDataElements[] {
+    const eventTypeMap: { [key: string]: number } = {};
+    const limitedEvents: foodDataElements[] = [];
+  
+    events.forEach(event => {
+      if (!eventTypeMap[event.referenceID]) {
+        eventTypeMap[event.referenceID] = 0;
+      }
+  
+      if (eventTypeMap[event.referenceID] < maxEntries) {
+        eventTypeMap[event.referenceID]++;
+        limitedEvents.push(event);
+      }
+    });
+  
+    return limitedEvents;
   }
 }

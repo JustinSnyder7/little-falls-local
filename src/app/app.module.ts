@@ -34,7 +34,7 @@ import { ImagePreloadService } from './services/image-preload.service';
 
 
 function preloadImageFactory(imagePreloadService: ImagePreloadService) {
-  return () => imagePreloadService.preloadImage('assets/images/coming-soon.jpg');
+  return () => imagePreloadService.preloadImage('assets/images/coming-soon.webp');
 }
 
 
