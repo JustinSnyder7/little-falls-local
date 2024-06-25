@@ -95,7 +95,7 @@ export class EventsComponent implements OnInit {
   }
 
   share(item: any) {
-    const shareText = 'Check this out!';
+    const shareText = 'Check this out! ' + item.name + ', ' + item.startDate + ' at ' + item.startTime + ' - ';
     if ('share' in navigator) {
       navigator["share"]({
         title: 'Little Falls Events',
@@ -141,7 +141,6 @@ export class EventsComponent implements OnInit {
     const flattenedTypes = allEventTypes.flatMap(type => type.split(' '));
     this.uniqueEventTypes = [...new Set(flattenedTypes)];
     this.uniqueEventTypes.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-    console.log(this.uniqueEventTypes);
   }
 
   limitEntriesPerUniqueID(events: eventDataElements[], maxEntries: number): eventDataElements[] {
@@ -247,28 +246,99 @@ export class EventsComponent implements OnInit {
     return `/assets/images/events/${icon}.webp`;
   }
 
+  // formatDate(dateString: string): string {
+  //   const date = new Date(dateString);
+  //   const day = date.getDate();
+  //   let suffix = '';
+  //   if (day === 1 || day === 21 || day === 31) {
+  //     suffix = 'st';
+  //   } else if (day === 2 || day === 22) {
+  //     suffix = 'nd';
+  //   } else if (day === 3 || day === 23) {
+  //     suffix = 'rd';
+  //   } else {
+  //     suffix = 'th';
+  //   }
+  //   const formattedDate = (this.datePipe.transform(date, 'EEE, MMM d') || '') + suffix;
+  //   return formattedDate.toUpperCase();
+  // }
+
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    const day = date.getDate();
-    let suffix = '';
-    if (day === 1 || day === 21 || day === 31) {
-      suffix = 'st';
-    } else if (day === 2 || day === 22) {
-      suffix = 'nd';
-    } else if (day === 3 || day === 23) {
-      suffix = 'rd';
+
+    // Get current date and tomorrow's date
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    // Reset the time part to compare only dates
+    today.setHours(0, 0, 0, 0);
+    tomorrow.setHours(0, 0, 0, 0);
+    date.setHours(0, 0, 0, 0);
+
+    if (date.getTime() === today.getTime()) {
+      return 'TODAY';
+    } else if (date.getTime() === tomorrow.getTime()) {
+      return 'TOMORROW';
     } else {
-      suffix = 'th';
+      const day = date.getDate();
+      let suffix = '';
+      if (day === 1 || day === 21 || day === 31) {
+        suffix = 'st';
+      } else if (day === 2 || day === 22) {
+        suffix = 'nd';
+      } else if (day === 3 || day === 23) {
+        suffix = 'rd';
+      } else {
+        suffix = 'th';
+      }
+      const formattedDate = (this.datePipe.transform(date, 'EEE, MMM d') || '') + suffix;
+      return formattedDate.toUpperCase();
     }
-    const formattedDate = (this.datePipe.transform(date, 'EEE, MMM d') || '') + suffix;
-    return formattedDate.toUpperCase();
   }
+
+  // formatDateRange(startDate: string, endDate: string): string {
+  //   const startDateObj = new Date(startDate);
+  //   const endDateObj = new Date(endDate);
+  //   const startDay = startDateObj.getDate();
+  //   const endDay = endDateObj.getDate();
+  //   const getDaySuffix = (day: number): string => {
+
+    
+  //     if (day === 1 || day === 21 || day === 31) {
+  //       return 'st';
+  //     } else if (day === 2 || day === 22) {
+  //       return 'nd';
+  //     } else if (day === 3 || day === 23) {
+  //       return 'rd';
+  //     } else {
+  //       return 'th';
+  //     }
+  //   };
+  //   const formattedStartDate = `${this.datePipe.transform(startDateObj, 'MMM d')}${getDaySuffix(startDay)}`;
+  //   const formattedEndDate = `${this.datePipe.transform(endDateObj, 'd')}${getDaySuffix(endDay)}`;
+  //   const formattedDateRange = `${formattedStartDate} - ${formattedEndDate}`;
+  //   return formattedDateRange.toUpperCase();
+  // }
 
   formatDateRange(startDate: string, endDate: string): string {
     const startDateObj = new Date(startDate);
     const endDateObj = new Date(endDate);
-    const startDay = startDateObj.getDate();
-    const endDay = endDateObj.getDate();
+    
+    // Get current date and tomorrow's date
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+  
+    // Reset the time part to compare only dates
+    today.setHours(0, 0, 0, 0);
+    tomorrow.setHours(0, 0, 0, 0);
+    startDateObj.setHours(0, 0, 0, 0);
+    endDateObj.setHours(0, 0, 0, 0);
+  
+    const isToday = (date: Date) => date.getTime() === today.getTime();
+    const isTomorrow = (date: Date) => date.getTime() === tomorrow.getTime();
+  
     const getDaySuffix = (day: number): string => {
       if (day === 1 || day === 21 || day === 31) {
         return 'st';
@@ -280,8 +350,35 @@ export class EventsComponent implements OnInit {
         return 'th';
       }
     };
-    const formattedStartDate = `${this.datePipe.transform(startDateObj, 'MMM d')}${getDaySuffix(startDay)}`;
-    const formattedEndDate = `${this.datePipe.transform(endDateObj, 'd')}${getDaySuffix(endDay)}`;
+  
+    let formattedStartDate: string;
+    if (isToday(startDateObj)) {
+      formattedStartDate = 'TODAY';
+    } else if (isTomorrow(startDateObj)) {
+      formattedStartDate = 'TMRW';
+    } else {
+      const startDay = startDateObj.getDate();
+      formattedStartDate = `${this.datePipe.transform(startDateObj, 'MMM d')}${getDaySuffix(startDay)}`;
+    }
+  
+    let formattedEndDate: string;
+    if (isToday(endDateObj)) {
+      formattedEndDate = 'TODAY';
+    } else if (isTomorrow(endDateObj)) {
+      formattedEndDate = 'TMRW';
+    } else {
+      const endDay = endDateObj.getDate();
+      if (isToday(startDateObj) || isTomorrow(startDateObj)) {
+        formattedEndDate = `${this.datePipe.transform(endDateObj, 'MMM d')}${getDaySuffix(endDay)}`;
+      } else {
+        formattedEndDate = `${this.datePipe.transform(endDateObj, 'd')}${getDaySuffix(endDay)}`;
+      }
+    }
+  
+    if (formattedStartDate === formattedEndDate) {
+      return formattedStartDate.toUpperCase();
+    }
+  
     const formattedDateRange = `${formattedStartDate} - ${formattedEndDate}`;
     return formattedDateRange.toUpperCase();
   }

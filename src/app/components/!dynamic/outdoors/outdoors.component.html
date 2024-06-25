@@ -21,7 +21,11 @@
   <div class="item-wrapper">
     <div *ngIf="!item.isExpanded">
 
-    <div class="item-image-wrapper" *ngIf="item.image.first"><img [src]="getImagePath(item.image.first)" class="item-image" alt="Image" loading="lazy"></div>
+    <div *ngIf="item.image.first; else noImageSmall" class="item-image-wrapper"><img [src]="getImagePath(item.image.first)" class="item-image" alt="Image" loading="lazy"></div>
+
+      <ng-template #noImageSmall>
+        <div class="item-image-wrapper"><img src="../../assets/images/coming-soon.webp" class="item-image" alt="image coming soon" loading="lazy"></div>
+      </ng-template>
 
     <span *ngIf="item.image.first" class="item-name">{{ item.name | truncate: 19 }}<br></span>
     <span *ngIf="!item.image.first" class="item-name">{{ item.name | truncate: 24 }}<br></span>

@@ -152,6 +152,16 @@
     border: 1px solid var(--point25-alpha);
   }
 
+  .share-container {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0px 0px 0px;
+    padding-right: 15px;
+    width: 98%;
+    justify-content: right;
+    align-items: center;
+  }
+
   .loading-container {
     height: 100vh;
     display: flex;
@@ -179,7 +189,7 @@
 
   .item-container {
     margin: 0px 1px 28px 5px;
-    padding: 24px 5px 32px 5px;
+    padding: 30px 5px 32px 5px;
     overflow-y: scroll;
     align-content: center;
     position: relative;
@@ -273,7 +283,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    align-items: left;
+    /* align-items: left; */
     font-size: 22px;
     padding-left: 5px;
     padding-right: 8px;
@@ -282,7 +292,7 @@
   }
 
   .item-name {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: var(--highlight-text);
   }
@@ -379,7 +389,7 @@
   }
 
   .item-location, .item-url {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
   }
 

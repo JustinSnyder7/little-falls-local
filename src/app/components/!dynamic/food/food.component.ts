@@ -115,7 +115,6 @@ export class FoodComponent implements OnInit {
     const flattenedTypes = allFoodTypes.flatMap(type => type.split(' '));
     this.uniqueFoodTypes = [...new Set(flattenedTypes)];
     this.uniqueFoodTypes.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-    console.log(this.uniqueFoodTypes);
   }
 
   closeOverlay() {

@@ -21,7 +21,11 @@
       <!-- Collapsed item view -->
       <div *ngIf="!item.isExpanded">
         <div class="item-text-wrapper">
-          <div class="item-image-wrapper" *ngIf="item.image.first"><img [src]="getImagePath(item.image.first)" class="item-image" alt="Image" loading="lazy"></div>
+          <div class="item-image-wrapper" *ngIf="item.image.first; else noImageSmall"><img [src]="getImagePath(item.image.first)" class="item-image" alt="Image" loading="lazy"></div>
+
+            <ng-template #noImageSmall>
+              <div class="item-image-wrapper"><img src="../../assets/images/coming-soon.webp" class="item-image" alt="image coming soon" loading="lazy"></div>
+            </ng-template>
           
           <span *ngIf="!item.endDate" class="item-date">{{ formatDate(item.startDate) }}</span>
           <span *ngIf="item.endDate" class="item-date">{{ formatDateRange(item.startDate, item.endDate) }}</span>
@@ -29,11 +33,19 @@
           <span *ngIf="!item.endTime && item.startTime" class="item-time"> at {{ item.startTime }}</span>
           <span *ngIf="item.endTime && item.startTime" class="item-time">, {{ item.startTime }}-{{ item.endTime }}</span><br>
           
-          <span *ngIf="item.image.first" class="item-name">{{ item.name | truncate: 22 }}</span>
-          <span *ngIf="!item.image.first" class="item-name">{{ item.name | truncate: 28 }}</span><br>
+          <span *ngIf="item.image.first" class="item-name">{{ item.name | truncate: 21 }}</span>
+          <span *ngIf="!item.image.first" class="item-name">{{ item.name | truncate: 27 }}</span><br>
           
-          <span *ngIf="item.image.first" class="item-location">{{ item.locationAddress | truncate: 21 }}</span>
-          <span *ngIf="!item.image.first" class="item-location">{{ item.locationAddress | truncate: 26 }}</span><br>
+          <!-- if item.locationName, if not item.locationAddress -->
+          <span *ngIf="item.locationName; else itemAddress">
+          <span *ngIf="item.image.first" class="item-location">{{ item.locationName | truncate: 23 }}</span>
+          <span *ngIf="!item.image.first" class="item-location">{{ item.locationName | truncate: 27 }}</span><br></span>
+
+          <ng-template #itemAddress>
+            <span *ngIf="item.image.first" class="item-location">{{ item.locationAddress | truncate: 24 }}</span>
+            <span *ngIf="!item.image.first" class="item-location">{{ item.locationAddress | truncate: 28 }}</span><br>
+          </ng-template>
+
         </div>
       </div>
 
@@ -84,8 +96,9 @@
 
         <div *ngIf="item.description" class="item-description">{{item.name}}. {{ item.description }}</div>
 
-        <fa-icon [icon]="osType === 'Android' ? 'share-nodes' : 'share'" class='fa-lg' (click)="share(item)"></fa-icon>
-
+        <div class="share-container">
+          <fa-icon [icon]="osType === 'Android' ? 'share-nodes' : 'share'" class='fa-lg' (click)="share(item)" style="cursor: pointer;"></fa-icon>
+        </div>
       </div>
       
     </div>
